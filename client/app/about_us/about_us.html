@@ -1,0 +1,90 @@
+<div ng-include="'../../components/navbar/navbar.html'"></div>
+<div>
+  <!-- Breadcrumbs - START -->
+  <div class="breadcrumbs-container">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a ui-sref="main">Home</a></li>
+        <li class="active">About us</li>
+      </ol>
+    </div>
+  </div>
+  <!-- Breadcrumbs - END -->
+<!-- Component: aboutus/aboutus.html - START -->
+<section class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="list-group bright background-clouds color-text">
+          <div class="list-group-item"><h3>Menu</h3></div>
+
+          <a ng-repeat="abt in about" href="#{{abt.link}}" class="list-group-item ">{{abt.link}}</a>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="content">
+          <div class="blog-entry fx-rotate-clock fx-speed-1000 fx-easing-quint" ng-repeat="abt in about">
+
+          <h1><span id="{{abt.link}}">{{abt.link}}</span></h1>
+            <p class="blog-entry-content fx-rotate-clock fx-speed-1000 fx-easing-quint" ng-repeat="content in abt.content">{{content}}</p>
+          </div>
+          </div>
+      </div>
+    </div>      </div>
+</section>
+<!-- Component: aboutus/aboutus.html - END -->
+
+<!-- Component: commons/this-is-us.html - START -->
+<section class="">
+  <div class="container">
+    <div class="reduce-top-margin">
+      <h1><span>This is us</span></h1>
+      <div class="row">
+        <div class="col-xs-6 col-sm-4 col-md-2">
+          <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
+            <img class="img-circle" src="assets/images/placeholder-man-sq.jpg" alt="...">
+          </a>
+          <br>
+          <p class="text-center"><small>Sed porta ac ipsum ut mollis. Integer id vestibulum dui, at dapibus orci. Nunc adipiscing, orci sit amet ultricies sagittis, arcu orci feugiat.</small></p>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-2">
+          <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
+            <img class="img-circle" src="assets/images/placeholder-office-couple-sq.jpg" alt="...">
+          </a>
+          <br>
+          <p class="text-center"><small>Sed porta ac ipsum ut mollis. Integer id vestibulum dui, at dapibus orci. Nunc adipiscing, orci sit amet ultricies sagittis, arcu orci feugiat.</small></p>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-2">
+          <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
+            <img class="img-circle" src="assets/images/placeholder-heli-sq.jpg" alt="...">
+          </a>
+          <br>
+          <p class="text-center"><small>Cras tristique eu sapien ut aliquam. Cras pharetra nisl sapien, ut tincidunt nunc feugiat at. Donec massa nisl, tincidunt eu nulla quis, tristique facilisis nibh.</small></p>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-2">
+          <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
+            <img class="img-circle" src="assets/images/placeholder-office-couple-sq.jpg" alt="...">
+          </a>
+          <br>
+          <p class="text-center"><small>Sed porta ac ipsum ut mollis. Integer id vestibulum dui, at dapibus orci. Nunc adipiscing, orci sit amet ultricies sagittis, arcu orci feugiat.</small></p>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-2">
+          <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
+            <img class="img-circle" src="assets/images/placeholder-heli-sq.jpg" alt="...">
+          </a>
+          <br>
+          <p class="text-center"><small>Cras tristique eu sapien ut aliquam. Cras pharetra nisl sapien, ut tincidunt nunc feugiat at. Donec massa nisl, tincidunt eu nulla quis, tristique facilisis nibh.</small></p>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-2">
+          <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
+            <img class="img-circle" src="assets/images/placeholder-man-sq.jpg" alt="...">
+          </a>
+          <br>
+          <p class="text-center"><small>Sed porta ac ipsum ut mollis. Integer id vestibulum dui, at dapibus orci. Nunc adipiscing, orci sit amet ultricies sagittis, arcu orci feugiat.</small></p>
+        </div>
+      </div>
+    </div>      </div>
+</section>
+<!-- Component: commons/this-is-us.html - END -->
+</div>
+<div ng-include="'../../components/footer/footer.html'"></div>

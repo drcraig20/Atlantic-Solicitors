@@ -1,0 +1,68 @@
+<footer class="background-midnight-blue color-white" data-control="class" ng-controller="FooterCtrl">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h3>Menu</h3>
+        <ul class="nav-footer">
+          <li ng-repeat="ft in navigation"><i class="fa {{ft.class}}" ></i> <a ui-sref="{{ft.url}}">{{ft.name}}</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h3>Testimonials</h3>
+        <div ng-repeat="t in testimonials">
+          <p class="testimonial">{{t.testimony}}</p>
+          <p class="author">{{t.author}}</p>
+      </div>
+
+
+      </div>
+      <div class="col-md-5">
+        <h3>Contact us</h3>
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label for="inputName1" class="col-lg-3 control-label">Name</label>
+            <div class="col-lg-9">
+              <input type="text" class="form-control input-lg" id="inputName1" placeholder="Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail1" class="col-lg-3 control-label">Email</label>
+            <div class="col-lg-9">
+              <input type="email" class="form-control input-lg" id="inputEmail1" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputContent1" class="col-lg-3 control-label">Content</label>
+            <div class="col-lg-9">
+              <textarea id="inputContent1" class="form-control" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-offset-3 col-lg-9">
+              <button type="submit" class="btn btn-lead btn-lg">Send us an email</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <hr>
+        <div class="row">
+          <div class="col-md-6">
+            All rights reserved &copy; 2013 <a href="http://w3widgets.com">w3widgets.com</a>
+          </div>
+          <div class="col-md-6">
+            <p class="social">
+              <a href="http://w3widgets.com/"><span class="fa fa-facebook"></span></a>
+              <a href="http://w3widgets.com/"><span class="fa fa-twitter"></span></a>
+              <a href="http://w3widgets.com/"><span class="fa fa-youtube"></span></a>
+              <a href="http://w3widgets.com/"><span class="fa fa-linkedin"></span></a>
+              <a href="http://w3widgets.com/"><span class="fa fa-pinterest"></span></a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

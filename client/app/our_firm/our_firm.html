@@ -1,0 +1,34 @@
+<div ng-include="'../../components/navbar/navbar.html'"></div>
+<div>
+  <!-- Breadcrumbs - START -->
+  <div class="breadcrumbs-container">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a ui-href="main">Home</a></li>
+        <li class="active">Our Firm</li>
+      </ol>
+    </div>
+  </div>
+  <!-- Breadcrumbs - END -->
+
+  <section class="">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9 col-md-offset-2">
+          <div class="content blog-entry fx-fade-down-big fx-easing-expo fx-speed-800" ng-repeat="c in content">
+            <h1><span>{{c.link}}</span></h1>
+            <p><img src="assets/images/article-head.jpg" alt="..."></p>
+            <p  ng-repeat="cont in c.content" class=' fx-fade-down fx-easing-expo fx-speed-800' ng-class-even="{'blog-entry-content':true}" ng-class-odd="{'blog-entry-content-orange':true}">{{cont}}</p>
+            <!--<blockquote>-->
+              <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
+              <!--<small>Someone famous in <cite title="Source Title">Source Title</cite></small>-->
+            <!--</blockquote>-->
+
+            </div>
+
+        </div>
+      </div>      </div>
+  </section>
+
+</div>
+<div ng-include="'../../components/footer/footer.html'"></div>

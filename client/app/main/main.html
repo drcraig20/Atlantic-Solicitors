@@ -1,0 +1,277 @@
+<div>
+  <!--Beginning Change themes-->
+  <div class="theme-switcher fixed background-white color-black">
+    <div>
+      <h3>Change lead color</h3>
+      <p>Neat template archive will provide You with this five pre-generated color schemes:</p>
+      <a data-switch="blue" title="neat-blue.css" style="background-color: #3498db"><span>Blue</span></a>
+      <a data-switch="red" title="neat-red.css" style="background-color: #e74c3c"><span>Red</span></a>
+      <a data-switch="green" title="neat-green.css" style="background-color: #2ecc71"><span>Green</span></a>
+      <a data-switch="orange" title="neat-orange.css" style="background-color: #e67e22"><span>Orange</span></a>
+      <a data-switch="purple" title="neat-purple.css" style="background-color: #9b59b6"><span>Purple</span></a>
+    </div>
+    <div>
+      <h3>Change nav background</h3>
+      <a data-nav="background-white color-black" title="background-white color-black" class="background-white"><span>Light gray</span></a>
+      <a data-nav="background-clouds color-black" title="background-clouds color-black" class="background-clouds"><span>Light gray</span></a>
+      <a data-nav="background-belize-hole color-white" title="background-belize-hole color-white"
+         class="background-belize-hole"><span>Blue</span></a>
+      <a data-nav="background-alizarin color-white" title="background-alizarin color-white"
+         class="background-alizarin color-white"><span>Red</span></a>
+      <a data-nav="background-pomegranate color-white" title="background-pomegranate color-white"
+         class="background-pomegranate color-white"><span>Red</span></a>
+      <a data-nav="background-nephritis color-white" title="background-nephritis color-white"
+         class="background-nephritis color-white"><span>Green</span></a>
+      <a data-nav="background-pumpkin color-white" title="background-pumpkin color-white"
+         class="background-pumpkin color-white"><span>Orange</span></a>
+      <a data-nav="background-wisteria color-white" title="background-wisteria color-white"
+         class="background-wisteria color-white"><span>Purple</span></a>
+      <a data-nav="background-midnight-blue color-white" title="background-midnight-blue color-white"
+         class="background-midnight-blue color-white"><span>Dark blue</span></a>
+      <a data-nav="background-turquoise color-white" title="background-turquoise color-white"
+         class="background-turquoise color-white"><span>Dark blue</span></a>
+    </div>
+    <div>
+      <h3>Boxed/Full width style</h3>
+      <div class="radio">
+        <label>
+          <input type="radio" name="layout-style" id="styleFullWidth" value="0">
+          Full width
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="layout-style" id="styleBoxed" value="1">
+          Boxed
+        </label>
+      </div>
+    </div>
+  </div>
+  <!--Ending Change theme-->
+
+  <div id="nav-wrapper" class="background-white color-black">
+    <div ng-include="'../../components/navbar/navbar.html'"></div>
+
+    <!-- Responsive slider - START -->
+    <div class="responsive-slider-parallax" >
+      <div class="slides-container" data-group="slides">
+        <ul>
+          <li>
+            <div class="slide-body" data-group="slide">
+              <div class="container">
+                <div class="wrapper">
+                  <div class="caption header" data-animate="slideAppearRightToLeft" data-delay="0" data-length="300">
+                    <h2>Neat theme</h2>
+                    <p class="sub text-left" data-animate="slideAppearLeftToRight" data-delay="300" data-length="300"><span>Clean and modern design</span></p>
+                    <p class="sub text-left" data-animate="slideAppearLeftToRight" data-delay="500" data-length="300"><span>Lightweight</span></p>
+                    <p class="sub text-left" data-animate="slideAppearLeftToRight" data-delay="700" data-length="300"><span>Standards compliant</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="slide-body" data-group="slide">
+              <div class="container">
+                <div class="wrapper">
+                  <div class="caption header text-center" data-animate="slideAppearUpToDown" data-delay="0" data-length="300">
+                    <h2>Twitter Boostrap</h2>
+                    <p class="sub" data-animate="slideAppearDownToUp" data-delay="300" data-length="300"><span>Compatible with version 3</span></p>
+                    <p class="sub" data-animate="slideAppearDownToUp" data-delay="500" data-length="300"><span>Perfectly compatible with grid system</span></p>
+                    <p class="sub" data-animate="slideAppearDownToUp" data-delay="700" data-length="300"><span>Bootstrap compatible Slider and Calendar plugins</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="slide-body" data-group="slide">
+              <div class="container">
+                <div class="wrapper">
+                  <div class="caption header text-right" data-animate="slideAppearDownToUp" data-delay="0" data-length="300">
+                    <h2>Html <span style="font-weight: 300"><span class="color-alizarin">c</span><span class="color-carrot">o</span><span class="color-sun-flower">l</span><span class="color-emerald">o</span><span class="color-peter-river">r</span></span> classes</h2>
+                    <p class="sub" data-animate="slideAppearUpToDown" data-delay="300" data-length="300"><span>"Flat UI" colors palette</span></p>
+                    <p class="sub" data-animate="slideAppearUpToDown" data-delay="500" data-length="300"><span>Made to modify any layout element</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <a class="slider-control left hidden-xs hidden-sm" href="index.html#" data-jump="prev"><i class="fa fa-angle-left"></i></a>
+      <a class="slider-control right hidden-xs hidden-sm" href="index.html#" data-jump="next"><i class="fa fa-angle-right"></i></a>
+      <div class="pages-wrapper background-black">
+        <ol class="pages">
+          <li><a data-jump-to="1">1</a></li>
+          <li><a data-jump-to="2">2</a></li>
+          <li><a data-jump-to="3">3</a></li>
+        </ol>
+      </div>
+    </div>
+    <!-- Responsive slider - END -->
+    <!-- Component: index/info-thumbnails.html - START -->
+    <section class="background-white color-black" data-control="class">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 col-md-4">
+            <a class="info-thumbnail-link" href="http://w3widgets.com/">
+              <div class="thumbnail info-thumbnail">
+                <div class="caption">
+                  <h3><span class="fa fa-flag color-lead"></span> Font awesome</h3>
+                  <p class="description">NEAT template supports as much modern technologies and trends as possible. One of them is font awesome icons. This great set of fonts is available anywhere you want on your page. Some of NEAT ui elements are also using font awesome like this info thumbnails.</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-4 col-md-4">
+            <a class="info-thumbnail-link" href="http://w3widgets.com/">
+              <div class="thumbnail info-thumbnail">
+                <div class="caption">
+                  <h3><span class="fa fa-group color-lead"></span> Color classes</h3>
+                  <p class="description">You can use template elements as you have them in the examples but if you feel creative you can compose our own color combinations in ui elements. You have beautiful set of flat ui colors to work with just use <i>color-{color-name}</i> or <i>background-{color-name}</i> to change text color or background of any element on the page.</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-4 col-md-4">
+            <a class="info-thumbnail-link" href="http://w3widgets.com/">
+              <div class="thumbnail info-thumbnail">
+                <div class="caption">
+                  <h3><span class="fa fa-gavel color-lead"></span> Some more info</h3>
+                  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis velit nibh, sit amet commodo sapien tristique at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras bibendum erat at ultricies rhoncus.</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>      </div>
+    </section>
+    <!-- Component: index/info-thumbnails.html - END -->
+
+    <!-- Component: index/info-row.html - START -->
+    <section class="background-belize-hole color-white" data-control="class" data-class-prefix="">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="info-row">
+              <div class="content info">
+                <h1 class="info-head"><span>Info row</span></h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet, lectus vitae hendrerit consequat, tellus sapien tincidunt massa, sit amet convallis libero massa at magna. Aliquam ullamcorper metus eget ultricies auctor. Nulla et iaculis lectus, nec pharetra libero. Vivamus eget urna risus. Nam gravida feugiat consequat. In a risus sit amet dui venenatis sodales.</p>
+              </div>
+              <div class="content link">
+                <a href="index.html#" class="btn btn-lead btn-lg pull-right">Read more</a>
+              </div>
+            </div>
+          </div>
+        </div>      </div>
+    </section>
+    <!-- Component: index/info-row.html - END -->
+
+    <!-- Component: index/info-thumbnails-alt1.html - START -->
+    <section class="background-white color-black" data-control="class" data-class-prefix="">
+      <div class="container">
+        <h1 class="text-center x-large">Information thumbnails</h1>
+        <p class="lead text-center">Information thumbnails are the workhorse of entire template. You can use them to display any type of content and there are many ways for you to play with them: you can change the colours, add and remove elements and change their order, add icons...</p>
+        <div class="row">
+          <div class="col-sm-4 col-md-4">
+            <div class="info-thumbnail-link">
+              <div class="thumbnail info-thumbnail with-icon background-clouds color-text">
+                <img src="../../assets/images/img1.jpg" alt="...">
+                <div class="icon">
+                  <span class="fa-stack">
+                    <i class="fa fa-circle fa-stack-2x color-lead"></i>
+                    <i class="fa fa-flag fa-stack-1x color-white"></i>
+                  </span>
+                </div>
+                <div class="caption bordered background-white">
+                  <h3>Font awesome</h3>
+                  <p class="description">NEAT template supports as much modern technologies and trends as possible. One of them is font awesome icons. This great set of fonts is available anywhere you want on your page. Some of NEAT ui elements are also using font awesome like this info thumbnails.</p>
+                  <p class="buttons"><a href="index.html#" class="btn btn-lead">Read more</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-md-4">
+            <div class="info-thumbnail-link">
+              <div class="thumbnail info-thumbnail with-icon background-clouds color-text">
+                <img src="../../assets/images/img2.jpg" alt="...">
+                <div class="icon">
+                  <span class="fa-stack">
+                    <i class="fa fa-circle fa-stack-2x color-lead"></i>
+                    <i class="fa fa-inbox fa-stack-1x color-white"></i>
+                  </span>
+                </div>
+                <div class="caption bordered background-white">
+                  <h3>Color classes</h3>
+                  <p class="description">You can use template elements as you have them in the examples but if you feel creative you can compose our own color combinations in ui elements. You have beautiful set of flat ui colors to work with just use <i>color-{color-name}</i> or <i>background-{color-name}</i> to change text color or background of any element on the page.</p>
+                  <p class="buttons"><a href="index.html#" class="btn btn-lead">Read more</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-md-4">
+            <div class="info-thumbnail-link">
+              <div class="thumbnail info-thumbnail with-icon background-clouds color-text">
+                <img src="../../assets/images/img3.jpg" alt="...">
+                <div class="icon">
+                  <span class="fa-stack">
+                    <i class="fa fa-circle fa-stack-2x color-alizarin"></i>
+                    <i class="fa fa-eye fa-stack-1x color-white"></i>
+                  </span>
+                </div>
+                <div class="caption bordered background-white">
+                  <h3>Some title</h3>
+                  <p class="description color-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis velit nibh, sit amet commodo sapien tristique at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras bibendum erat at ultricies rhoncus.</p>
+                  <p class="buttons"><a href="index.html#" class="btn btn-lead">Read more</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>      </div>
+    </section>
+    <!-- Component: index/info-thumbnails-alt1.html - END -->
+
+    <!-- Component: index/clients.html - START -->
+    <section class="image-bg color-white" style="background-image: url(../../assets/images/image-bg.jpg)">
+      <div class="container">
+        <div class="reduce-top-margin">
+          <h1 class="no-border">They trusted us</h1>
+          <div class="row">
+            <div class="col-xs-6 col-sm-4 col-md-2">
+              <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
+                <img class="img-circle" src="../../assets/images/w3w-logo.png" alt="...">
+              </a>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2">
+              <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
+                <img class="img-circle" src="../../assets/images/w3w-logo-2.png" alt="...">
+              </a>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2">
+              <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
+                <img class="img-circle" src="../../assets/images/w3w-logo-3.png" alt="...">
+              </a>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2">
+              <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
+                <img class="img-circle" src="../../assets/images/w3w-logo-4.png" alt="...">
+              </a>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2">
+              <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
+                <img class="img-circle" src="../../assets/images/w3w-logo.png" alt="...">
+              </a>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2">
+              <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
+                <img class="img-circle" src="../../assets/images/w3w-logo-3.png" alt="...">
+              </a>
+            </div>
+          </div>
+        </div>      </div>
+    </section>
+    <!-- Component: index/clients.html - END -->
+
+  <div ng-include="'../../components/footer/footer.html'"></div>
+</div>
+</div>

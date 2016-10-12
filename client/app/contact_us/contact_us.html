@@ -1,0 +1,101 @@
+<div ng-include="'../../components/navbar/navbar.html'"></div>
+<div>
+  <!-- Breadcrumbs - START -->
+  <div class="breadcrumbs-container">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a ui-sref="main">Home</a></li>
+        <li class="active">Contact Us</li>
+      </ol>
+    </div>
+  </div>
+  <!-- Breadcrumbs - END -->
+
+  <!-- Component: contact/contact.html - START -->
+  <section class="">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1><span>Contact us</span></h1>
+         <ng-map default-style="true" center="{{addresses[0].geoAddress}}" zoom="2">
+            <marker id={{ads._id}}" position="{{ads.geoAddress}}" animation="animation.BOUNCE"
+                    ng-repeat="ads in addresses"
+            on-click="showInfo(ads)">
+            </marker>
+
+           <info-window id="info-window" pixelOffset="500">
+             <div ng-non-bindable="">
+               <div class="thumbnail info-thumbnail padding1 background-clouds color-black">
+                 <div class="caption background-white">
+                   <h3 >{{::info.name}}</h3>
+                   <em ng-if="info.description" class="color-lead-dark" style="font-size: small"><span class="fa fa-info "></span>{{::info.description}}</em>
+                   <p><span class="fa fa-home color-lead"></span>{{::info.address}}</p>
+                   <!--<p><span class="fa fa-envelope color-lead"></span> contact@company.com</p>-->
+                   <p ng-show="info.fax.length"><span class="fa fa-fax color-lead"></span><em ng-repeat="fax in info.fax"> {{::fax}}</em></p>
+                   <p ng-show="info.telephone.length"><span class="fa fa-phone-square color-lead"></span><em  ng-class-even="{'color-orange':true}" ng-class-odd="{'color-lead':true}" ng-repeat="phone in info.telephone"> {{::phone}}</em></p>
+                   <p><span class="fa fa-globe color-lead"></span> <a href="contact.html#">www.company.com</a></p>
+                 </div>
+               </div>
+             </div>
+
+           </info-window>
+          </ng-map>
+        </div>
+      </div>
+      <div class="row fx-bounce-left fx-easing-quad fx-speed-{{add.time}}" ng-repeat="add in addresses">
+        <div class="col-sm-6 col-md-6" >
+          <div class="thumbnail info-thumbnail padding1 background-clouds color-black">
+            <div class="caption background-white blog-entry">
+              <h3 ng-class-even="{'blog-entry-content':true}" ng-class-odd="{'blog-entry-content-orange':true}">{{::add.name}}</h3>
+              <em ng-if="add.description" class="color-lead-dark" style="font-size: small"><span class="fa fa-info "></span>{{::add.description}}</em>
+              <p><span class="fa fa-home color-lead"></span>{{::add.address}}</p>
+              <!--<p><span class="fa fa-envelope color-lead"></span> contact@company.com</p>-->
+              <p ng-show="add.fax.length"><span class="fa fa-fax color-lead"></span><em ng-repeat="fax in add.fax"> {{::fax}}</em></p>
+              <p ng-show="add.telephone.length"><span class="fa fa-phone-square color-lead"></span><em  ng-class-even="{'color-orange':true}" ng-class-odd="{'color-lead':true}" ng-repeat="phone in add.telephone"> {{::phone}}</em></p>
+              <p><span class="fa fa-globe color-lead"></span> <a href="contact.html#">www.company.com</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <div class="thumbnail info-thumbnail padding1 background-clouds color-black">
+            <div class="caption background-white">
+              <h3>Business hours</h3>
+              <p ng-repeat="hours in add.workHours"><strong class="color-lead">{{::hours.day}}:</strong> {{::hours.hour}}</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <h2>Contact form</h2>
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label for="inputName2" class="col-md-2 control-label">Name</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control input-lg" id="inputName2" placeholder="Name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail2" class="col-md-2 control-label">Email</label>
+              <div class="col-md-10">
+                <input type="email" class="form-control input-lg" id="inputEmail2" placeholder="Email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputContent2" class="col-md-2 control-label">Content</label>
+              <div class="col-md-10">
+                <textarea id="inputContent2" class="form-control" rows="9"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary btn-lg">Send us an email</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>      </div>
+  </section>
+  <!-- Component: contact/contact.html - END -->
+</div>
