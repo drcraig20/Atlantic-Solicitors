@@ -18,3 +18,6 @@ angular.module 'atlanticSolicitorsApp', [
   $locationProvider.html5Mode true
 .run ($state,$rootScope) ->
   $rootScope.$state = $state
+
+  $rootScope.goToState = (state) ->
+    $state.go state

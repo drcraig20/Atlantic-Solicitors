@@ -14,16 +14,16 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="navbar-collapse navbar-ex1-collapse" collapse="isCollapsed">
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown fx-fade-down fx-ease-expo fx-speed-1000" ng-repeat="nv in navigation" ng-class="{active:$State.name == nv.url}">
+        <li class="dropdown" ng-repeat="nv in navigation"  ng-class="{active:$State.name == nv.url}">
 
           <!--if navigation item has dropdown menu-->
-          <a ng-if="nv.dropmenu.length"  class="dropdown-toggle" data-toggle="dropdown" ui-sref="{{nv.url}}"><i class=" pull-left fa {{nv.class}}"></i>{{nv.name}} <b ng-if="nv.dropmenu.length" class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li ng-repeat="drop in nv.dropmenu"><a ui-sref="{{drop}}"><i class="fa fa-chevron-right"></i>  {{drop}}</a></li>
-          </ul>
+          <!--<a ng-if="nv.dropmenu.length"  class="dropdown-toggle" ng-mouseover="" data-toggle="dropdown" ui-sref="{{nv.url}}"><i class=" pull-left fa {{nv.class}}"></i>{{nv.name}} <b ng-if="nv.dropmenu.length" class="caret"></b></a>-->
+          <!--<ul class="dropdown-menu">-->
+            <!--<li ng-repeat="drop in nv.dropmenu"><a ui-sref="{{drop}}"><i class="fa fa-chevron-right"></i>  {{drop}}</a></li>-->
+          <!--</ul>-->
 
           <!--if navigation item does not have a dropdown menu-->
-          <a ng-if="!nv.dropmenu.length" ui-sref="{{nv.url}}"><i class=" pull-left fa {{nv.class}}"></i>{{nv.name}}</a>
+          <a  ui-sref="{{nv.url}}"><i class=" pull-left fa {{nv.class}}"></i>{{nv.name}}</a>
 
         </li>
       </ul>

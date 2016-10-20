@@ -54,44 +54,15 @@
 
     <!-- Responsive slider - START -->
     <div class="responsive-slider-parallax" >
-      <div class="slides-container" data-group="slides">
+      <div class="slides-container" ng-style="{'background-image' : 'url(' + sliderImage + ')'}" data-group="slides" >
         <ul>
-          <li>
-            <div class="slide-body" data-group="slide">
+          <li ng-repeat="c in content.Highlight track by $index">
+            <div class="slide-body"  data-group="slide">
               <div class="container">
                 <div class="wrapper">
-                  <div class="caption header" data-animate="slideAppearRightToLeft" data-delay="0" data-length="300">
-                    <h2>Neat theme</h2>
-                    <p class="sub text-left" data-animate="slideAppearLeftToRight" data-delay="300" data-length="300"><span>Clean and modern design</span></p>
-                    <p class="sub text-left" data-animate="slideAppearLeftToRight" data-delay="500" data-length="300"><span>Lightweight</span></p>
-                    <p class="sub text-left" data-animate="slideAppearLeftToRight" data-delay="700" data-length="300"><span>Standards compliant</span></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="slide-body" data-group="slide">
-              <div class="container">
-                <div class="wrapper">
-                  <div class="caption header text-center" data-animate="slideAppearUpToDown" data-delay="0" data-length="300">
-                    <h2>Twitter Boostrap</h2>
-                    <p class="sub" data-animate="slideAppearDownToUp" data-delay="300" data-length="300"><span>Compatible with version 3</span></p>
-                    <p class="sub" data-animate="slideAppearDownToUp" data-delay="500" data-length="300"><span>Perfectly compatible with grid system</span></p>
-                    <p class="sub" data-animate="slideAppearDownToUp" data-delay="700" data-length="300"><span>Bootstrap compatible Slider and Calendar plugins</span></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="slide-body" data-group="slide">
-              <div class="container">
-                <div class="wrapper">
-                  <div class="caption header text-right" data-animate="slideAppearDownToUp" data-delay="0" data-length="300">
-                    <h2>Html <span style="font-weight: 300"><span class="color-alizarin">c</span><span class="color-carrot">o</span><span class="color-sun-flower">l</span><span class="color-emerald">o</span><span class="color-peter-river">r</span></span> classes</h2>
-                    <p class="sub" data-animate="slideAppearUpToDown" data-delay="300" data-length="300"><span>"Flat UI" colors palette</span></p>
-                    <p class="sub" data-animate="slideAppearUpToDown" data-delay="500" data-length="300"><span>Made to modify any layout element</span></p>
+                  <div class="caption header" data-animate="{{anime}}" data-delay="0" data-length="300">
+                    <h2>{{c.header}}</h2>
+                    <p class="sub text-left" data-animate="{{anime}}" data-delay="{{delay * ($index+ 1)}}" data-length="300" ng-repeat="cont in c.content"><span>{{cont}}</span></p>
                   </div>
                 </div>
               </div>
@@ -101,11 +72,9 @@
       </div>
       <a class="slider-control left hidden-xs hidden-sm" href="index.html#" data-jump="prev"><i class="fa fa-angle-left"></i></a>
       <a class="slider-control right hidden-xs hidden-sm" href="index.html#" data-jump="next"><i class="fa fa-angle-right"></i></a>
-      <div class="pages-wrapper background-black">
+      <div class="pages-wrapper backgrsound-black">
         <ol class="pages">
-          <li><a data-jump-to="1">1</a></li>
-          <li><a data-jump-to="2">2</a></li>
-          <li><a data-jump-to="3">3</a></li>
+          <li ng-repeat="num in content.Highlight track by $index"><a data-jump-to="{{$index + 1}}">{{$index + 1}}</a></li>
         </ol>
       </div>
     </div>
@@ -230,47 +199,6 @@
         </div>      </div>
     </section>
     <!-- Component: index/info-thumbnails-alt1.html - END -->
-
-    <!-- Component: index/clients.html - START -->
-    <section class="image-bg color-white" style="background-image: url(../../assets/images/image-bg.jpg)">
-      <div class="container">
-        <div class="reduce-top-margin">
-          <h1 class="no-border">They trusted us</h1>
-          <div class="row">
-            <div class="col-xs-6 col-sm-4 col-md-2">
-              <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
-                <img class="img-circle" src="../../assets/images/w3w-logo.png" alt="...">
-              </a>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-md-2">
-              <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
-                <img class="img-circle" src="../../assets/images/w3w-logo-2.png" alt="...">
-              </a>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-md-2">
-              <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
-                <img class="img-circle" src="../../assets/images/w3w-logo-3.png" alt="...">
-              </a>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-md-2">
-              <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
-                <img class="img-circle" src="../../assets/images/w3w-logo-4.png" alt="...">
-              </a>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-md-2">
-              <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
-                <img class="img-circle" src="../../assets/images/w3w-logo.png" alt="...">
-              </a>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-md-2">
-              <a href="http://w3widget.com" class="thumbnail gallery-thumbnail">
-                <img class="img-circle" src="../../assets/images/w3w-logo-3.png" alt="...">
-              </a>
-            </div>
-          </div>
-        </div>      </div>
-    </section>
-    <!-- Component: index/clients.html - END -->
 
   <div ng-include="'../../components/footer/footer.html'"></div>
 </div>
