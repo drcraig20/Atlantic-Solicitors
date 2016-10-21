@@ -1,0 +1,43 @@
+<div ng-include="'../../components/navbar/navbar.html'"></div>
+
+<!-- Breadcrumbs - START -->
+<div class="breadcrumbs-container">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a ui-sref="main">Home</a></li>
+      <li> <a style="cursor: pointer" ng-click="back()" ng-class="{active:CategoryView}">Services</a></li>
+      <li ng-if="!CategoryView" class="active">{{service.name}}</li>
+    </ol>
+  </div>
+</div>
+<!-- Breadcrumbs - END -->
+
+<!-- Component: services/services.html - START -->
+<section ng-if="CategoryView">
+  <div class="container">
+    <h1><span>Our Services</span></h1>
+    <div class="row">
+      <p class="col-md-12 col-xs-12 col-sm-12" ng-bind-html="intro.text"></p>
+    </div>
+    <div class="row">
+      <p> Click on any of the category below to read more</p>
+    </div>
+    <div class="row">
+      <div ng-if="!s.type" class="col-sm-4 col-md-3 col-xs-6" ng-repeat="s in services track by $index">
+        <div class="info-thumbnail-link">
+          <div class="thumbnail info-thumbnail background-clouds color-text">
+            <div class="service">
+              <div class="service-name"><h3>{{s.name}}</h3><button ng-click="ReadMore($index)" class="btn btn-service">Read more</button></div>
+            </div>
+            <img class="round" src="{{s.imageUrl}}" alt="...">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Component: services/services.html - END -->
+
+<div ng-if="!CategoryView"  ng-include="'../../app/ourService/serviceDetails.html'"></div>
+
+<div ng-include="'../../components/footer/footer.html'"></div>

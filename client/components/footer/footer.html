@@ -22,19 +22,19 @@
           <div class="form-group">
             <label for="inputName1" class="col-lg-3 control-label">Name</label>
             <div class="col-lg-9">
-              <input type="text" class="form-control input-lg" id="inputName1" placeholder="Name">
+              <input type="text" ng-model="form.name" class="form-control input-lg" id="inputName1" placeholder="Name">
             </div>
           </div>
           <div class="form-group">
             <label for="inputEmail1" class="col-lg-3 control-label">Email</label>
             <div class="col-lg-9">
-              <input type="email" class="form-control input-lg" id="inputEmail1" placeholder="Email">
+              <input type="email" ng-model="form.email" class="form-control input-lg" id="inputEmail1" placeholder="Email">
             </div>
           </div>
           <div class="form-group">
             <label for="inputContent1" class="col-lg-3 control-label">Content</label>
             <div class="col-lg-9">
-              <textarea id="inputContent1" class="form-control" rows="3"></textarea>
+              <textarea id="inputContent1" ng-model="form.content" class="form-control" rows="4"></textarea>
             </div>
           </div>
           <div class="form-group">

@@ -9,4 +9,6 @@ angular.module 'atlanticSolicitorsApp'
   NavBar.getTestimony (response) ->
     $scope.testimonials = response
 
+    
+  $scope.form = {}
 
