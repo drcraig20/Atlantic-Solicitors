@@ -15,12 +15,10 @@
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" />
-      <link rel="stylesheet" href="bower_components/blueimp-gallery/css/blueimp-gallery.css" />
-      <link rel="stylesheet" href="bower_components/blueimp-bootstrap-image-gallery/css/bootstrap-image-gallery.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- Use google font -->
-    <link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,300italic,400italic,700italic|Lustria" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,300italic,400italic,700italic|Lustria" rel="stylesheet" type="text/css" />
     <!-- build:css({.tmp,client}) app/app.css -->
     <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
@@ -30,6 +28,7 @@
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/ourService/ourService.css">
       <link rel="stylesheet" href="app/our_firm/our_firm.css">
+      <link rel="stylesheet" href="app/profile/profile.css">
       <link rel="stylesheet" href="components/modal/modal.css">
       <!-- endinjector -->
     <!-- endbuild -->
@@ -68,22 +67,13 @@
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-      <script src="bower_components/blueimp-gallery/js/blueimp-gallery.js"></script>
-      <script src="bower_components/blueimp-bootstrap-image-gallery/js/bootstrap-image-gallery.js"></script>
-      <script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
-      <script src="bower_components/angular-ui-scroll/dist/ui-scroll.js"></script>
-      <script src="bower_components/angular-ui-scrollpoint/dist/scrollpoint.js"></script>
-      <script src="bower_components/angular-ui-event/dist/event.js"></script>
-      <script src="bower_components/angular-ui-mask/dist/mask.js"></script>
-      <script src="bower_components/angular-ui-validate/dist/validate.js"></script>
-      <script src="bower_components/angular-ui-indeterminate/dist/indeterminate.js"></script>
-      <script src="bower_components/angular-ui-uploader/dist/uploader.js"></script>
-      <script src="bower_components/angular-ui-utils/index.js"></script>
       <script src="bower_components/angular-animate/angular-animate.js"></script>
       <script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
-    <script src="http://maps.google.com/maps/api/js"></script>
+    <script src="bower_components/ngmap/build/scripts/ng-map.min.js"></script>
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyAWbKwJbr4JWHXoLasLdIfdaxjmG3oSut4"></script>
+
 
 
         <!-- build:js({.tmp,client}) app/app.js -->
@@ -96,16 +86,17 @@
           <script src="app/AppServices/contactus/contactus.js"></script>
           <script src="app/AppServices/ourService/ourService.js"></script>
           <script src="app/AppServices/our_firm/our_firm.js"></script>
+          <script src="app/AppServices/profile/profile.js"></script>
           <script src="app/AppServices/solicitor/solicitor.js"></script>
           <script src="app/about_us/about_us.js"></script>
           <script src="app/contact_us/contact_us.js"></script>
           <script src="app/main/main.js"></script>
           <script src="app/ourService/ourService.js"></script>
           <script src="app/our_firm/our_firm.js"></script>
+          <script src="app/profile/profile.js"></script>
           <script src="components/footer/footer.js"></script>
           <script src="components/modal/modal.js"></script>
           <script src="components/navbar/navbar.js"></script>
-          <script src="assets/js/jquery.event.move.js"></script>
           <script src="assets/js/ngFx.js"></script>
           <script src="assets/js/responsive-slider.js"></script>
           <!-- endinjector -->

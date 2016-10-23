@@ -7,7 +7,6 @@ angular.module 'atlanticSolicitorsApp', [
   'ui.router',
   'ui.bootstrap',
   'ngMap',
-  'ui.utils',
   'ngFx',
   'ngAnimate'
 ]

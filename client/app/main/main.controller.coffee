@@ -41,7 +41,7 @@ angular.module 'atlanticSolicitorsApp'
 
   $timeout ()->
     ImagesReload()
-  ,500
+  ,1000
 
 
 

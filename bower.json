@@ -12,10 +12,6 @@
     "font-awesome": ">=4.1.0",
     "lodash": "~2.4.1",
     "angular-ui-router": "~0.2.15",
-    "blueimp-gallery": "^2.21.3",
-    "blueimp-bootstrap-image-gallery": "^3.4.2",
-    "ngmap": "^1.17.6",
-    "angular-ui-utils": "^3.0.0",
     "angular-animate": "^1.5.8",
     "gsap": "^1.19.0",
     "angular": "^1.5.8"
@@ -25,19 +21,8 @@
       "main": [
         "css/font-awesome.min.css"
       ]
-    },
-    "blueimp-gallery": {
-      "main": [
-        "css/blueimp-gallery.css",
-        "js/blueimp-gallery.js"
-      ]
-    },
-    "blueimp-bootstrap-image-gallery": {
-      "main": [
-        "css/bootstrap-image-gallery.css",
-        "js/bootstrap-image-gallery.js"
-      ]
     }
+
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",
