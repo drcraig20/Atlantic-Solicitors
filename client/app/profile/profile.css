@@ -39,8 +39,8 @@ PHOTO (AVATAR)
 #text-header h1{
   margin: 0;
   padding: 0;
-  font-size: 1.5em;
-  font-weight: 300;
+  font-size: 16px;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: -1px;
 }
@@ -51,7 +51,7 @@ PHOTO (AVATAR)
   line-height: 1.5em;
 }
 #text-header h1 span{
-  color: #F0563D;
+  color: #3498db;
 }
 #text-header h1 sup{
   opacity: 0.5;
@@ -71,8 +71,8 @@ DEFAULT BOX
   margin-bottom: 15px;
 }
 .box h2{
-  color: #EC7263;
-  font-size: 1.8em;
+  color: #3498db;
+  font-size: 0.9em;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -81,8 +81,8 @@ DEFAULT BOX
   margin-right: 5px;
 }
 .box p{
-  font-size: 1.3em;
-  line-height: 1.5em;
+  font-size: 1em;
+  line-height: 1.3em;
 }
 /*******************************************
 EDUCATION
@@ -101,13 +101,13 @@ EDUCATION
   top: 0;
   content: ' ';
   display: block;
-  background: #ec7263;
-  background: -moz-linear-gradient(top,  #ffffff 0%, #ec7263 7%, #ec7263 89%, #ffffff 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(7%,#ec7263), color-stop(89%,#ec7263), color-stop(100%,#ffffff));
-  background: -webkit-linear-gradient(top,  #ffffff 0%,#ec7263 7%,#ec7263 89%,#ffffff 100%);
-  background: -o-linear-gradient(top,  #ffffff 0%,#ec7263 7%,#ec7263 89%,#ffffff 100%);
-  background: -ms-linear-gradient(top,  #ffffff 0%,#ec7263 7%,#ec7263 89%,#ffffff 100%);
-  background: linear-gradient(to bottom,  #ffffff 0%,#ec7263 7%,#ec7263 89%,#ffffff 100%);
+  background: #3498db;
+  background: -moz-linear-gradient(top,  #ffffff 0%, #3498db 7%, #ec7263 89%, #ffffff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(7%,#3498db), color-stop(89%,#ec7263), color-stop(100%,#ffffff));
+  background: -webkit-linear-gradient(top,  #ffffff 0%,#3498db 7%,#ec7263 89%,#ffffff 100%);
+  background: -o-linear-gradient(top,  #ffffff 0%,#3498db 7%,#ec7263 89%,#ffffff 100%);
+  background: -ms-linear-gradient(top,  #ffffff 0%,#3498db 7%,#ec7263 89%,#ffffff 100%);
+  background: linear-gradient(to bottom,  #ffffff 0%,#3498db 7%,#ec7263 89%,#ffffff 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 );
 }
 #education li{
@@ -120,8 +120,8 @@ EDUCATION
   width: 10%;
   background: #fff;
   padding: 10px;
-  font-size: 1.5em;
-  font-weight: 700;
+  font-size: 1em;
+  font-weight: 500;
   display: inline-block;
 }
 #education .description{
@@ -147,13 +147,13 @@ EDUCATION
   pointer-events: none;
 }
 #education .description h3{
-  font-size: 1.6em;
+  font-size: 14px;
   margin: 0;
   padding: 0;
-  font-weight: 700;
+  font-weight: 600;
 }
 #education .description p{
-  font-size: 1.3em;
+  font-size: 14px;
   margin-top: 5px;
   padding: 0;
 }
@@ -164,19 +164,19 @@ EXPERIENCES
   margin-bottom: 15px;
 }
 .job .where{
-  font-size: 1.4em;
+  font-size: 1em;
   font-weight: bold;
 }
 .job .year{
-  font-size: 1.3em;
+  font-size: 1em;
   opacity: 0.7;
 }
 .job .profession{
-  font-size: 1.6em;
-  font-weight: bold;
+  font-size: 1.1em;
+  font-weight: normal;
 }
 .job .description{
-  font-size: 1.2em;
+  font-size: 0.8em;
   line-height: 1.5em;
 }
 /*******************************************
@@ -187,7 +187,7 @@ CONTACT
   float: left;
 }
 .contact-item .icon{
-  padding: 10px;
+  padding: 5px;
   border-right: 1px solid #aaa;
   border-bottom: 1px solid #aaa;
   opacity: 0.2;
@@ -196,13 +196,13 @@ CONTACT
   border-bottom: none;
 }
 .contact-item .fa{
-  font-size: 2em;
+  font-size: 1.2em;
 }
 .contact-item .title{
   width: 80%;
   width: calc(100% - 55px);
-  font-size: 1.5em;
-  font-weight: 700;
+  font-size: 0.8em;
+  font-weight: 600;
   opacity: 0.9;
 }
 .contact-item .title.only{
@@ -211,7 +211,7 @@ CONTACT
 .contact-item .description{
   width: 80%;
   width: calc(100% - 55px);
-  font-size: 1.2em;
+  font-size: 14px;
   opacity: 0.7;
 }
 /*******************************************
@@ -226,7 +226,7 @@ SKILLS
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 1.3em;
+  font-size: 14px;
   font-weight: 600;
 }
 .skills-legend{
@@ -245,7 +245,7 @@ SKILLS
 .skills-legend div{
   width: 25%;
   display: inline-block;
-  font-size: 1.2em;
+  font-size: 12px;
   color: #a9a9a9;
   float: left;
 }
@@ -278,8 +278,8 @@ SKILLS
 LANGUAGES
 *******************************************/
 #language-skills .skill{
-  font-size: 1.3em;
-  margin: 10px 0;
+  font-size: 12px;
+  margin: 15px 0;
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
 }
@@ -302,7 +302,7 @@ HOBBIES
   padding: 5px 5px 5px 25px;
   background: #A75265;
   position: relative;
-  font-size: 1.2em;
+  font-size: 14px;
 }
 .hobby:before{
   content: "\f004";
