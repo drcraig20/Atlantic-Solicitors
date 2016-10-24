@@ -16,6 +16,8 @@ angular.module 'atlanticSolicitorsApp', [
 
   $locationProvider.html5Mode true
 .run ($state,$rootScope) ->
+  $rootScope.$on '$stateChangeSuccess', ->
+    document.body.scrollTop = document.documentElement.scrollTop = 0
   $rootScope.$state = $state
 
   $rootScope.goToState = (state) ->

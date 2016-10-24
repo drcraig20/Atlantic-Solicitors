@@ -4,9 +4,15 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var ProfileSchema = new Schema({
-  name: String,
-  info: String,
-  active: Boolean
+  fullname: String,
+  about_me: String,
+  qualification: Array,
+  experiences: Array,
+  contact: Array,
+  skills: Array,
+  languages: Array,
+  hobbies: Array,
+  dt_modified: Date
 });
 
-module.exports = mongoose.model('Profile', ProfileSchema);
+module.exports = mongoose.model('Profile', ProfileSchema,'Profiles');

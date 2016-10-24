@@ -5,10 +5,10 @@
         <div id="photo-header" class="text-center">
           <!-- PHOTO (AVATAR) -->
           <div id="photo">
-            <img src="../../assets/images/placeholder-man-sq.jpg" alt="avatar">
+            <img src="../../assets/images/avatar.jpg" alt="avatar">
           </div>
           <div id="text-header">
-            <h1>Hello,<br> I am  <span>profilename</span> of<span> Atlantic Solicitors</span> , lets talk about me</h1>
+            <h1>Hello,<br> I am  <span>{{profile.fullname}}</span> of<span> Atlantic Solicitors</span> , lets talk about me</h1>
           </div>
         </div>
       </div>
@@ -18,38 +18,17 @@
         <!-- ABOUT ME -->
         <div class="box">
           <h2>About Me</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, non, dolorem, cumque distinctio magni quam expedita velit laborum sunt amet facere tempora ut fuga aliquam ad asperiores voluptatem dolorum! Quasi.</p>
-        </div>
+          <p>{{profile.about_me}}</p>
+          </div>
         <!-- EDUCATION -->
         <div class="box">
-          <h2>Education</h2>
+          <h2>Qualification</h2>
           <ul id="education" class="clearfix">
-            <li>
-              <div class="year pull-left">1990</div>
+            <li ng-repeat="q in profile.qualification">
+              <div class="year pull-left">{{q.year}}</div>
               <div class="description pull-right">
-                <h3>I was born in Katowice</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, exercitationem, totam, dolores iste dolore est aut modi.</p>
-              </div>
-            </li>
-            <li>
-              <div class="year pull-left">2005</div>
-              <div class="description pull-right">
-                <h3>Secondary school specializing in artistic</h3>
-                <p>Eos, explicabo, nam, tenetur et ab eius deserunt aspernatur ipsum ducimus quibusdam quis voluptatibus.</p>
-              </div>
-            </li>
-            <li>
-              <div class="year pull-left">2009</div>
-              <div class="description pull-right">
-                <h3>First level graduation in Graphic Design</h3>
-                <p>Aspernatur, mollitia, quos maxime eius suscipit sed beatae ducimus quaerat quibusdam perferendis? Iusto, quibusdam asperiores unde repellat.</p>
-              </div>
-            </li>
-            <li>
-              <div class="year pull-left">2012</div>
-              <div class="description pull-right">
-                <h3>Second level graduation in Graphic Design</h3>
-                <p>Ducimus, aliquam tempore autem itaque et accusantium!</p>
+                <h3>{{q.header}}</h3>
+                <p>{{q.description}}</p>
               </div>
             </li>
           </ul>
@@ -57,24 +36,14 @@
         <!-- EXPERIENCES -->
         <div class="box">
           <h2>Experiences</h2>
-          <div class="job clearfix">
+          <div class="job clearfix" ng-repeat="e in profile.experiences">
             <div class="col-xs-3">
-              <div class="where">Google</div>
-              <div class="year">2013 - 2014</div>
+              <div class="where">{{e.place}}</div>
+              <div class="year">{{e.date}}</div>
             </div>
             <div class="col-xs-9">
-              <div class="profession">Front-end developer / php programmer</div>
-              <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam, et, illum perferendis veritatis velit sunt similique qui magni totam harum tempore eius laboriosam accusantium necessitatibus voluptatum? Enim, itaque dignissimos quia.</div>
-            </div>
-          </div>
-          <div class="job clearfix">
-            <div class="col-xs-3">
-              <div class="where">Twitter</div>
-              <div class="year">2012</div>
-            </div>
-            <div class="col-xs-9">
-              <div class="profession">Web Developer</div>
-              <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, nihil sit nemo voluptatem praesentium. Quia, qui facere consectetur libero asperiores fugiat consequuntur deserunt culpa repudiandae sed quidem voluptas explicabo soluta.</div>
+              <div class="profession">{{e.header}}</div>
+              <div class="description">{{e.description}}</div>
             </div>
           </div>
         </div>
@@ -111,11 +80,9 @@
         <div class="box">
           <h2>Skills</h2>
           <div class="skills">
-            <div class="item-skills" data-percent="1.00">HTML</div>
-            <div class="item-skills" data-percent="0.90">CSS</div>
-            <div class="item-skills" data-percent="0.80">jQuery</div>
-            <div class="item-skills" data-percent="0.75">PHP</div>
-            <div class="item-skills" data-percent="0.25">Laravel 2 (framework)</div>
+
+            <!--ng repeat skills here-->
+            <div ng-repeat="s in profile.skills"><uib-progressbar class="progress-striped active" max="100" value="s.percentage" type="{{barColor(s.percentage)}}"><i class="bold">{{s.skill}}</i></uib-progressbar></div>
             <div class="skills-legend clearfix">
               <div class="legend-left legend">Beginner</div>
               <div class="legend-left legend"><span>Proficient</span></div>
@@ -135,9 +102,8 @@
         <!-- HOBBIES -->
         <div class="box">
           <h2>Hobbies</h2>
-          <div class="hobby">Photography</div>
-          <div class="hobby">Fitness</div>
-          <div class="hobby">Programming</div>
+          <div class="hobby">Reading</div>
+          <div class="hobby">Consultancy</div>
         </div>
       </div>
     </div>
