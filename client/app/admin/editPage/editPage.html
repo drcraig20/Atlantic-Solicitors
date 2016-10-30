@@ -1,0 +1,36 @@
+
+<div ng-include="'components/Admin/header.html'"></div>
+
+<section>
+  <div class="mainwrapper">
+
+    <div ng-include="'components/Admin/leftpanel.html'"></div>
+    <div class="mainpanel">
+      <div class="pageheader">
+        <div class="media">
+          <div class="pageicon pull-left">
+            <i class="fa fa-file-text-o"></i>
+          </div>
+          <div class="media-body">
+            <ul class="breadcrumb">
+              <li><a href=""><i class="glyphicon glyphicon-home"></i></a></li>
+              <li><a href="">Pages</a></li>
+              <li>{{obj.name}}</li>
+            </ul>
+            <h4>Editing {{obj.name}}</h4>
+          </div>
+        </div><!-- media -->
+      </div><!-- pageheader -->
+
+      <div class="contentpanel">
+
+        <!-- CONTENT GOES HERE -->
+        <div class="col-md-12">
+          This is the state params :: {{obj}}.
+        </div>
+
+      </div><!-- contentpanel -->
+
+    </div>
+  </div><!-- mainwrapper -->
+</section>

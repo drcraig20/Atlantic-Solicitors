@@ -15,6 +15,7 @@
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" />
+      <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- Use google font -->
@@ -23,8 +24,12 @@
     <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
       <link rel="stylesheet" href="app/about_us/about_us.css">
+      <link rel="stylesheet" href="app/admin.css">
+      <link rel="stylesheet" href="app/admin/dashboard/dashboard.css">
+      <link rel="stylesheet" href="app/admin/signin/signin.css">
       <link rel="stylesheet" href="app/app.css">
       <link rel="stylesheet" href="app/contact_us/contact_us.css">
+      <link rel="stylesheet" href="app/editPage/editPage.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/ourService/ourService.css">
       <link rel="stylesheet" href="app/our_firm/our_firm.css">
@@ -69,6 +74,8 @@
       <script src="bower_components/angular-animate/angular-animate.js"></script>
       <script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+      <script src="bower_components/satellizer/dist/satellizer.js"></script>
+      <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
     <script src="bower_components/ngmap/build/scripts/ng-map.min.js"></script>
@@ -83,17 +90,23 @@
           <script src="app/AppServices/Directives.js"></script>
           <script src="app/AppServices/NavBar.js"></script>
           <script src="app/AppServices/aboutUs/aboutUs.js"></script>
+          <script src="app/AppServices/auth/auth.js"></script>
           <script src="app/AppServices/contactus/contactus.js"></script>
+          <script src="app/AppServices/editPage/editPage.js"></script>
           <script src="app/AppServices/ourService/ourService.js"></script>
           <script src="app/AppServices/our_firm/our_firm.js"></script>
           <script src="app/AppServices/profile/profile.js"></script>
           <script src="app/AppServices/solicitor/solicitor.js"></script>
           <script src="app/about_us/about_us.js"></script>
+          <script src="app/admin/dashboard/dashboard.js"></script>
+          <script src="app/admin/signin/signin.js"></script>
           <script src="app/contact_us/contact_us.js"></script>
+          <script src="app/editPage/editPage.js"></script>
           <script src="app/main/main.js"></script>
           <script src="app/ourService/ourService.js"></script>
           <script src="app/our_firm/our_firm.js"></script>
           <script src="app/profile/profile.js"></script>
+          <script src="components/Admin/leftpanel.js"></script>
           <script src="components/footer/footer.js"></script>
           <script src="components/modal/modal.js"></script>
           <script src="components/navbar/navbar.js"></script>

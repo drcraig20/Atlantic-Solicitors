@@ -1,0 +1,32 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<section >
+
+  <div class="panel panel-signin">
+    <div class="panel-body">
+      <div class="logo text-center">
+        <img src="assets/images/logo.png" alt="Atlantic Solicitor" >
+      </div>
+      <br />
+      <p class="text-center">Sign in to admin account</p>
+
+      <div class="alert alert-danger text-center mb30" ng-show="formError">{{formError}}</div>
+
+      <form  method="post" ng-submit="loginForm.$valid && login()" name="loginForm">
+        <div class="input-group mb15">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input type="text" class="form-control" ng-model="username" placeholder="Username">
+        </div><!-- input-group -->
+        <div class="input-group mb15">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+          <input type="password" ng-model="password" class="form-control" placeholder="Password">
+        </div><!-- input-group -->
+        <div class="panel-footer">
+          <button class="btn btn-primary btn-block" type="submit" ng-disabled="loginForm.$invalid || submitting">Sing In <i class="fa fa-angle-right ml5"></i></button>
+        </div>
+      </form>
+
+    </div><!-- panel-body -->
+    <!-- panel-footer --
+  </div><!-- panel -->
+</div>
+</section>

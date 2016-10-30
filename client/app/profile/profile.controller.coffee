@@ -3,7 +3,7 @@
 angular.module 'atlanticSolicitorsApp'
 .controller 'ProfileCtrl', ($scope,$stateParams,Profile) ->
   Profile.get id:$stateParams.id,(result) ->
-    console.log $scope.profile = result
+    $scope.profile = result
   $scope.barColor =(value) ->
     type = ''
     if value < 25

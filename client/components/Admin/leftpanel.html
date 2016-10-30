@@ -1,0 +1,64 @@
+<div class="leftpanel" ng-controller="LeftPanelCtrl">
+  <div class="media profile-left">
+    <a class="pull-left profile-thumb" href="profile.html">
+      <img class="img-circle" src="assets/images/avatar.jpg" alt="">
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading">{{$user.name}}</h4>
+      <small class="text-muted">{{$user.username}}</small>
+    </div>
+  </div><!-- media -->
+
+  <h5 class="leftpanel-title">Navigation</h5>
+  <ul class="nav nav-pills nav-stacked">
+    <li><a ui-sref="dashboard"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+    <li><a><span class="pull-right badge">5</span><i class="fa fa-envelope-o"></i> <span>Messages</span></a></li>
+    <li class="parent" ng-click="isUICollapsed = !isUICollapsed"><a ><i class="fa fa-suitcase"></i> <span>UI Elements</span></a>
+      <div  uib-collapse="isUICollapsed">
+        <ul class="children collapse navbar-collapse">
+        <li><a href="alerts.html">Alerts &amp; Notifications</a></li>
+        <li><a href="buttons.html">Buttons</a></li>
+        <li><a href="extras.html">Extras</a></li>
+        <li><a href="graphs.html">Graphs &amp; Charts</a></li>
+        <li><a href="icons.html">Icons</a></li>
+        <li><a href="modals.html">Modals</a></li>
+        <li><a href="widgets.html">Panels &amp; Widgets</a></li>
+        <li><a href="sliders.html">Sliders</a></li>
+        <li><a href="tabs-accordions.html">Tabs &amp; Accordions</a></li>
+        <li><a href="typography.html">Typography</a></li>
+      </ul></div>
+
+    </li>
+    <li class="parent"  ng-click="isFormCollapsed = !isFormCollapsed"><a href=""><i class="fa fa-edit"></i> <span>Forms</span></a>
+      <div uib-collapse="isFormCollapsed">
+        <ul class="children collapse navbar-collapse">
+          <li><a href="code-editor.html">Code Editor</a></li>
+          <li><a href="general-forms.html">General Forms</a></li>
+          <li><a href="form-layouts.html">Layouts</a></li>
+          <li><a href="wysiwyg.html">Text Editor</a></li>
+          <li><a href="form-validation.html">Validation</a></li>
+          <li><a href="form-wizards.html">Wizards</a></li>
+        </ul>
+      </div>
+
+    </li>
+    <li class="parent" ng-click="isTableCollapsed = !isTableCollapsed"><a href=""><i class="fa fa-bars"></i> <span>Tables</span></a>
+      <div uib-collapse="isTableCollapsed">
+        <ul class="children collapse navbar-collapse">
+        <li><a href="basic-tables.html">Basic Tables</a></li>
+        <li><a href="data-tables.html">Data Tables</a></li>
+      </ul>
+      </div>
+    </li>
+    <li><a><i class="fa fa-map-marker"></i> <span>Maps</span></a></li>
+    <li class="parent active" ng-click="isPagesCollapsed = !isPagesCollapsed"><a href=""><i class="fa fa-file-text"></i> <span>Pages</span></a>
+      <div uib-collapse="isPagesCollapsed">
+        <ul class="children collapse navbar-collapse">
+          <li ui-sref="editPage({name:'{{page.name}}',url:'{{page.url}}'})" ng-repeat="page in pagesLink track by $index"><a><i class=" fa {{page.class}}"></i> <span>{{page.name}}</span></a></li>
+      </ul>
+      </div>
+    </li>
+
+  </ul>
+
+</div><!-- leftpanel -->

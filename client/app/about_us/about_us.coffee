@@ -5,5 +5,6 @@ angular.module 'atlanticSolicitorsApp'
   $stateProvider
   .state 'about_us',
     url: '/about_us'
+    guestView: true
     templateUrl: 'app/about_us/about_us.html'
     controller: 'AboutUsCtrl'
