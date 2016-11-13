@@ -8,3 +8,11 @@ angular.module 'atlanticSolicitorsApp'
       method:'GET'
       url:'api/solicitors/details'
       isArray:false
+    ListOfImages:
+      method: 'POST'
+      url:'api/solicitors/images'
+      isArray:true
+    updatePushOrPop:
+      method: 'PATCH'
+      params: mode: '@mode',type:'@type'
+      url: 'api/solicitors/:mode/:type'

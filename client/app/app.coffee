@@ -10,7 +10,8 @@ angular.module 'atlanticSolicitorsApp', [
   'toastr',
   'ngFx',
   'ngAnimate',
-  'satellizer'
+  'satellizer',
+  'textAngular'
 ]
 .config ($stateProvider, $authProvider,$urlRouterProvider, $locationProvider) ->
   $authProvider.logoutRedirect = '/signin'
@@ -30,13 +31,16 @@ angular.module 'atlanticSolicitorsApp', [
 
   $locationProvider.html5Mode true
 .run ($state,$auth,$rootScope,$window, NavBar) ->
+  $rootScope.previousState
 
-  if $rootScope.navigation? or $rootScope.navigation isnt undefined 
+  if $rootScope.navigation? or $rootScope.navigation isnt undefined
     console.log $rootScope.navigation
   else
     NavBar.query (result) ->
       $rootScope.navigation = result
 
+  $rootScope.DateNow = (dt)->
+    moment(dt).format('lll')
 
   $rootScope.ago = (dt) ->
     moment(dt).fromNow()
@@ -45,7 +49,8 @@ angular.module 'atlanticSolicitorsApp', [
 
   $rootScope.$user = $auth.getPayload()
 
-  $rootScope.$on '$stateChangeSuccess', ->
+  $rootScope.$on '$stateChangeSuccess', (ev, to, toParams, from, fromParams) ->
+    $rootScope.previousState = from.name
     document.body.scrollTop = document.documentElement.scrollTop = 0
   $rootScope.$state = $state
 
@@ -60,3 +65,8 @@ angular.module 'atlanticSolicitorsApp', [
   nl2br: (str, is_xhtml) ->
     breakTag = if is_xhtml or typeof is_xhtml is 'undefined' then '<br />' else '<br>'
     (str + '').replace /([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, ('$1' + breakTag + '$2')
+
+# Strip all HTML Tags
+  stripTags: (string) ->
+    string.replace /(<([^>]+)>)/ig,""
+

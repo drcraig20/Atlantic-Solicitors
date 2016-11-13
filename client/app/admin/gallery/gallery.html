@@ -1,0 +1,48 @@
+<div ng-include="'components/Admin/header.html'"></div>
+
+<section>
+  <div class="mainwrapper">
+
+    <div ng-include="'components/Admin/leftpanel.html'"></div>
+    <div class="mainpanel">
+      <div class="pageheader">
+        <div class="media">
+          <div class="pageicon pull-left">
+            <i class="fa fa-home"></i>
+          </div>
+          <div class="media-body">
+            <ul class="breadcrumb">
+              <li><a href=""><i class="glyphicon glyphicon-home"></i></a></li>
+              <li><a href="">Gallery</a></li>
+              <li>Edit Gallery</li>
+            </ul>
+            <h4>Edit Gallery</h4>
+          </div>
+        </div><!-- media -->
+      </div><!-- pageheader -->
+
+      <div class="contentpanel">
+
+        <section class="">
+          <div class="">
+            <h1><span>Gallery</span></h1>
+            <div class="row col-md-9 col-md-offset-1">
+              <div class="col-xs-6 col-sm-4 col-md-3" ng-repeat="image in images track by $index">
+                <a class="info-thumbnail-link" data-gallery>
+                  <div class="thumbnail info-thumbnail background-clouds color-text">
+                    <div class="service">
+                      <div class="service-name"><span class="fa fa-search-plus"></span></div>
+                    </div>
+                    <img class="round" src="assets/images/{{image}}" alt="...">
+                  </div>
+                </a>
+              </div>
+            </div>      </div>
+        </section>
+
+
+      </div><!-- contentpanel -->
+
+    </div>
+  </div><!-- mainwrapper -->
+</section>

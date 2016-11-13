@@ -3,6 +3,7 @@
 var _ = require('lodash');
 var Muted = require('immutable');
 var Solicitor = require('./solicitor.model');
+var Utils = require('../../components/tools/Utils');
 
 // Get list of solicitors
 exports.index = function(req, res) {
@@ -71,3 +72,34 @@ exports.destroy = function(req, res) {
 function handleError(res, err) {
   return res.status(500).send(err);
 }
+
+
+exports.updatePush = function(req, res) {
+  if(req.body._id) { delete req.body._id; }
+  Solicitor.findOne({mode:req.params.mode}, function (err, solicitor) {
+    if (err) { return handleError(res, err); }
+    if(!solicitor) { return res.status(404).send('Not Found'); }
+    if(req.params.type == 'push'){
+      solicitor.Highlight.push(req.body);
+    }
+    if(req.params.type == 'pop'){
+      _.forEach(req.body, function (id) {
+        _.remove(solicitor.Highlight, function (a) {
+          return a.article == id
+        });
+      });
+    }
+    solicitor.markModified('Highlight');
+    solicitor.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.status(200).json(solicitor);
+    });
+  });
+};
+
+
+// get list of images on the client side
+
+exports.getImages = function (req,res) {
+  Utils.readDirectory(req,res);
+};

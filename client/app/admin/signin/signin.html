@@ -14,14 +14,14 @@
       <form  method="post" ng-submit="loginForm.$valid && login()" name="loginForm">
         <div class="input-group mb15">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input type="text" class="form-control" ng-model="username" placeholder="Username">
+          <input type="text" class="form-control" ng-model="username" required placeholder="Username">
         </div><!-- input-group -->
         <div class="input-group mb15">
           <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-          <input type="password" ng-model="password" class="form-control" placeholder="Password">
+          <input type="password" ng-model="password" class="form-control" required placeholder="Password">
         </div><!-- input-group -->
         <div class="panel-footer">
-          <button class="btn btn-primary btn-block" type="submit" ng-disabled="loginForm.$invalid || submitting">Sing In <i class="fa fa-angle-right ml5"></i></button>
+          <button class="btn btn-primary btn-block" type="submit" ng-disabled="loginForm.$invalid || submitting">Sign In <i class="fa fa-angle-right ml5"></i></button>
         </div>
       </form>
 

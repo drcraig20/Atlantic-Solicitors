@@ -5,8 +5,7 @@ var mongoose = require('mongoose'),
 
 var AboutUsSchema = new Schema({
   link: String,
-  details: String,
-  active: Boolean,
+  content: String,
   dt_modified: Date
 });
 

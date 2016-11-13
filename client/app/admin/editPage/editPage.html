@@ -25,10 +25,86 @@
       <div class="contentpanel">
 
         <!-- CONTENT GOES HERE -->
-        <div class="col-md-12">
-          This is the state params :: {{obj}}.
-        </div>
+        <h4 class="lg-title">Edit Page Content</h4>
+        <p><i class="fa fa-info-circle alert-danger"></i> Please note that anything modified in this <code class="bold">SECTION</code> Will lead to permanent changes, hence thread with caution.</p>
+        <div class="row">
+          <div class="col-sm-6 col-md-6" ng-repeat="data in Content track by data._id">
+            <!--if page is our Firm or About us-->
+            <div ng-if="obj.url == 'our_firm' || obj.url == 'about_us'" class="panel panel-info">
+              <div class="panel-heading">
+                <div class="panel-btns">
+                  <a href="" class="panel-minimize tooltips" data-toggle="tooltip" title="Minimize Panel"><i class="fa fa-minus"></i></a>
+                  <a href="" class="panel-close tooltips" data-toggle="tooltip" title="Close Panel"><i class="fa fa-times"></i></a>
+                </div><!-- panel-btns -->
+                <h3 class="panel-title">{{data.link}}</h3>
+              </div>
+              <div class="panel-body">
+                <ul class="aboutus">
+                  <li>
+                    <p ng-bind-html="data.content"></p>
+                    <div class="pull-right"><button ng-click="editor(data)" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Click To Edit</button></div>
+                  </li>
+                </ul>
 
+              </div><!-- panel-body -->
+            </div>
+            <!--if page is Our services-->
+            <div ng-hide="data.type" ng-if="obj.url == 'our_services'" class="panel panel-primary">
+              <div class="panel-heading">
+                <div class="panel-btns">
+                  <a href="" class="panel-minimize tooltips" data-toggle="tooltip" title="Minimize Panel"><i class="fa fa-minus"></i></a>
+                  <a href="" class="panel-close tooltips" data-toggle="tooltip" title="Close Panel"><i class="fa fa-times"></i></a>
+                </div><!-- panel-btns -->
+                <h3 class="panel-title">{{data.name}}</h3>
+              </div>
+              <div class="panel-body">
+                <ul class="aboutus">
+                  <li ng-if="data.serviceContent.type != 'links'" ng-repeat="d in data.serviceContent.content track by $index">
+                    <h5 class="text-success" ng-bind-html="d.header"></h5>
+                    <p ng-bind-html="d.details"></p>
+                    <div class="pull-right"><button ng-click="editor(data.serviceContent,$index)" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Click To Edit</button></div>
+                    <hr>
+                  </li>
+                  <li ng-if="data.serviceContent.type == 'links'" ng-repeat="d in data.serviceContent.content">
+                    <p ng-bind-html="d"></p>
+                    <div class="pull-right"><button ng-click="editor(d)" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Click To Edit</button></div>
+                  </li>
+                </ul>
+
+              </div><!-- panel-body -->
+            </div>
+            <!--if page is our Contact us-->
+            <div ng-if="obj.url == 'contact_us'" class="panel panel-success">
+              <div class="panel-heading">
+                <div class="panel-btns">
+                  <a href="" class="panel-minimize tooltips" data-toggle="tooltip" title="Minimize Panel"><i class="fa fa-minus"></i></a>
+                  <a href="" class="panel-close tooltips" data-toggle="tooltip" title="Close Panel"><i class="fa fa-times"></i></a>
+                </div><!-- panel-btns -->
+                <h3 class="panel-title">{{data.name}}</h3>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <em ng-if="data.description" class="color-lead-dark" style="font-size: small"><span class="fa fa-info "></span>{{::data.description}}</em>
+                  <p><span class="fa fa-home color-lead"></span>{{::data.address}}</p>
+                  <!--<p><span class="fa fa-envelope color-lead"></span> contact@company.com</p>-->
+                  <p ng-show="data.fax.length"><span class="fa fa-fax color-lead"></span><em ng-repeat="fax in data.fax"> {{::fax}}</em></p>
+                  <p ng-show="data.telephone.length"><span class="fa fa-phone-square color-lead"></span><em  ng-class-even="{'color-orange':true}" ng-class-odd="{'color-lead':true}" ng-repeat="phone in data.telephone"> {{::phone}}</em></p>
+
+                </div>
+                <hr>
+                 <div class="row">
+                   <div class="caption background-white">
+                     <h3>Business hours</h3>
+                     <p ng-repeat="hours in data.workHours"><strong class="color-lead">{{::hours.day}}:</strong> {{::hours.hour}}</p>
+
+                   </div>
+                 </div>
+
+                <div class="pull-right"><button ng-click="editorContact(data,$index)" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Click To Edit</button></div>
+              </div><!-- panel-body -->
+            </div>
+          </div><!-- col-sm-6 -->
+        </div>
       </div><!-- contentpanel -->
 
     </div>

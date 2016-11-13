@@ -1,0 +1,28 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    <button class="btn btn-xs btn-danger pull-right" ng-click="cancel()"><i class="fa fa-times"></i> </button>
+  </h4>
+  <h4 class="modal-title">Adding Article</h4>
+</div>
+
+<div class="modal-body">
+  <div>
+    <div>
+      <div class=" form-group" >
+        <label for="header">Title</label>
+        <input type="text" class="form-control" ng-model="modalContent.header" id="header"/>
+      </div>
+
+      <div class="form-group">
+        <label for="content">Content</label>
+        <div text-angular="text-angular" data-ng-model="modalContent.details" id="content"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button ng-click="saveNew()" class="btn btn-sm btn-primary" ng-disabled="submitting"><i class="fa fa-folder-open"></i> Save</button>
+  <button class="btn btn-sm btn-danger" ng-click="cancel()"><i class="fa fa-times"></i> Cancel</button>
+</div>

@@ -1,0 +1,63 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    <button class="btn btn-xs btn-danger pull-right" ng-click="cancel()"><i class="fa fa-times"></i> </button>
+  </h4>
+  <h4 class="modal-title">Editing {{obj.name}}'s Content</h4>
+</div>
+
+<div class="modal-body">
+  <div>
+    <div>
+      <form method="post" ng-submit="contactform.$valid && save()" name="contactform">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 form-group" >
+            <label for="name">Contact Name</label>
+            <input type="text" class="form-control" ng-model="contactContent.name" id="name"/>
+          </div>
+          <div class="col-md-6 col-sm-6 form-group" >
+            <label for="location">Location</label>
+            <input type="text" class="form-control" ng-model="contactContent.location" id="location"/>
+          </div>
+        </div>
+        <div class="form-group" >
+            <label for="address">Address</label>
+            <textarea class="form-control" ng-model="contactContent.address" id="address"></textarea>
+          </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-6 form-group" ng-repeat="phone in contactContent.telephone track by $index">
+            <label for="phone{{$index}}">Phone {{$index + 1}}</label>
+            <input type="tel" class="form-control" ng-model="contactContent.telephone[$index]" id="phone{{$index}}"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-6 form-group" ng-repeat="fax in contactContent.fax track by $index">
+            <label for="fax{{$index}}">Fax {{$index + 1}}</label>
+            <input type="tel" class="form-control" ng-model="contactContent.fax[$index]" id="fax{{$index}}"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="geoAddress">Geo Location</label>
+          <textarea class="form-control" ng-model="contactContent.geoAddress" id="geoAddress"></textarea>
+          <p style="color: #ff3d03"><i class="fa fa-info-circle"></i> This is the address used to show location on the Map, please Edit carefully else Location will not show on Contact Us Map</p>
+        </div>
+        <div ng-if="contactContent.description" class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" ng-model="contactContent.description" id="description"></textarea>
+        </div>
+        <div class="row">
+          <p style="padding-left: 15px" class="bold"> Business Hours</p>
+          <hr>
+          <div class="col-md-4 col-sm-6 form-group" ng-repeat="hr in contactContent.workHours track by $index">
+            <label for="day{{$index}}">{{hr.day}}</label>
+            <input type="datetime" class="form-control" ng-model="contactContent.workHours[$index].hour" id="day{{$index}}"/>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button ng-click="save()" ng-disabled="contactform.$invalid || submitting" class="btn btn-sm btn-primary"><i class="fa fa-folder-open"></i> Save</button>
+  <button class="btn btn-sm btn-danger" ng-click="cancel()"><i class="fa fa-times"></i> Cancel</button>
+</div>

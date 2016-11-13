@@ -1,0 +1,146 @@
+<div ng-include="'components/Admin/header.html'"></div>
+
+<section>
+  <div class="mainwrapper">
+
+    <div ng-include="'components/Admin/leftpanel.html'"></div>
+    <div class="mainpanel">
+      <div class="pageheader">
+        <div class="media">
+          <div class="pageicon pull-left">
+            <i class="fa fa-home"></i>
+          </div>
+          <div class="media-body">
+            <ul class="breadcrumb">
+              <li><a href=""><i class="glyphicon glyphicon-home"></i></a></li>
+              <li><a href="">Messages</a></li>
+              <li>Blank Page</li>
+            </ul>
+            <h4>Blank Page</h4>
+          </div>
+        </div><!-- media -->
+      </div><!-- pageheader -->
+
+      <div class="contentpanel">
+
+        <!-- CONTENT GOES HERE -->
+        <div class="row">
+          <div class="col-sm-3 col-md-3 col-lg-2">
+            <a href="" class="btn btn-success btn-block btn-create-msg">Create Message</a>
+            <br />
+            <ul class="nav nav-pills nav-stacked nav-msg">
+              <li class="active">
+                <a ui-sref="inbox">
+                  <span class="badge pull-right">{{count.unread}}</span>
+                  <i class="glyphicon glyphicon-inbox"></i> Inbox
+                </a>
+              </li>
+              <li><a href="#"><i class="glyphicon glyphicon-star"></i> Starred</a></li>
+              <li><a href="#"><i class="glyphicon glyphicon-send"></i> Sent Mail</a></li>
+              <li>
+                <a href="#">
+                  <span class="badge pull-right">3</span>
+                  <i class="glyphicon glyphicon-pencil"></i> Draft
+                </a>
+              </li>
+              <li><a href="#"><i class="glyphicon glyphicon-trash"></i> Trash</a></li>
+            </ul>
+
+            <br />
+            <h5 class="sm-title">Tags</h5>
+            <ul class="nav nav-pills nav-stacked nav-msg">
+              <li>
+                <a href="email.html">
+                  <span class="badge pull-right">2</span>
+                  <i class="fa fa-tag"></i> Promotions
+                </a>
+              </li>
+              <li><a href="#"><i class="fa fa-tag"></i> Updates</a></li>
+              <li><a href="#"><i class="fa fa-tag"></i> Social</a></li>
+            </ul>
+          </div>
+
+          <div class="col-sm-9 col-md-9 col-lg-10">
+
+            <div class="msg-header">
+              <div class="pull-right">
+                Showing 1 - 10 of 100 messages
+                <button class="btn btn-white btn-navi btn-navi-left ml5" type="button"><i class="fa fa-chevron-left"></i></button>
+                <button class="btn btn-white btn-navi btn-navi-right" type="button"><i class="fa fa-chevron-right"></i></button>
+
+              </div>
+              <div class="pull-left">
+                <button class="btn btn-white" type="button" tooltip-placement="top" uib-tooltip="Archive"><i class="fa fa-hdd-o"></i></button>
+                <button class="btn btn-white" type="button" tooltip-placement="top" uib-tooltip="Report Spa,"><i class="fa fa-exclamation-circle"></i></button>
+                <button class="btn btn-white " type="button" tooltip-placement="top" uib-tooltip="Delete"><i class="fa fa-trash-o"></i></button>
+
+                <div class="btn-group">
+                  <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button" tooltip-placement="top" uib-tooltip="Move To Folder">
+                    <i class="fa fa-folder"></i>
+                  </button>
+                  <ul class="dropdown-menu pull-right">
+                    <li><a href="#"><i class="fa fa-folder mr5"></i> Conference</a></li>
+                    <li><a href="#"><i class="fa fa-folder mr5"></i> Newsletter</a></li>
+                    <li><a href="#"><i class="fa fa-folder mr5"></i> Invitations</a></li>
+                    <li><a href="#"><i class="fa fa-folder mr5"></i> Promotions</a></li>
+                  </ul>
+                </div>
+
+                <div class="btn-group">
+                  <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button" tooltip-placement="top" uib-tooltip="Label">
+                    <i class="fa fa-tag"></i>
+                  </button>
+                  <ul class="dropdown-menu pull-right">
+                    <li><a href="#"><i class="fa fa-tag mr5"></i> Web</a></li>
+                    <li><a href="#"><i class="fa fa-tag mr5"></i> Photo</a></li>
+                    <li><a href="#"><i class="fa fa-tag mr5"></i> Video</a></li>
+                  </ul>
+                </div>
+
+              </div><!-- pull-right -->
+            </div><!-- msg-header -->
+
+            <ul class="media-list msg-list">
+              <li class="media" ng-repeat="message in messages track by $index">
+                <div class="ckbox ckbox-primary pull-left">
+                  <input type="checkbox" id="{{message._id}}">
+                  <label for="{{message._id}}"></label>
+                </div>
+                <a class="pull-left" href="#">
+                  <img class="media-object img-circle img-online" src="assets/images/message.png" alt="...">
+                </a>
+                <div class="media-body">
+                  <div class="pull-right media-option">
+                    <small ng-bind="DateNow(message.dt_created)"></small>
+                    <a href=""><i class="fa fa-star"></i></a>
+                    <div class="btn-group">
+                      <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-cog"></i>
+                      </a>
+                      <ul class="dropdown-menu pull-right" role="menu">
+                        <li><a href="#">Mark as Unread</a></li>
+                        <li><a href="#">Reply</a></li>
+                        <li><a href="#">Forward</a></li>
+                        <li><a href="#">Archive</a></li>
+                        <li><a href="#">Move to Folder</a></li>
+                        <li><a href="#">Delete</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Report as Spam</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <h4 class="sender">{{message.name}}</h4>
+                  <p><strong class="subject">Hi Hello!</strong>          <a ui-sref="openMessage()" ng-bind="getHeading(message.content)"></a></p>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+
+
+      </div><!-- contentpanel -->
+
+    </div>
+  </div><!-- mainwrapper -->
+</section>

@@ -32,35 +32,15 @@
     </div>
     <!-- Responsive slider - END -->
     <!-- Component: index/info-thumbnails.html - START -->
-    <section class="background-white color-black" data-control="class">
-      <div class="container">
+    <section class="background-white color-black">
+      <div class="container" ng-if="InfoTab">
         <div class="row">
-          <div class="col-sm-4 col-md-4">
-            <a class="info-thumbnail-link" href="http://w3widgets.com/">
+          <div ng-repeat="news in InfoTab.Highlight track by $index" class="col-sm-4 col-md-4">
+            <a class="info-thumbnail-link" ui-sref="article({id:'{{news.article}}'})">
               <div class="thumbnail info-thumbnail">
                 <div class="caption">
-                  <h3><span class="fa fa-flag color-lead"></span> Font awesome</h3>
-                  <p class="description">NEAT template supports as much modern technologies and trends as possible. One of them is font awesome icons. This great set of fonts is available anywhere you want on your page. Some of NEAT ui elements are also using font awesome like this info thumbnails.</p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-sm-4 col-md-4">
-            <a class="info-thumbnail-link" href="http://w3widgets.com/">
-              <div class="thumbnail info-thumbnail">
-                <div class="caption">
-                  <h3><span class="fa fa-group color-lead"></span> Color classes</h3>
-                  <p class="description">You can use template elements as you have them in the examples but if you feel creative you can compose our own color combinations in ui elements. You have beautiful set of flat ui colors to work with just use <i>color-{color-name}</i> or <i>background-{color-name}</i> to change text color or background of any element on the page.</p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-sm-4 col-md-4">
-            <a class="info-thumbnail-link" href="http://w3widgets.com/">
-              <div class="thumbnail info-thumbnail">
-                <div class="caption">
-                  <h3><span class="fa fa-gavel color-lead"></span> Some more info</h3>
-                  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis velit nibh, sit amet commodo sapien tristique at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras bibendum erat at ultricies rhoncus.</p>
+                  <h3><span class="fa fa-flag color-lead"></span>{{news.header}}</h3>
+                  <p class="description">{{news.description}}</p>    <small class="btn btn-xs btn-info pull-right">Read More...</small>
                 </div>
               </div>
             </a>

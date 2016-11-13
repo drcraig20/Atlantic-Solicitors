@@ -69,28 +69,28 @@
       <div class="row">
         <div class="col-md-offset-3 col-md-6">
           <h2>Contact form</h2>
-          <form class="form-horizontal" role="form">
+          <form class="form-horizontal" role="form" ng-submit="contactForm.$valid && contactEmail()" name="contactForm">
             <div class="form-group">
-              <label for="inputName2" class="col-md-2 control-label">Name</label>
+              <label for="inputName1" class="col-md-2 control-label">Name</label>
               <div class="col-md-10">
-                <input type="text" class="form-control input-lg" id="inputName2" placeholder="Name">
+                <input type="text" ng-model="contactForm.name" required  class="form-control input-lg" id="inputName1" placeholder="Name">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputEmail2" class="col-md-2 control-label">Email</label>
+              <label for="inputEmail1" class="col-md-2 control-label">Email</label>
               <div class="col-md-10">
-                <input type="email" class="form-control input-lg" id="inputEmail2" placeholder="Email">
+                <input type="email" ng-model="contactForm.email" required  class="form-control input-lg" id="inputEmail1" placeholder="Email">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputContent2" class="col-md-2 control-label">Issue</label>
+              <label for="inputContent1" class="col-md-2 control-label">Issue</label>
               <div class="col-md-10">
-                <textarea id="inputContent2" class="form-control" rows="9"></textarea>
+                <textarea id="inputContent1" ng-model="contactForm.content" required  class="form-control" rows="9"></textarea>
               </div>
             </div>
             <div class="form-group">
               <div class="col-md-offset-2 col-md-10">
-                <button type="submit" class="btn btn-primary btn-lg">Send us an email</button>
+                <button type="submit" class="btn btn-lead btn-lg"  ng-disabled="contactForm.$invalid || submitting">Send us an email</button>
               </div>
             </div>
           </form>

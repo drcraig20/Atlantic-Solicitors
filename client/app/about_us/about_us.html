@@ -26,7 +26,7 @@
           <div class="blog-entry fx-zoom-up fx-speed-1000 fx-easing-quint" ng-repeat="abt in about">
 
           <h1><span id="{{abt.link}}">{{abt.link}}</span></h1>
-            <p class="blog-entry-content fx-rotate-clock fx-speed-1000 fx-easing-quint" ng-repeat="content in abt.content">{{content}}</p>
+            <p ng-bind-html="abt.content" class="blog-entry-content fx-rotate-clock fx-speed-1000 fx-easing-quint"></p>
           </div>
           </div>
       </div>

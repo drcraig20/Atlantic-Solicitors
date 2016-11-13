@@ -35,9 +35,11 @@ exports.update = function(req, res) {
     if (err) { return handleError(res, err); }
     if(!serviceContent) { return res.status(404).send('Not Found'); }
     var updated = _.merge(serviceContent, req.body);
-    updated.save(function (err) {
+    updated.dt_modified = Date.now();
+    updated.markModified('content');
+    updated.save(function (err,contents) {
       if (err) { return handleError(res, err); }
-      return res.status(200).json(serviceContent);
+      return res.status(200).json(contents);
     });
   });
 };

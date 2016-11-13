@@ -4,5 +4,5 @@ angular.module 'atlanticSolicitorsApp'
 .config ($stateProvider) ->
   $stateProvider.state 'editPage',
     url: '/editPage?name&url'
-    templateUrl: 'app/editPage/editPage.html'
+    templateUrl: 'app/admin/editPage/editPage.html'
     controller: 'EditPageCtrl'

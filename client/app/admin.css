@@ -1047,3 +1047,319 @@
   top: -58px;
   width: auto;
 }
+
+.aboutus {
+  list-style:none;
+}
+
+.aboutus li {
+  font-size: 0.8em;
+  line-height: 1.5;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+ .aboutus li:before {
+  font-family: 'FontAwesome';
+  content: '\f044 ';
+  margin:0 5px 0 -15px;
+   color: #428bca;
+}
+
+.btn-white {
+  color: #666666;
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+.btn-white:focus,
+.btn-white.focus {
+  color: #666666;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+.btn-white:hover {
+  color: #666666;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.btn-white:active,
+.btn-white.active,
+.open > .dropdown-toggle.btn-white {
+  color: #666666;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.btn-white:active:hover,
+.btn-white.active:hover,
+.open > .dropdown-toggle.btn-white:hover,
+.btn-white:active:focus,
+.btn-white.active:focus,
+.open > .dropdown-toggle.btn-white:focus,
+.btn-white:active.focus,
+.btn-white.active.focus,
+.open > .dropdown-toggle.btn-white.focus {
+  color: #666666;
+  background-color: #d4d4d4;
+  border-color: #8c8c8c;
+}
+.btn-white:active,
+.btn-white.active,
+.open > .dropdown-toggle.btn-white {
+  background-image: none;
+}
+.btn-white.disabled:hover,
+.btn-white[disabled]:hover,
+fieldset[disabled] .btn-white:hover,
+.btn-white.disabled:focus,
+.btn-white[disabled]:focus,
+fieldset[disabled] .btn-white:focus,
+.btn-white.disabled.focus,
+.btn-white[disabled].focus,
+fieldset[disabled] .btn-white.focus {
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+.btn-white .badge {
+  color: #ffffff;
+  background-color: #666666;
+}
+
+.msg-list > li {
+  border: 1px solid #eee;
+  background-color: #fcfcfc;
+  border-bottom: 0;
+  padding: 10px;
+  margin: 0;
+}
+.msg-list > li.unread {
+  background-color: #fff;
+}
+.msg-list > li:first-child {
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+}
+.msg-list > li:last-child {
+  border-bottom: 1px solid #eee;
+  -webkit-border-radius: 0 0 3px 3px;
+  -moz-border-radius: 0 0 3px 3px;
+  border-radius: 0 0 3px 3px;
+}
+.msg-list > li.media,
+.msg-list > li.media .media-body {
+  overflow: visible;
+}
+.msg-list > li.media .media-body {
+  margin-left: 85px;
+  cursor: pointer;
+}
+.msg-list > li.highlighted {
+  background-color: #fffeee;
+}
+.msg-list .sender {
+  font-weight: 500;
+  margin: 0;
+  font-size: 12px;
+  color: #333;
+}
+@media screen and (max-width: 360px) {
+  .msg-list .sender {
+    line-height: normal;
+  }
+}
+.msg-list p {
+  margin: 0;
+}
+.msg-list p a:hover,
+.msg-list p a:active,
+.msg-list p a:focus {
+  text-decoration: none;
+}
+.msg-list p a {
+  color: #999;
+}
+.msg-list .subject {
+  color: #333;
+}
+.msg-list .media-object {
+  width: 40px;
+}
+.msg-list .media-option > a {
+  color: #999;
+  margin-left: 5px;
+}
+.msg-list .media-option > a:hover {
+  color: #666;
+}
+.msg-list .btn-group {
+  margin: 0;
+  margin-top: -3px;
+  margin-left: 5px;
+}
+.msg-list .btn-group > .btn {
+  padding: 0;
+  background: none;
+  color: #999;
+  border: 0;
+}
+.msg-list .dropdown-menu li {
+  font-size: 12px;
+}
+.msg-list .dropdown-menu .divider {
+  margin: 5px 0;
+}
+.msg-header {
+  margin-bottom: 25px;
+  margin-top: 5px;
+}
+.msg-header .btn:hover,
+.msg-header .btn:active,
+.msg-header .btn:focus {
+  background-color: #fff;
+  border-color: #666;
+  color: #666;
+}
+.msg-header .btn-group {
+  margin: 0;
+}
+.msg-header .btn {
+  padding: 0;
+  border-width: 2px;
+  width: 35px;
+  height: 35px;
+  color: #999;
+  margin-right: 5px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+}
+.msg-header .btn-navi {
+  font-size: 14px;
+  color: #999;
+  margin-right: 0;
+}
+.msg-header .btn-navi-left i {
+  margin-left: -3px;
+}
+.msg-header .btn-navi-right i {
+  margin-left: 2px;
+}
+.msg-header .dropdown-menu {
+  margin-top: 12px;
+}
+.msg-header .dropdown-menu li {
+  font-size: 12px;
+}
+.msg-header .dropdown-menu li i {
+  margin-right: 8px;
+}
+.msg-header .dropdown-menu:after {
+  border-bottom: 6px solid #fff;
+  border-left: 6px solid rgba(0, 0, 0, 0);
+  border-right: 6px solid rgba(0, 0, 0, 0);
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: -6px;
+  right: 15px;
+}
+.msg-header .dropdown-menu:before {
+  border-bottom: 7px solid #ddd;
+  border-left: 7px solid rgba(0, 0, 0, 0);
+  border-right: 7px solid rgba(0, 0, 0, 0);
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: -8px;
+  right: 14px;
+}
+.msg-header:after {
+  clear: both;
+  display: block;
+  content: '';
+}
+
+
+/********** 7. FORM STYLES **********/
+/************************************/
+
+.ckbox,
+.rdio {
+  position: relative;
+}
+
+.ckbox input[type="checkbox"],
+.rdio input[type="radio"] {
+  opacity: 0;
+}
+
+.ckbox label,
+.rdio label {
+  padding-left: 10px;
+  cursor: pointer;
+  margin-bottom: 7px !important;
+}
+
+.ckbox label:before {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 1px;
+  left: 0;
+  content: '';
+  display: inline-block;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  border: 1px solid #bbb;
+  background: #fff;
+}
+
+.ckbox input[type="checkbox"]:disabled + label  {
+  color: #999;
+}
+
+.ckbox input[type="checkbox"]:disabled + label:before  {
+  background-color: #eee;
+}
+
+.ckbox input[type="checkbox"]:checked + label:after  {
+  font-family: 'FontAwesome';
+  content: "\F00C";
+  position: absolute;
+  top: 2.5px;
+  left: 3.5px;
+  display: inline-block;
+  font-size: 11px;
+  width: 16px;
+  height: 16px;
+  color: #fff;
+}
+
+.ckbox-default input[type="checkbox"]:checked + label:before {
+  border-color: #999;
+}
+
+.ckbox-default input[type="checkbox"]:checked + label:after {
+  color: #333;
+}
+
+.ckbox-primary input[type="checkbox"]:checked + label:before {
+  border-color: #357EBD;
+  background-color: #428BCA;
+}
+
+.ckbox-warning input[type="checkbox"]:checked + label:before {
+  border-color: #EEA236;
+  background-color: #F0AD4E;
+}
+
+.ckbox-success input[type="checkbox"]:checked + label:before {
+  border-color: #5cb85c;
+  background-color: #5cb85c;
+}
+
+.ckbox-danger input[type="checkbox"]:checked + label:before {
+  border-color: #D43F3A;
+  background-color: #D9534F;
+}

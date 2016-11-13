@@ -18,28 +18,28 @@
       </div>
       <div class="col-md-5">
         <h3>Contact us</h3>
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form" ng-submit="contactForm.$valid && contactEmail()" name="contactForm">
           <div class="form-group">
             <label for="inputName1" class="col-lg-3 control-label">Name</label>
             <div class="col-lg-9">
-              <input type="text" ng-model="form.name" class="form-control input-lg" id="inputName1" placeholder="Name">
+              <input type="text" ng-model="contactForm.name" required  class="form-control input-lg" id="inputName1" placeholder="Name">
             </div>
           </div>
           <div class="form-group">
             <label for="inputEmail1" class="col-lg-3 control-label">Email</label>
             <div class="col-lg-9">
-              <input type="email" ng-model="form.email" class="form-control input-lg" id="inputEmail1" placeholder="Email">
+              <input type="email" ng-model="contactForm.email" required  class="form-control input-lg" id="inputEmail1" placeholder="Email">
             </div>
           </div>
           <div class="form-group">
             <label for="inputContent1" class="col-lg-3 control-label">Issue</label>
             <div class="col-lg-9">
-              <textarea id="inputContent1" ng-model="form.content" class="form-control" rows="4"></textarea>
+              <textarea id="inputContent1" ng-model="contactForm.content" required  class="form-control" rows="4"></textarea>
             </div>
           </div>
           <div class="form-group">
             <div class="col-lg-offset-3 col-lg-9">
-              <button type="submit" class="btn btn-lead btn-lg">Send us an email</button>
+              <button type="submit" class="btn btn-lead btn-lg"  ng-disabled="contactForm.$invalid || submitting">Send us an email</button>
             </div>
           </div>
         </form>

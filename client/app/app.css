@@ -919,7 +919,7 @@ h4.text-right {
 }
 
 .navbar .navbar-brand {
-  padding-top: 30px;
+  padding-top: 20px;
   padding-bottom: 30px;
   text-transform: uppercase;
   -webkit-transition: padding .5s;
@@ -931,7 +931,7 @@ h4.text-right {
 
 .navbar .navbar-brand img {
   display: inline-block;
-  height: 40px;
+  height: 70px;
   margin: -10px 10px -10px 0;
   border: 0;
   padding: 0;
@@ -1898,7 +1898,7 @@ footer hr {
     padding-bottom: 15px
   }
   .navbar .navbar-brand img {
-    height: 40px;
+    height: 70px;
     margin: -10px 10px -10px 0;
     border: 0;
     padding: 0;

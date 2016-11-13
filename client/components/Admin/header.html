@@ -1,7 +1,7 @@
 <header  ng-controller="LeftPanelCtrl">
   <div class="headerwrapper">
     <div class="header-left">
-      <a href="index.html" class="logo" >
+      <a href="" class="logo" >
         <img src="assets/images/logo.png" alt="" style="height: 40px; padding-left: 20px"/>
       </a>
       <div class="pull-right">
@@ -22,52 +22,19 @@
         <div class="btn-group btn-group-list btn-group-messages" uib-dropdown is-open="messageCollapsed">
           <button id="single-button2" type="button" class="btn btn-default" uib-dropdown-toggle>
             <i class="fa fa-envelope-o"></i>
-            <span class="badge">2</span>
+            <span class="badge">{{count.unread}}</span>
           </button>
           <div class="dropdown-menu pull-right" uib-dropdown-menu role="menu" aria-labelledby="single-button2">
             <a href="" class="link-right"><i class="fa fa-plus"></i></a>
             <h5>New Messages</h5>
             <ul class="media-list dropdown-list">
-              <li role="menuitem" class="media">
-                <span class="badge badge-success">New</span>
+              <li role="menuitem" class="media" ng-repeat="message in headerMessage track by $index">
+                <span ng-if="message.read == false" class="badge badge-success">New</span>
                 <img class="img-circle pull-left noti-thumb" src="assets/images/message.png" alt="">
                 <div class="media-body">
-                  <strong>Nusja Nawancali</strong>
-                  <p>Hi! How are you?...</p>
-                  <small class="date"><i class="fa fa-clock-o"></i> 15 minutes ago</small>
-                </div>
-              </li>
-              <li role="menuitem" class="media">
-                <span class="badge badge-success">New</span>
-                <img class="img-circle pull-left noti-thumb" src="assets/images/message.png" alt="">
-                <div class="media-body">
-                  <strong>Weno Carasbong</strong>
-                  <p>Lorem ipsum dolor sit amet...</p>
-                  <small class="date"><i class="fa fa-clock-o"></i> July 04, 2014</small>
-                </div>
-              </li>
-              <li role="menuitem" class="media">
-                <img class="img-circle pull-left noti-thumb" src="assets/images/message.png" alt="">
-                <div class="media-body">
-                  <strong>Venro Leonga</strong>
-                  <p>Do you have the time to listen to me...</p>
-                  <small class="date"><i class="fa fa-clock-o"></i> July 03, 2014</small>
-                </div>
-              </li>
-              <li role="menuitem" class="media">
-                <img class="img-circle pull-left noti-thumb" src="assets/images/message.png" alt="">
-                <div class="media-body">
-                  <strong>Nanterey Reslaba</strong>
-                  <p>It might seem crazy what I'm about to say...</p>
-                  <small class="date"><i class="fa fa-clock-o"></i> July 03, 2014</small>
-                </div>
-              </li>
-              <li role="menuitem" class="media">
-                <img class="img-circle pull-left noti-thumb" src="assets/images/message.png" alt="">
-                <div class="media-body">
-                  <strong>Nusja Nawancali</strong>
-                  <p>Hey I just met you and this is crazy...</p>
-                  <small class="date"><i class="fa fa-clock-o"></i> July 02, 2014</small>
+                  <strong>{{message.name}}</strong>
+                  <p>{{getHeading(message.content)}}</p>
+                  <small class="date"><i class="fa fa-clock-o"></i>{{ago(message.dt_created)}}</small>
                 </div>
               </li>
             </ul>
@@ -87,7 +54,7 @@
             <li role="menuitem"><a href="#"><i class="glyphicon glyphicon-cog"></i> Account Settings</a></li>
             <li role="menuitem"><a href="#"><i class="glyphicon glyphicon-question-sign"></i> Help</a></li>
             <li class="divider"></li>
-            <li role="menuitem"><a href="#"><i class="glyphicon glyphicon-log-out"></i>Sign Out</a></li>
+            <li role="menuitem"><a class="cursor" ng-click="signOut()"><i class="glyphicon glyphicon-log-out"></i>Sign Out</a></li>
           </ul>
         </div><!-- btn-group -->
 

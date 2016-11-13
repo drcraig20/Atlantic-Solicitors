@@ -95,15 +95,13 @@
         <div class="box">
           <h2>Languages</h2>
           <div id="language-skills">
-            <div class="skill">Polish <div class="icons pull-right"><div style="width: 80%;" class="icons-red"></div></div></div>
-            <div class="skill">English <div class="icons pull-right"><div style="width: 60%;" class="icons-red"></div></div></div>
+            <div class="skill" ng-repeat="language in profile.languages">{{language}} <div class="icons pull-right"><div style="width: 60%;" class="icons-red"></div></div></div>
           </div>
         </div>
         <!-- HOBBIES -->
         <div class="box">
           <h2>Hobbies</h2>
-          <div class="hobby">Reading</div>
-          <div class="hobby">Consultancy</div>
+          <div class="hobby" ng-repeat="hobby in profile.hobbies">{{hobby}}</div>
         </div>
       </div>
     </div>

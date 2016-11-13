@@ -28,6 +28,12 @@ angular.module 'atlanticSolicitorsApp'
       $scope.content = Content
       $scope.anime = animation[_.random(0,animation.length-1)]
 
+# Fetch information and news
+  Solicitor.getDetails type:'InfoTab', (News)->
+    if News
+      $scope.InfoTab = News
+      console.log News
+
 
   ImagesReload = () ->
     if $scope.Images
@@ -42,6 +48,8 @@ angular.module 'atlanticSolicitorsApp'
   $timeout ()->
     ImagesReload()
   ,1000
+
+
 
 
 

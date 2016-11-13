@@ -1,0 +1,26 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<!-- Breadcrumbs - START -->
+<div class="breadcrumbs-container">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li class="active">Pages</li>
+      <li class="active">Article</li>
+    </ol>
+  </div>
+</div>
+<!-- Breadcrumbs - END -->
+
+<!-- Component: article/article.html - START -->
+<section class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1><span>{{article.header}}</span></h1>
+        <div class="content" ng-bind-html="article.details">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

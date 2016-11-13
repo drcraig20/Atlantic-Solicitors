@@ -37,7 +37,6 @@ function start(){
 
 // Expose app
   exports = module.exports = app;
-
 }
 
 console.log('Server currently using: %d WEB Workers!!!', WORKERS);

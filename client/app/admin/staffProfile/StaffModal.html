@@ -1,0 +1,128 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    <button class="btn btn-xs btn-danger pull-right" ng-click="cancel()"><i class="fa fa-times"></i> </button>
+  </h4>
+  <h4 class="modal-title">Editing {{modalContent.fullname}}'s Profile</h4>
+</div>
+
+<div class="modal-body" style="height: 450px; overflow-y: auto;">
+  <div>
+    <div>
+      <form method="post" ng-submit="contactform.$valid && save()" name="contactform">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 form-group" >
+            <label for="name">Profile Name</label>
+            <input type="text" class="form-control" ng-model="modalContent.fullname" id="name"/>
+          </div>
+          <!--<div class="col-md-6 col-sm-6 form-group" >-->
+            <!--<label for="location">Location</label>-->
+            <!--<input type="text" class="form-control" ng-model="contactContent.location" id="location"/>-->
+          <!--</div>-->
+        </div>
+        <div class="form-group" >
+          <label for="address">About Me</label>
+          <textarea rows="4" class="form-control" ng-model="modalContent.about_me" id="address"></textarea>
+        </div>
+        <hr>
+        <p class="color-lead bold"> Contact Block</p>
+        <div class="row">
+          <div class="col-md-4 col-sm-6 form-group" ng-repeat="contact in modalContent.contact track by $index">
+            <label for="{{contact.type}}">{{contact.type}}</label>
+            <input type="text" class="form-control" ng-model="modalContent.contact[$index].content" id="{{contact.type}}"/>
+          </div>
+        </div>
+        <hr>
+        <p class="color-lead bold"> Experience Block</p>
+        <div class="row">
+          <div class="col-md-6 col-sm-6 form-group" ng-repeat="experience in modalContent.experiences track by $index">
+            <p class="color-alizarin">Experience {{$index + 1}}</p>
+            <div class="row">
+              <div class="col-md-8">
+                <label for="position{{$index + 1}}">Position</label>
+                <input type="text" class="form-control" ng-model="modalContent.experiences[$index].header" id="position{{$index + 1}}"/>
+              </div>
+              <div class="col-md-4">
+                <label for="date{{$index + 1}}">Date</label>
+                <input type="text" class="form-control" ng-model="modalContent.experiences[$index].date" id="date{{$index + 1}}"/>
+              </div>
+
+            </div>
+
+            <br>
+            <label for="jobdescription{{$index + 1}}">Description</label>
+            <textarea rows="4" class="form-control" ng-model="modalContent.experiences[$index].description" id="jobdescription{{$index + 1}}"></textarea>
+            <br>
+            <label for="place{{$index + 1}}">Place</label>
+            <input type="text" class="form-control" ng-model="modalContent.experiences[$index].place" id="place{{$index + 1}}"/>
+            <br>
+          </div>
+        </div>
+        <hr>
+
+        <p class="color-lead bold"> Qualification Block</p>
+        <div class="row">
+          <div class="col-md-6 col-sm-6 form-group" ng-repeat="experience in modalContent.qualification track by $index">
+            <p class="color-alizarin">Qualification {{$index + 1}}</p>
+            <div class="row">
+              <div class="col-md-8">
+                <label for="title{{$index + 1}}">Title</label>
+                <input type="text" class="form-control" ng-model="modalContent.qualification[$index].header" id="title{{$index + 1}}"/>
+              </div>
+              <div class="col-md-4">
+                <label for="year{{$index + 1}}">Year</label>
+                <input type="text" class="form-control" ng-model="modalContent.qualification[$index].year" id="year{{$index + 1}}"/>
+              </div>
+
+            </div>
+
+            <br>
+            <label for="qdescription{{$index + 1}}">Description</label>
+            <textarea rows="4" class="form-control" ng-model="modalContent.qualification[$index].description" id="qdescription{{$index + 1}}"></textarea>
+            <br>
+          </div>
+        </div>
+        <hr>
+        <p class="color-lead bold"> Skill Block</p>
+        <div class="row">
+          <div class="col-md-6 col-sm-6 form-group" ng-repeat="experience in modalContent.skills track by $index">
+            <p class="color-alizarin">Skill {{$index + 1}}</p>
+            <div class="row">
+              <div class="col-md-8">
+                <label for="skillname{{$index + 1}}">Skill Name</label>
+                <input type="text" class="form-control" ng-model="modalContent.skills[$index].skill" id="skillname{{$index + 1}}"/>
+              </div>
+              <div class="col-md-4">
+                <label for="percentage{{$index + 1}}">% in 100</label>
+                <input type="text" class="form-control" ng-model="modalContent.skills[$index].percentage" id="percentage{{$index + 1}}"/>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <hr>
+
+        <p class="color-lead bold"> Languages & Hobbies Block</p>
+        <div class="row">
+          <div class="col-md-6 col-sm-6 form-group">
+            <p class="color-alizarin">Hobbies</p>
+            <div class="row col-md-8 mt10" ng-repeat="hobby in modalContent.hobbies track by $index">
+                <input type="text" class="form-control" ng-model="modalContent.hobbies[$index]" />
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6 form-group">
+            <p class="color-alizarin">Languages</p>
+            <div class="row col-md-8 mt10" ng-repeat="language in modalContent.languages track by $index">
+              <input type="text" class="form-control" ng-model="modalContent.languages[$index]" />
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button ng-click="save()" ng-disabled="contactform.$invalid || submitting" class="btn btn-sm btn-primary"><i class="fa fa-folder-open"></i> Save</button>
+  <button class="btn btn-sm btn-danger" ng-click="cancel()"><i class="fa fa-times"></i> Cancel</button>
+</div>
