@@ -42,7 +42,7 @@ exports.create = function(req, res) {
 // Updates an existing profile in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
-  Profile.findById(req.params.id, function (err, profile) {
+  Profile.findById(req.params.id).select('about_me fullname dt_modified').exec( function (err, profile) {
     if (err) { return handleError(res, err); }
     if(!profile) { return res.status(404).send('Not Found'); }
     var updated = _.merge(profile, req.body);

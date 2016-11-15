@@ -3,6 +3,7 @@
 angular.module 'atlanticSolicitorsApp'
 .controller 'StaffProfileCtrl', ($scope, Profile,$uibModal,toastr) ->
   $scope.checkModel = []
+  $scope.submitting = false
   $scope.ids = [];
   modal = null
   contentModal = null
@@ -22,7 +23,6 @@ angular.module 'atlanticSolicitorsApp'
     else if id in $scope.ids
       _.remove $scope.ids, (a)->
         a == id
-    console.log $scope.ids
 
   $scope.StaffModal =(content) ->
     $scope.modalContent = {}
@@ -64,6 +64,7 @@ angular.module 'atlanticSolicitorsApp'
       size: 'md'
 
   $scope.saveNested = ()->
+    $scope.submitting = true
     switch $scope.nestedContent.header
       when 'Contact'
         $scope.modalContent.contact.push({content:$scope.content.contacttext,type:$scope.content.type})
@@ -77,4 +78,31 @@ angular.module 'atlanticSolicitorsApp'
         $scope.modalContent.hobbies.push($scope.content.hobby)
       when 'Language'
         $scope.modalContent.languages.push($scope.content.language)
+    toastr.info 'Data Added but not saved, Please click save on the Opened profile to Save properly'
+    contentModal.close()
+    $scope.submitting = false
+
+  $scope.deleteNested =(index,type)->
+    switch type
+      when 'Contact'
+        pop $scope.modalContent.contact,index
+      when 'Experience'
+        pop $scope.modalContent.experiences,index
+      when 'Qualification'
+        pop $scope.modalContent.qualification,index
+      when 'Skill'
+        pop $scope.modalContent.skills,index
+      when 'Hobby'
+        pop $scope.modalContent.hobbies,index
+      when 'Language'
+        pop $scope.modalContent.languages,index
+    toastr.info 'Data Removed but not saved, Please click save on the Opened profile to Save properly'
+    console.log $scope.modalContent
+
+# removes an object from an array
+  pop = (array,index)->
+    obj = array[index]
+    _.remove array, (a)->
+      a == obj
+
 

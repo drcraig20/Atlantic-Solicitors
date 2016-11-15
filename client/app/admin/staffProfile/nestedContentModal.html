@@ -83,6 +83,6 @@
 </div>
 
 <div class="modal-footer">
-  <button class="btn btn-sm btn-primary" ng-click="saveNested()"><i class="fa fa-folder-open"></i> Save</button>
+  <button class="btn btn-sm btn-primary" ng-click="saveNested()" ng-disabled="submitting"><i class="fa fa-folder-open"></i> Add to {{nestedContent.header}}s</button>
   <button class="btn btn-sm btn-danger" ng-click="cancel(2)"><i class="fa fa-times"></i> Cancel</button>
 </div>
