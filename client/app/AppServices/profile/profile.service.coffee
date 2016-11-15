@@ -8,3 +8,7 @@ angular.module 'atlanticSolicitorsApp'
       method: 'GET'
       isArray: true
       url: '/api/profiles'
+    update:
+      method: 'PUT'
+      params: id: '@id'
+      url: 'api/profiles/:id'

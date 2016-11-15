@@ -1,0 +1,88 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    <button class="btn btn-xs btn-danger pull-right" ng-click="cancel(2)"><i class="fa fa-times"></i> </button>
+  </h4>
+  <h4 class="modal-title">Add {{nestedContent.header}}</h4>
+</div>
+
+<div class="modal-body">
+  <div>
+    <div>
+      <div ng-if="nestedContent.header == 'Contact'" class=" form-group" >
+        <div class="btn-group" uib-dropdown is-open="false">
+          <button id="single-button" type="button" class="btn btn-primary form-control" uib-dropdown-toggle >{{dropdownvalue}}<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+            <li role="menuitem" class="cursor"><a ng-click="dropdownvalue='Facebook';content.type='facebook'">Facebook <i class="pull-right fa fa-facebook"></i></a></li>
+            <li role="menuitem" class="cursor"><a ng-click="dropdownvalue='Twitter';content.type='twitter'">Twitter <i class="pull-right fa fa-twitter"></i></a></li>
+            <li role="menuitem" class="cursor"><a ng-click="dropdownvalue='Email';content.type='email'">Email <i class="pull-right fa fa-envelope"></i></a></li>
+            <li role="menuitem" class="cursor"><a ng-click="dropdownvalue='Phone';content.type='phone'">Phone <i class="pull-right fa fa-phone"></i></a></li>
+            <li role="menuitem" class="cursor"><a ng-click="dropdownvalue='Skype';content.type='skype'">Skype <i class="pull-right fa fa-skype"></i></a></li>
+          </ul>
+        </div>
+        <input type="text" class="form-control mt20" ng-model="content.contacttext"/>
+      </div>
+      <div ng-if="nestedContent.header == 'Experience'" class="row " >
+        <div class="form-group col-md-8 col-md-offset-2">
+          <label for="e.header"> Position</label>
+          <input type="text" class="form-control" ng-model="content.header" required id="e.header"/>
+        </div>
+        <div class="form-group col-md-8 col-md-offset-2">
+          <label for="e.date"> Date</label>
+          <input type="text" class="form-control" ng-model="content.date" required id="e.date"/>
+        </div>
+        <div class="form-group col-md-8 col-md-offset-2">
+          <label for="e.description"> Description</label>
+          <textarea rows="3" class="form-control" ng-model="content.description" required id="e.description"></textarea>
+        </div>
+        <div class="form-group col-md-8 col-md-offset-2">
+          <label for="e.place"> Place</label>
+          <input type="text" class="form-control" ng-model="content.place" required id="e.place"/>
+        </div>
+      </div>
+      <div ng-if="nestedContent.header == 'Qualification'" class="row" >
+        <div class="form-group col-md-8 col-md-offset-2">
+          <label for="q.header"> Title</label>
+          <input type="text" class="form-control" ng-model="content.header" required id="q.header"/>
+        </div>
+        <div class="form-group col-md-8 col-md-offset-2">
+          <label for="q.date"> year</label>
+          <input type="text" class="form-control" ng-model="content.year" required id="q.date"/>
+        </div>
+        <div class="form-group col-md-8 col-md-offset-2">
+          <label for="q.description"> Description</label>
+          <textarea rows="4" class="form-control" ng-model="content.description" required id="q.description"></textarea>
+        </div>
+      </div>
+      <div ng-if="nestedContent.header == 'Skill'" class="row" >
+        <div class=" col-md-10 col-md-offset-1">
+          <div class="col-md-7 form-group">
+            <label for="s.header"> Skill</label>
+            <input type="text" class="form-control" ng-model="content.skill" required id="s.header"/>
+          </div>
+          <div class="col-md-3 form-group">
+            <label for="s.date"> % in 100</label>
+            <input type="text" class="form-control" ng-model="content.percentage" required id="s.date"/>
+          </div>
+        </div>
+      </div>
+      <div ng-if="nestedContent.header == 'Hobby'" class="row" >
+        <div class="form-group col-md-8 col-md-offset-2">
+          <label for="h.bobby"> Hobby</label>
+          <input type="text" class="form-control" ng-model="content.hobby" required id="h.bobby"/>
+        </div>
+      </div>
+      <div ng-if="nestedContent.header == 'Language'" class="row" >
+        <div class="form-group col-md-8 col-md-offset-2">
+          <label for="l.langauge"> Language</label>
+          <input type="text" class="form-control" ng-model="content.language" required id="l.langauge"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-sm btn-primary" ng-click="saveNested()"><i class="fa fa-folder-open"></i> Save</button>
+  <button class="btn btn-sm btn-danger" ng-click="cancel(2)"><i class="fa fa-times"></i> Cancel</button>
+</div>

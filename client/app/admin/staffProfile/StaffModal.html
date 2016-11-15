@@ -8,20 +8,16 @@
 <div class="modal-body" style="height: 450px; overflow-y: auto;">
   <div>
     <div>
-      <form method="post" ng-submit="contactform.$valid && save()" name="contactform">
+      <form method="post" ng-submit="EditProfileForm.$valid && saveEditedProfile()" name="EditProfileForm">
         <div class="row">
           <div class="col-md-6 col-sm-6 form-group" >
             <label for="name">Profile Name</label>
             <input type="text" class="form-control" ng-model="modalContent.fullname" id="name"/>
           </div>
-          <!--<div class="col-md-6 col-sm-6 form-group" >-->
-            <!--<label for="location">Location</label>-->
-            <!--<input type="text" class="form-control" ng-model="contactContent.location" id="location"/>-->
-          <!--</div>-->
         </div>
         <div class="form-group" >
-          <label for="address">About Me</label>
-          <textarea rows="4" class="form-control" ng-model="modalContent.about_me" id="address"></textarea>
+          <label for="aboutme">About Me</label>
+          <textarea rows="4" class="form-control" ng-model="modalContent.about_me" id="aboutme"></textarea>
         </div>
         <hr>
         <p class="color-lead bold"> Contact Block</p>
@@ -30,6 +26,7 @@
             <label for="{{contact.type}}">{{contact.type}}</label>
             <input type="text" class="form-control" ng-model="modalContent.contact[$index].content" id="{{contact.type}}"/>
           </div>
+          <div class="col-md-4 col-sm-6 form-group mt20"><a class="btn btn-info pull-right" ng-click="newNestedContent('Contact')"><i class="fa fa-plus"></i> Add Contact</a></div>
         </div>
         <hr>
         <p class="color-lead bold"> Experience Block</p>
@@ -56,6 +53,7 @@
             <input type="text" class="form-control" ng-model="modalContent.experiences[$index].place" id="place{{$index + 1}}"/>
             <br>
           </div>
+          <div class="col-md-4 col-sm-6 form-group mt20"><a class="btn btn-info pull-right" ng-click="newNestedContent('Experience')"><i class="fa fa-plus"></i> Add Experience</a></div>
         </div>
         <hr>
 
@@ -80,6 +78,7 @@
             <textarea rows="4" class="form-control" ng-model="modalContent.qualification[$index].description" id="qdescription{{$index + 1}}"></textarea>
             <br>
           </div>
+          <div class="col-md-4 col-sm-6 form-group mt20 pull-left"><a class="btn btn-info pull-right" ng-click="newNestedContent('Qualification')"><i class="fa fa-plus"></i> Add Qualification</a></div>
         </div>
         <hr>
         <p class="color-lead bold"> Skill Block</p>
@@ -98,6 +97,7 @@
 
             </div>
           </div>
+          <div class="col-md-4 col-sm-6 form-group mt20 pull-left"><a class="btn btn-info pull-right" ng-click="newNestedContent('Skill')"><i class="fa fa-plus"></i> Add Skill</a></div>
         </div>
         <hr>
 
@@ -108,12 +108,14 @@
             <div class="row col-md-8 mt10" ng-repeat="hobby in modalContent.hobbies track by $index">
                 <input type="text" class="form-control" ng-model="modalContent.hobbies[$index]" />
             </div>
+            <div class="pull-left row col-md-8 col-sm-8 form-group mt20"><a class="btn btn-xs btn-info pull-right" ng-click="newNestedContent('Hobby')"><i class="fa fa-plus"></i> Add Hobby</a></div>
           </div>
           <div class="col-md-6 col-sm-6 form-group">
             <p class="color-alizarin">Languages</p>
             <div class="row col-md-8 mt10" ng-repeat="language in modalContent.languages track by $index">
               <input type="text" class="form-control" ng-model="modalContent.languages[$index]" />
             </div>
+            <div class="pull-left row col-md-8 col-sm-8 form-group mt20"><a class="btn btn-xs btn-info pull-right" ng-click="newNestedContent('Language')"><i class="fa fa-plus"></i> Add Language</a></div>
           </div>
         </div>
 
@@ -123,6 +125,6 @@
 </div>
 
 <div class="modal-footer">
-  <button ng-click="save()" ng-disabled="contactform.$invalid || submitting" class="btn btn-sm btn-primary"><i class="fa fa-folder-open"></i> Save</button>
+  <button ng-click="saveEditedProfile()" ng-disabled="contactform.$invalid || submitting" class="btn btn-sm btn-primary"><i class="fa fa-folder-open"></i> Save</button>
   <button class="btn btn-sm btn-danger" ng-click="cancel()"><i class="fa fa-times"></i> Cancel</button>
 </div>

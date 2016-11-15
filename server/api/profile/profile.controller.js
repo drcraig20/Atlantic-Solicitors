@@ -46,6 +46,13 @@ exports.update = function(req, res) {
     if (err) { return handleError(res, err); }
     if(!profile) { return res.status(404).send('Not Found'); }
     var updated = _.merge(profile, req.body);
+    updated.dt_modified = Date.now();
+    updated.markModified('contact');
+    updated.markModified('experiences');
+    updated.markModified('hobbies');
+    updated.markModified('languages');
+    updated.markModified('qualification');
+    updated.markModified('skills');
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.status(200).json(profile);
