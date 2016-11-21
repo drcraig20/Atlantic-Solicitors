@@ -12,7 +12,7 @@ var ProfileSchema = new Schema({
   skills: Array,
   languages: Array,
   hobbies: Array,
-  dt_modified: Date
+  dt_modified: {type:Date, default: Date.now()}
 });
 
 module.exports = mongoose.model('Profile', ProfileSchema,'Profiles');

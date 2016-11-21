@@ -7,3 +7,4 @@ angular.module 'atlanticSolicitorsApp'
     templateUrl: 'app/article/article.html'
     controller: 'ArticleCtrl'
     guestView: true
+    title: 'Articles'

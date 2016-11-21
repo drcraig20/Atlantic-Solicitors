@@ -14,8 +14,6 @@ exports.index = function(req, res) {
 
 // Get a single services
 exports.show = function(req, res) {
-  console.log(req.params);
-
   Services.findOne({type:req.params.type}, function (err, services) {
     if(err) { return handleError(res, err); }
     if(!services) { return res.status(404).send('Not Found'); }
@@ -54,6 +52,13 @@ exports.destroy = function(req, res) {
       if(err) { return handleError(res, err); }
       return res.status(204).send('No Content');
     });
+  });
+};
+
+exports.dispose = function(req, res) {
+  Services.remove({_id: {$in:req.body}}, function (err) {
+    if(err) { return handleError(res, err); }
+    if(!err) {return res.status(200).send({message:'Data Successfully Deleted'}); }
   });
 };
 

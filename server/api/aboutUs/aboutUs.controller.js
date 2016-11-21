@@ -57,6 +57,13 @@ exports.destroy = function(req, res) {
   });
 };
 
+exports.dispose = function(req, res) {
+  AboutUs.remove({_id: {$in:req.body}}, function (err) {
+    if(err) { return handleError(res, err); }
+    if(!err) {return res.status(200).send({message:'Data Successfully Deleted'}); }
+  });
+};
+
 function handleError(res, err) {
   return res.status(500).send(err);
 }

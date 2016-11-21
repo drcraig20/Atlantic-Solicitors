@@ -7,3 +7,4 @@ angular.module 'atlanticSolicitorsApp'
     guestView: true
     templateUrl: 'app/admin/signin/signin.html'
     controller: 'SigninCtrl'
+    title: '::Admin'

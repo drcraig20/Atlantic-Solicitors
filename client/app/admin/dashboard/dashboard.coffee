@@ -7,3 +7,4 @@ angular.module 'atlanticSolicitorsApp'
     guestView: false
     templateUrl: 'app/admin/dashboard/dashboard.html'
     controller: 'DashboardCtrl'
+    title: 'Dashboard'

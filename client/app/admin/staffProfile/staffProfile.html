@@ -1,6 +1,6 @@
-<div ng-include="'components/Admin/header.html'"></div>
+<div ng-include="'components/Admin/header.html'" ng-cloak></div>
 
-<section>
+<section ng-cloak>
   <div class="mainwrapper">
 
     <div ng-include="'components/Admin/leftpanel.html'"></div>
@@ -34,7 +34,7 @@
                   <img class="img-circle" src="assets/images/avatar.jpg" alt="...">
                 </a>
                 <br>
-                <p class="bold text-center">{{profile.fullname}}</p>
+                <p style="font-size: 85%; " class="text-center">{{profile.fullname}}</p>
                 <!--<p class="text-center">{{profile.about_me}}</small></p>-->
               </div>
             </div>

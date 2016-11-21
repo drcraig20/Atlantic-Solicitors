@@ -6,4 +6,5 @@ angular.module 'atlanticSolicitorsApp'
     url: '/admin/article'
     templateUrl: 'app/admin/editArticle/editArticle.html'
     controller: 'EditArticleCtrl'
+    title: 'Articles'
 

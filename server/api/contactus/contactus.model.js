@@ -13,7 +13,7 @@ var ContactusSchema = new Schema({
   fax: Array,
   workHours: Array,
   description : String,
-  dt_modified: Date
+  dt_modified: {type:Date, default:Date.now()}
 });
 
 module.exports = mongoose.model('Contactus', ContactusSchema,'contactUs');

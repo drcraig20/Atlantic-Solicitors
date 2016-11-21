@@ -62,13 +62,22 @@ exports.update = function(req, res) {
 
 // Deletes a profile from the DB.
 exports.destroy = function(req, res) {
-  Profile.findById(req.params.id, function (err, profile) {
-    if(err) { return handleError(res, err); }
-    if(!profile) { return res.status(404).send('Not Found'); }
-    profile.remove(function(err) {
+    Profile.findById(req.params.id, function (err, profile) {
       if(err) { return handleError(res, err); }
-      return res.status(204).send('No Content');
+      if(!profile) { return res.status(404).send('Not Found'); }
+      profile.remove(function(err) {
+        if(err) { return handleError(res, err); }
+        return res.status(204).send('No Content');
+      });
     });
+};
+
+
+// Deletes a profile from the DB.
+exports.dispose = function(req, res) {
+  Profile.remove({_id: {$in:req.body}}, function (err) {
+    if(err) { return handleError(res, err); }
+    if(!err) {return res.status(200).send({message:'Data Successfully Deleted'}); }
   });
 };
 

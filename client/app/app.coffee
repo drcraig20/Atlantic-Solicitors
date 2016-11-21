@@ -32,7 +32,6 @@ angular.module 'atlanticSolicitorsApp', [
   $locationProvider.html5Mode true
 .run ($state,$auth,$rootScope,$window, NavBar) ->
   $rootScope.previousState
-
   if $rootScope.navigation? or $rootScope.navigation isnt undefined
     console.log $rootScope.navigation
   else
@@ -53,6 +52,7 @@ angular.module 'atlanticSolicitorsApp', [
     $rootScope.previousState = from.name
     document.body.scrollTop = document.documentElement.scrollTop = 0
   $rootScope.$state = $state
+
 
   $rootScope.$on '$stateChangeStart', (event, next) ->
     if not $auth.isAuthenticated() and not next.guestView then $window.location.href = '/signin'

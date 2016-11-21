@@ -57,7 +57,7 @@
     <li class="parent"  ng-class="{active:$State.name == 'editPage'}" ng-click="isPagesCollapsed = !isPagesCollapsed"><a><i class="fa fa-file-text"></i> <span>Edit Pages</span></a>
       <div uib-collapse="isPagesCollapsed">
         <ul class="children collapse navbar-collapse">
-          <li ui-sref="editPage({name:'{{page.name}}',url:'{{page.url}}'})" ui-sref-active="active" ng-repeat="page in pagesLink track by $index"><a><i class=" fa {{page.class}}"></i> <span>{{page.name}}</span></a></li>
+          <li ng-if="page.url!='main'" ui-sref="editPage({name:'{{page.name}}',url:'{{page.url}}'})" ui-sref-active="active" ng-repeat="page in pagesLink track by $index"><a><i class=" fa {{page.class}}"></i> <span>{{page.name}}</span></a></li>
       </ul>
       </div>
     </li>

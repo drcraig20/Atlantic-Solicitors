@@ -2,7 +2,7 @@
   <h4 class="modal-title">
     <button class="btn btn-xs btn-danger pull-right" ng-click="cancel()"><i class="fa fa-times"></i> </button>
   </h4>
-  <h4 class="modal-title">Editing {{obj.name}}'s Content</h4>
+  <h4 class="modal-title">{{newContact ? 'Add':'Edit'}} {{obj.name}}'s Content</h4>
 </div>
 
 <div class="modal-body">
@@ -19,21 +19,33 @@
             <input type="text" class="form-control" ng-model="contactContent.location" id="location"/>
           </div>
         </div>
+        <br>
         <div class="form-group" >
             <label for="address">Address</label>
             <textarea class="form-control" ng-model="contactContent.address" id="address"></textarea>
           </div>
+        <br>
         <div class="row">
           <div class="col-md-4 col-sm-6 form-group" ng-repeat="phone in contactContent.telephone track by $index">
             <label for="phone{{$index}}">Phone {{$index + 1}}</label>
-            <input type="tel" class="form-control" ng-model="contactContent.telephone[$index]" id="phone{{$index}}"/>
+            <div class="input-group">
+              <input type="tel" class="form-control" ng-model="contactContent.telephone[$index]" id="phone{{$index}}"/>
+              <span class="input-group-addon"><a class="fa fa-times btn btn-danger btn-xs" ng-click="deleteNested($index,'telephone')"></a></span>
+            </div>
           </div>
+          <div class="col-md-4 col-sm-6 form-group mt20"><a class="btn btn-xs btn-info pull-right" ng-click="newNestedContent('telephone')"><i class="fa fa-plus"></i> Add Contact</a></div>
+          <br>
         </div>
         <div class="row">
           <div class="col-md-4 col-sm-6 form-group" ng-repeat="fax in contactContent.fax track by $index">
             <label for="fax{{$index}}">Fax {{$index + 1}}</label>
-            <input type="tel" class="form-control" ng-model="contactContent.fax[$index]" id="fax{{$index}}"/>
+            <div class="input-group">
+              <input type="tel" class="form-control" ng-model="contactContent.fax[$index]" id="fax{{$index}}"/>
+              <span class="input-group-addon"><a class="fa fa-times btn btn-danger btn-xs" ng-click="deleteNested($index,'fax')"></a></span>
+            </div>
           </div>
+          <div class="col-md-4 col-sm-6 form-group mt20"><a class="btn btn-xs btn-info pull-right" ng-click="newNestedContent('fax')"><i class="fa fa-plus"></i> Add Fax</a></div>
+          <br>
         </div>
         <div class="form-group">
           <label for="geoAddress">Geo Location</label>
@@ -44,13 +56,18 @@
           <label for="description">Description</label>
           <textarea class="form-control" ng-model="contactContent.description" id="description"></textarea>
         </div>
+        <br>
         <div class="row">
           <p style="padding-left: 15px" class="bold"> Business Hours</p>
           <hr>
           <div class="col-md-4 col-sm-6 form-group" ng-repeat="hr in contactContent.workHours track by $index">
             <label for="day{{$index}}">{{hr.day}}</label>
-            <input type="datetime" class="form-control" ng-model="contactContent.workHours[$index].hour" id="day{{$index}}"/>
-          </div>
+            <div class="input-group">
+              <input type="datetime" class="form-control" ng-model="contactContent.workHours[$index].hour" id="day{{$index}}"/>
+              <span class="input-group-addon"><a class="fa fa-times btn btn-danger btn-xs" ng-click="deleteNested($index,'workHours')"></a></span>
+            </div>
+            </div>
+          <div class="col-md-4 col-sm-6 form-group mt20"><a class="btn btn-xs btn-info pull-right" ng-click="newNestedContent('Business Hour')"><i class="fa fa-plus"></i> Add Business hour</a></div>
         </div>
       </form>
     </div>
@@ -58,6 +75,8 @@
 </div>
 
 <div class="modal-footer">
-  <button ng-click="save()" ng-disabled="contactform.$invalid || submitting" class="btn btn-sm btn-primary"><i class="fa fa-folder-open"></i> Save</button>
+  <button ng-if="newContact == false" ng-click="save()" ng-disabled="contactform.$invalid || submitting" class="btn btn-sm btn-primary"><i class="fa fa-folder-open"></i> Save</button>
+  <button ng-if="newContact == true" ng-click="saveNew()" ng-disabled="contactform.$invalid || submitting" class="btn btn-sm btn-primary"><i class="fa fa-folder-open"></i> Save</button>
+
   <button class="btn btn-sm btn-danger" ng-click="cancel()"><i class="fa fa-times"></i> Cancel</button>
 </div>

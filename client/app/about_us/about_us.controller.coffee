@@ -8,6 +8,15 @@ angular.module 'atlanticSolicitorsApp'
   Profile.getProfiles {id:true},(results)->
     $scope.profiles = results
 
+  # get 200 characters
+  $scope.getDescription = (msg)->
+    if msg? and msg is undefined
+      return ''
+    if msg.length > 80
+      return msg = msg.substring(0,80)+" ..."
+    else
+      return msg
+
 
 
 

@@ -8,3 +8,6 @@ angular.module 'atlanticSolicitorsApp'
       method: 'PUT'
       params: id: '@id'
       url: 'api/aboutUs/:id'
+    deleteMultiple:
+      method: 'POST'
+      url: 'api/aboutUs/dispose'
