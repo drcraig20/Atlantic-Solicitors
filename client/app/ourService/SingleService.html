@@ -1,0 +1,45 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<!-- Breadcrumbs - START -->
+<div class="breadcrumbs-container">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a ui-sref="main">Home</a></li>
+      <li> <a style="cursor: pointer" ng-click="back()" ng-class="{active:CategoryView}">Service</a></li>
+      <li ng-if="!CategoryView" class="active">{{service.name}}</li>
+    </ol>
+  </div>
+</div>
+<!-- Breadcrumbs - END -->
+
+<!-- Component: servicesdetails.html - START -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="list-group bright background-clouds color-text">
+          <div class="list-group-item"><h3>{{service.type}}</h3></div>
+          <a ng-if="service.type != 'links'" style="cursor: pointer" ng-click="setText($index)" ng-class="{active:inLine.id == $index}"  class="list-group-item" ng-repeat="s in service.serviceContent.content track by $index">
+            {{s.header}}
+          </a>
+          <a ng-if="service.serviceContent.type == 'links'" style="cursor: pointer"  class="list-group-item active" >
+            {{service.name}}
+          </a>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div ng-if="service.serviceContent.type != 'links'" class="content">
+          <h1><span>{{inLine.header}}</span></h1>
+          <p ng-bind-html="inLine.details"></p>
+        </div>
+        <div ng-if="service.serviceContent.type == 'links'" class="content">
+          <h1><span>{{service.name}}</span></h1>
+          <a ng-repeat="li in service.serviceContent.content" href="http://{{li}}" ><i class="fa fa-link"></i>  {{li}}<br><br></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Component: servicesdetails.html - END -->
+
+<div ng-include="'components/footer/footer.html'"></div>

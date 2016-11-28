@@ -13,12 +13,10 @@
           <p class="testimonial">{{t.testimony}}</p>
           <p class="author">{{t.author}}</p>
       </div>
-
-
       </div>
       <div class="col-md-5">
         <h3>Contact us</h3>
-        <form class="form-horizontal" role="form" ng-submit="contactForm.$valid && contactEmail()" name="contactForm">
+        <form class="form-horizontal" role="form" ng-submit="contactForm.$valid && contactEmail(contactForm)" name="contactForm">
           <div class="form-group">
             <label for="inputName1" class="col-lg-3 control-label">Name</label>
             <div class="col-lg-9">

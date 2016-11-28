@@ -23,6 +23,7 @@
     "moment": "^2.15.2",
     "mongoose": "^4.6.5",
     "morgan": "~1.0.0",
+    "multer": "^1.2.0",
     "ng-fx": "^2.0.4",
     "serve-favicon": "~2.0.1",
     "throng": "^4.0.0"

@@ -7,6 +7,7 @@ angular.module 'atlanticSolicitorsApp'
   modal = null
   contentModal = null
 
+
   $scope.checkModel = {}
   $scope.ids = []
 
@@ -196,3 +197,43 @@ angular.module 'atlanticSolicitorsApp'
     _.remove array, (a)->
       a == obj
 
+# edit and selecr content of a service
+  $scope.openServiceContent =(name)->
+    contentModal = $uibModal.open
+      templateUrl: 'app/admin/editPage/ServiceContent.html'
+      backdrop: 'static'
+      controller: 'NestedServiceCtrl'
+      size: 'md'
+      resolve:
+        SContent: -> $scope.Content[name]
+
+
+.controller 'NestedServiceCtrl', ($scope, $stateParams,ServiceContent,$timeout,toastr,$uibModalInstance,SContent) ->
+  $scope.ServiceContent = SContent
+  $scope.ids = []
+  $scope.checkModel = {}
+  #  perform insert and remove operation for delete checkbox
+  $scope.pushAndPop = (id)->
+    if id not in $scope.ids
+      $scope.ids.push id
+    else if id in $scope.ids
+      _.remove $scope.ids, (a)->
+        a == id
+
+  $scope.delete =()->
+    _.forEach($scope.ids,(id)->
+      obj = $scope.ServiceContent.serviceContent.content[id]
+      _.remove $scope.ServiceContent.serviceContent.content, (a)->
+        a == obj
+    )
+    console.log $scope.ServiceContent
+    ServiceContent.update {id:$scope.ServiceContent.serviceContent._id}, $scope.ServiceContent.serviceContent,(response)->
+      if response
+        toastr.success 'Data Successfully Deleted'
+        $scope.cancel()
+    ,(e)->
+      toastr.error 'Something went wrong, data could not be deleted'
+
+  $scope.cancel = ()->
+    $scope.submitting = false
+    $uibModalInstance.dismiss('cancel')

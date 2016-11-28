@@ -62,7 +62,7 @@
   margin: 0;
 }
 .nopadding {
-  padding: 0;
+  padding: 0!important;
 }
 .padding10 {
   padding: 10px;

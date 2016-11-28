@@ -5,16 +5,16 @@
     <div ng-include="'components/navbar/navbar.html'"></div>
 
     <!-- Responsive slider - START -->
-    <div class="responsive-slider-parallax" >
+    <div class="responsive-slider-parallax mt20" >
       <div class="slides-container" ng-style="{'background-image' : 'url(' + sliderImage + ')'}" data-group="slides" >
         <ul>
           <li ng-repeat="c in content.Highlight track by $index">
             <div class="slide-body"  data-group="slide">
               <div class="container">
                 <div class="wrapper">
-                  <div class="caption header" data-animate="{{anime}}" data-delay="0" data-length="300">
+                  <div class="caption header" data-animate="slideAppearLeftToRight" data-delay="0" data-length="300">
                     <h2>{{c.header}}</h2>
-                    <p class="sub text-left" data-animate="{{anime}}" data-delay="{{delay * ($index+ 1)}}" data-length="300" ng-repeat="cont in c.content"><span>{{cont}}</span></p>
+                    <p class="sub text-left" data-animate="slideAppearRightToLeft" data-delay="{{delay * ($index+ 1)}}" data-length="300" ng-repeat="cont in c.content"><span>{{cont}}</span></p>
                   </div>
                 </div>
               </div>
@@ -33,34 +33,57 @@
     <!-- Responsive slider - END -->
     <!-- Component: index/info-thumbnails.html - START -->
     <section class="background-white color-black">
-      <div class="container" ng-if="InfoTab">
+      <div class="container">
         <div class="row">
-          <div ng-repeat="news in InfoTab.Highlight track by $index" class="col-sm-4 col-md-4">
-            <a class="info-thumbnail-link" ui-sref="article({id:'{{news.article}}'})">
+          <div class="col-sm-4 col-md-4">
+            <h3 class="row center-block"><span class=" pull-left fa fa-newspaper-o color-lead-darker"></span><div class=" fancy background-lead-darker bold color-white pull-left">News & Publications</div></h3>
+            <div ng-repeat="news in InfoTab.Highlight track by $index" >
+              <ul>
+                <li  class="cursor" ui-sref="article({id:'{{news.article}}'})">
+                    <h5 class="color-lead-dark"><span class="color-lead "></span>{{news.header}}</h5>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+          <div class="col-sm-4 col-md-4">
+            <h3 class="row center-block"><span class=" pull-left fa fa-list color-lead-darker"></span><div class=" fancy background-lead-darker bold color-white pull-left">Our Services</div></h3>
+            <div ng-repeat="service in services track by $index" >
+              <ul>
+                <li ng-hide="service.type" class="cursor" >
+                  <a ui-sref="our_services({name:'{{service._id}}'})" style=" border-bottom: 2px solid blue"><span class="color-lead"></span>{{service.name}}</a>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+          <div  class="col-sm-4 col-md-4">
+            <a class="info-thumbnail-link" ui-sref="our_firm">
               <div class="thumbnail info-thumbnail">
                 <div class="caption">
-                  <h3><span class="fa fa-flag color-lead"></span>{{news.header}}</h3>
-                  <p class="description">{{news.description}}</p>    <small class="btn btn-xs btn-info pull-right">Read More...</small>
+                  <h3 class="row center-block"><span class=" pull-left fa fa-users color-lead-darker"></span><div class=" fancy background-lead-darker bold color-white pull-left">{{ourfirm.link}}</div></h3>
+                  <p class="description color-lead" ng-bind-html="ourfirm.desc"></p> <small class="btn btn-xs btn-info pull-right">Find Out More...</small>
                 </div>
               </div>
             </a>
           </div>
-        </div>      </div>
+        </div>
+      </div>
     </section>
     <!-- Component: index/info-thumbnails.html - END -->
 
     <!-- Component: index/info-row.html - START -->
-    <section class="background-belize-hole color-white" data-control="class" data-class-prefix="">
+    <section class="background-belize-hole" data-control="class" data-class-prefix="">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="info-row">
-              <div class="content info">
-                <h1 class="info-head"><span>Info row</span></h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet, lectus vitae hendrerit consequat, tellus sapien tincidunt massa, sit amet convallis libero massa at magna. Aliquam ullamcorper metus eget ultricies auctor. Nulla et iaculis lectus, nec pharetra libero. Vivamus eget urna risus. Nam gravida feugiat consequat. In a risus sit amet dui venenatis sodales.</p>
+              <div class="content info ">
+                <h1 class="info-head"><span class="color-white">{{about.mode}}</span></h1>
+                <p class="color-white" ng-bind-html="about.content"></p>
               </div>
               <div class="content link">
-                <a href="index.html#" class="btn btn-lead btn-lg pull-right">Read more</a>
+                <a ui-sref="about_us" class="btn btn-lead btn-lg pull-right">Read more</a>
               </div>
             </div>
           </div>
@@ -69,66 +92,24 @@
     <!-- Component: index/info-row.html - END -->
 
     <!-- Component: index/info-thumbnails-alt1.html - START -->
-    <section class="background-white color-black" data-control="class" data-class-prefix="">
+    <section class="background-white color-lead-darker" data-control="class" data-class-prefix="">
       <div class="container">
-        <h1 class="text-center x-large">Information thumbnails</h1>
-        <p class="lead text-center">Information thumbnails are the workhorse of entire template. You can use them to display any type of content and there are many ways for you to play with them: you can change the colours, add and remove elements and change their order, add icons...</p>
+        <h1 class="text-center x-large" style="font-weight: 400">Our Practice Area</h1>
         <div class="row">
-          <div class="col-sm-4 col-md-4">
+          <div ng-if="!s.type && s.name != 'Useful Links'" class="col-sm-2 col-md-2" ng-repeat="s in services">
+
             <div class="info-thumbnail-link">
-              <div class="thumbnail info-thumbnail with-icon background-clouds color-text">
-                <img src="../../assets/images/img1.jpg" alt="...">
-                <div class="icon">
-                  <span class="fa-stack">
-                    <i class="fa fa-circle fa-stack-2x color-lead"></i>
-                    <i class="fa fa-flag fa-stack-1x color-white"></i>
-                  </span>
-                </div>
-                <div class="caption bordered background-white">
-                  <h3>Font awesome</h3>
-                  <p class="description">NEAT template supports as much modern technologies and trends as possible. One of them is font awesome icons. This great set of fonts is available anywhere you want on your page. Some of NEAT ui elements are also using font awesome like this info thumbnails.</p>
-                  <p class="buttons"><a href="index.html#" class="btn btn-lead">Read more</a></p>
+              <div class="color-lead bold">{{s.name}}</div>
+              <div style="margin-top: 0px!important;" class="thumbnail info-thumbnail with-icon background-clouds color-text">
+                <img src="{{s.imageUrl}}" alt="...">
+                <div class="caption bordered background-white nopadding">
+                  <p class="buttons"><a ui-sref="our_services({name:'{{s._id}}'})" class="btn btn-lead">Find Out More</a></p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-4 col-md-4">
-            <div class="info-thumbnail-link">
-              <div class="thumbnail info-thumbnail with-icon background-clouds color-text">
-                <img src="../../assets/images/img2.jpg" alt="...">
-                <div class="icon">
-                  <span class="fa-stack">
-                    <i class="fa fa-circle fa-stack-2x color-lead"></i>
-                    <i class="fa fa-inbox fa-stack-1x color-white"></i>
-                  </span>
-                </div>
-                <div class="caption bordered background-white">
-                  <h3>Color classes</h3>
-                  <p class="description">You can use template elements as you have them in the examples but if you feel creative you can compose our own color combinations in ui elements. You have beautiful set of flat ui colors to work with just use <i>color-{color-name}</i> or <i>background-{color-name}</i> to change text color or background of any element on the page.</p>
-                  <p class="buttons"><a href="index.html#" class="btn btn-lead">Read more</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4 col-md-4">
-            <div class="info-thumbnail-link">
-              <div class="thumbnail info-thumbnail with-icon background-clouds color-text">
-                <img src="../../assets/images/img3.jpg" alt="...">
-                <div class="icon">
-                  <span class="fa-stack">
-                    <i class="fa fa-circle fa-stack-2x color-alizarin"></i>
-                    <i class="fa fa-eye fa-stack-1x color-white"></i>
-                  </span>
-                </div>
-                <div class="caption bordered background-white">
-                  <h3>Some title</h3>
-                  <p class="description color-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis velit nibh, sit amet commodo sapien tristique at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras bibendum erat at ultricies rhoncus.</p>
-                  <p class="buttons"><a href="index.html#" class="btn btn-lead">Read more</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>      </div>
+        </div>
+      </div>
     </section>
     <!-- Component: index/info-thumbnails-alt1.html - END -->
 

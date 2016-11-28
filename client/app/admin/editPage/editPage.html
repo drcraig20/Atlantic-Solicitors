@@ -128,19 +128,20 @@
                   </div>
                   <div class="panel-body">
                     <ul style="list-style-type:none!important;" class="media-list">
-                      <li  class="media" ng-repeat="data in Content track by data._id">
+                      <li  class="media" ng-repeat="data in Content track by $index">
                         <div ng-if="obj.url == 'our_firm' || obj.url == 'about_us'" class="ckbox ckbox-primary pull-left">
                           <input type="checkbox" id="1{{data._id}}" ng-model="checkModel[data._id]" ng-change="pushAndPop(data._id)">
                           <label for="1{{data._id}}"></label>
                         </div>
                         <div ng-if="obj.url == 'our_firm' || obj.url == 'about_us'" class="media-body" ng-bind-html="data.link"></div>
 
-                        <div ng-hide="data.type" ng-if="obj.url == 'our_services'" class="ckbox ckbox-primary pull-left">
-                          <input type="checkbox" id="2{{data._id}}" ng-model="checkModel[data._id]" ng-change="pushAndPop(data._id)">
-                          <label for="2{{data._id}}"></label>
-                        </div>
-                        <div ng-hide="data.type" ng-if="obj.url == 'our_services'" class="media-body" ng-bind-html="data.name"></div>
+                        <div ng-hide="data.type" class="cursor" ng-if="obj.url == 'our_services'" ng-click="openServiceContent($index)">
+                          <div style="color:dodgerblue" class="pull-left">
+                            <i class=" fa fa-edit"></i>
+                          </div>
 
+                          <div ng-hide="data.type" ng-if="obj.url == 'our_services'" class="media-body" ng-bind-html="data.name"></div>
+                        </div>
 
                         <div ng-if="obj.url == 'contact_us'" class="ckbox ckbox-primary pull-left">
                           <input type="checkbox" id="3{{data._id}}" ng-model="checkModel[data._id]" ng-change="pushAndPop(data._id)">

@@ -31,7 +31,7 @@ exports.create = function(req, res) {
 // Updates an existing serviceContent in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
-  ServiceContent.findById(req.params.id, function (err, serviceContent) {
+  ServiceContent.findById(req.params.id).select('type dt_modified').exec( function (err, serviceContent) {
     if (err) { return handleError(res, err); }
     if(!serviceContent) { return res.status(404).send('Not Found'); }
     var updated = _.merge(serviceContent, req.body);

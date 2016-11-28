@@ -6,10 +6,19 @@ var Services = require('./services.model');
 
 // Get list of servicess
 exports.index = function(req, res) {
-  Services.find({}).populate('serviceContent').exec(function (err, servicess) {
-    if(err) { return handleError(res, err); }
-    return res.status(200).json(Muted.List(servicess));
-  });
+  if(req.query.homepage){
+    Services.find({}).exec(function (err, servicess) {
+      if(err) { return handleError(res, err); }
+      return res.status(200).json(Muted.List(servicess));
+    });
+  }
+  else{
+    Services.find({}).populate('serviceContent').exec(function (err, servicess) {
+      if(err) { return handleError(res, err); }
+      return res.status(200).json(Muted.List(servicess));
+    });
+  }
+
 };
 
 // Get a single services

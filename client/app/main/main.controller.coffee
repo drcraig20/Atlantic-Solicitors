@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module 'atlanticSolicitorsApp'
-.controller 'MainCtrl', ($scope, Solicitor, $timeout) ->
+.controller 'MainCtrl', ($scope, Solicitor, $timeout, OurFirm, OurServices) ->
   animation = [
     'slideAppearRightToLeft',
     'slideAppearLeftToRight',
@@ -13,7 +13,7 @@ angular.module 'atlanticSolicitorsApp'
 
   $('.responsive-slider-parallax').responsiveSlider({
     autoplay: true,
-    interval: 5000,
+    interval: 10000,
     transitionTime: 1000,
     parallax: false
   })
@@ -22,6 +22,10 @@ angular.module 'atlanticSolicitorsApp'
   Solicitor.getDetails type:'SliderImage', (Images)->
     if Images.images.length
       $scope.Images = Images
+
+  Solicitor.getDetails type:'About Us', (About)->
+    if About
+      $scope.about = About
 
   Solicitor.getDetails type:'BannerContent', (Content)->
     if Content
@@ -32,7 +36,6 @@ angular.module 'atlanticSolicitorsApp'
   Solicitor.getDetails type:'InfoTab', (News)->
     if News
       $scope.InfoTab = News
-      console.log News
 
 
   ImagesReload = () ->
@@ -49,6 +52,13 @@ angular.module 'atlanticSolicitorsApp'
     ImagesReload()
   ,1000
 
+  OurFirm.query (response) ->
+    if response
+      $scope.ourfirm = response[0]
+
+  OurServices.query {homepage:true}, (response)->
+    if response
+      $scope.services = response
 
 
 

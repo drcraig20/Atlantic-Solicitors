@@ -52,28 +52,12 @@
         <!-- CONTACT -->
         <div class="box clearfix">
           <h2>Contact</h2>
-          <div class="contact-item">
-            <div class="icon pull-left text-center"><span class="fa fa-phone fa-fw"></span></div>
-            <div class="title only pull-right">500 345 242</div>
-          </div>
-          <div class="contact-item">
-            <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
-            <div class="title only pull-right">office@kamsolutions.pl</div>
-          </div>
-          <div class="contact-item">
-            <div class="icon pull-left text-center"><span class="fa fa-twitter fa-fw"></span></div>
-            <div class="title pull-right">Twitter</div>
-            <div class="description pull-right">https://twitter.com/WordPress</div>
-          </div>
-          <div class="contact-item">
-            <div class="icon pull-left text-center"><span class="fa fa-facebook fa-fw"></span></div>
-            <div class="title pull-right">Facebook</div>
-            <div class="description pull-right">https://www.facebook.com/facebook</div>
-          </div>
-          <div class="contact-item">
-            <div class="icon pull-left text-center"><span class="fa fa-skype fa-fw"></span></div>
-            <div class="title pull-right">Skype</div>
-            <div class="description pull-right">kamsolutions.pl</div>
+          <div class="contact-item" ng-repeat="c in profile.contact">
+            <div class="icon pull-left text-center"><span class="fa fa-fw" ng-class="{'fa-phone':c.type.toLowerCase()=='phone','fa-envelope':c.type.toLowerCase()=='email','fa-twitter':c.type.toLowerCase()=='twitter','fa-facebook':c.type.toLowerCase()=='facebook','fa-skype':c.type.toLowerCase()=='skype'}"></span></div>
+            <div ng-if="c.type.toLowerCase()=='twitter'" class="title pull-right">Twitter</div>
+            <div ng-if="c.type.toLowerCase()=='skype'" class="title pull-right">Skype</div>
+            <div ng-if="c.type.toLowerCase()=='facebook'" class="title pull-right">Facebook</div>
+            <div class="description pull-right" ng-bind-html="c.content"></div>
           </div>
         </div>
         <!-- SKILLS -->

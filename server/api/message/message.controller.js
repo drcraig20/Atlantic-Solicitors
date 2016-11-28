@@ -32,6 +32,7 @@ exports.show = function(req, res) {
 
 // Creates a new message in the DB.
 exports.create = function(req, res) {
+  console.log(req.body);
   Message.create(req.body, function(err, message) {
     if(err) { return handleError(res, err); }
     return res.status(201).json(message);

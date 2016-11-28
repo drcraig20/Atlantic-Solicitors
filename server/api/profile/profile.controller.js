@@ -7,7 +7,7 @@ var Muted = require('immutable');
 // Get list of profiles
 exports.index = function(req, res) {
   if (req.query.id){
-    Profile.find({}, 'fullname about_me',function (err, profiles) {
+    Profile.find({}).select('fullname about_me').limit(6).exec(function (err, profiles) {
       if(err) { return handleError(res, err); }
       return res.status(200).json(Muted.List(profiles));
     });
@@ -23,7 +23,6 @@ exports.index = function(req, res) {
 
 // Get a single profile
 exports.show = function(req, res) {
-  console.log(req.params);
   Profile.findById(req.params.id, function (err, profile) {
     if(err) { return handleError(res, err); }
     if(!profile) { return res.status(404).send('Not Found'); }

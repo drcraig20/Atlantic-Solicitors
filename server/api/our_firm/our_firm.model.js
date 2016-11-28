@@ -6,7 +6,8 @@ var mongoose = require('mongoose'),
 var OurFirmSchema = new Schema({
   link: String,
   content: String,
-  dt_modified: Date
+  dt_modified: Date,
+  desc: String
 });
 
 module.exports = mongoose.model('OurFirm', OurFirmSchema, 'ourFirm');

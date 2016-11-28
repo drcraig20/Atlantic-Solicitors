@@ -1,0 +1,31 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    <button class="btn btn-xs btn-danger pull-right" ng-click="cancel()"><i class="fa fa-times"></i> </button>
+  </h4>
+  <h4 class="modal-title">Delete {{ServiceContent.name}}</h4>
+</div>
+
+<div class="modal-body" style="height: 500px; overflow-y:auto">
+  <div>
+    <div>
+      <div class="row " >
+        <div class="form-group col-md- col-md-offset-2">
+          <ul style="list-style-type:none!important;" class="media-list">
+            <li  class="media" ng-repeat="data in ServiceContent.serviceContent.content track by $index">
+              <div class="ckbox ckbox-primary pull-left">
+                <input type="checkbox" id="{{$index}}" ng-model="checkModel[$index]" ng-change="pushAndPop($index)">
+                <label for="{{$index}}"></label>
+              </div>
+              <div class="media-body" ng-bind-html="data.header"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-sm btn-primary" ng-click="delete()" ng-disabled="submitting"><i class="fa fa-folder-open"></i>Delete {{ServiceContent.name}} Content</button>
+  <button class="btn btn-sm btn-danger" ng-click="cancel()"><i class="fa fa-times"></i> Cancel</button>
+</div>

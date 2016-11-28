@@ -10,10 +10,14 @@ angular.module 'atlanticSolicitorsApp'
     $scope.testimonials = response
 
 
-  $rootScope.contactForm = {}
-
-  $rootScope.contactEmail = ()->
-    Message.save $rootScope.contactForm, (response)->
+  $rootScope.contactEmail = (contactForm)->
+    content={
+      content: contactForm.content,
+      name:contactForm.name,
+      email:contactForm.email
+    }
+    console.log content
+    Message.save content, (response)->
       if response._id
         $scope.submitting = true
         toastr.success 'Message sent successfully'
