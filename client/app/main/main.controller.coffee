@@ -61,5 +61,3 @@ angular.module 'atlanticSolicitorsApp'
       $scope.services = response
 
 
-
-

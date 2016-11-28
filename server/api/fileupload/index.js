@@ -5,6 +5,8 @@ var controller = require('./fileUpload');
 
 var router = express.Router();
 
-router.post('/', controller.uploads);
+router.get('/upload', controller.get);
+router.post('/upload', controller.post);
+router.delete('/assets/images/:name', controller.delete);
 
 module.exports = router;

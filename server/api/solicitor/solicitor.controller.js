@@ -5,6 +5,7 @@ var Muted = require('immutable');
 var Solicitor = require('./solicitor.model');
 var Utils = require('../../components/tools/Utils');
 
+
 // Get list of solicitors
 exports.index = function(req, res) {
   Solicitor.find(function (err, solicitors) {
@@ -19,7 +20,6 @@ exports.getDetails = function(req, res) {
   var condition = {
     mode:req.query.type
   };
-
   Solicitor.findOne(condition,function (err, details) {
     if(err) { return handleError(res, err); }
     if(!details) { return res.status(404).send('Not Found'); }

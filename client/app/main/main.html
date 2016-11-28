@@ -5,30 +5,39 @@
     <div ng-include="'components/navbar/navbar.html'"></div>
 
     <!-- Responsive slider - START -->
-    <div class="responsive-slider-parallax mt20" >
-      <div class="slides-container" ng-style="{'background-image' : 'url(' + sliderImage + ')'}" data-group="slides" >
-        <ul>
-          <li ng-repeat="c in content.Highlight track by $index">
-            <div class="slide-body"  data-group="slide">
-              <div class="container">
-                <div class="wrapper">
-                  <div class="caption header" data-animate="slideAppearLeftToRight" data-delay="0" data-length="300">
-                    <h2>{{c.header}}</h2>
-                    <p class="sub text-left" data-animate="slideAppearRightToLeft" data-delay="{{delay * ($index+ 1)}}" data-length="300" ng-repeat="cont in c.content"><span>{{cont}}</span></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+    <div>
+      <div uib-carousel active="active" interval="10000">
+        <div style="height: 700px" uib-slide ng-repeat="slide in content.Highlight track by $index" index="$index">
+          <img ng-src="{{slide.image}}" style='max-height: 100%;'>
+          <div class="carousel-caption">
+            <h4>{{slide.header}}</h4>
+            <p ng-bind-html="slide.content"></p>
+          </div>
+        </div>
       </div>
-      <a class="slider-control left hidden-xs hidden-sm" href="index.html#" data-jump="prev"><i class="fa fa-angle-left"></i></a>
-      <a class="slider-control right hidden-xs hidden-sm" href="index.html#" data-jump="next"><i class="fa fa-angle-right"></i></a>
-      <div class="pages-wrapper backgrsound-black">
-        <ol class="pages">
-          <li ng-repeat="num in content.Highlight track by $index"><a data-jump-to="{{$index + 1}}">{{$index + 1}}</a></li>
-        </ol>
-      </div>
+      <!--<div class="slides-container" ng-style="{'background-image' : 'url(' + sliderImage + ')'}" data-group="slides" >-->
+        <!--<ul>-->
+          <!--<li ng-repeat="c in content.Highlight track by $index">-->
+            <!--<div class="slide-body"  data-group="slide">-->
+              <!--<div class="container">-->
+                <!--<div class="wrapper">-->
+                  <!--<div class="caption header" data-animate="slideAppearLeftToRight" data-delay="0" data-length="300">-->
+                    <!--<h2>{{c.header}}</h2>-->
+                    <!--<p class="sub text-left" data-animate="slideAppearRightToLeft" data-delay="{{delay * ($index+ 1)}}" data-length="300" ng-repeat="cont in c.content"><span>{{cont}}</span></p>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+      <!--<a class="slider-control left hidden-xs hidden-sm" href="index.html#" data-jump="prev"><i class="fa fa-angle-left"></i></a>-->
+      <!--<a class="slider-control right hidden-xs hidden-sm" href="index.html#" data-jump="next"><i class="fa fa-angle-right"></i></a>-->
+      <!--<div class="pages-wrapper backgrsound-black">-->
+        <!--<ol class="pages">-->
+          <!--<li ng-repeat="num in content.Highlight track by $index"><a data-jump-to="{{$index + 1}}">{{$index + 1}}</a></li>-->
+        <!--</ol>-->
+      <!--</div>-->
     </div>
     <!-- Responsive slider - END -->
     <!-- Component: index/info-thumbnails.html - START -->

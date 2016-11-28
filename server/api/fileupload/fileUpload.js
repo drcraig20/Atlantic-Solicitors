@@ -1,30 +1,75 @@
-/**
- * Created by DrCraig LawPav on 11/22/2016.
- */
+'use strict';
 var express = require('express');
-var app  = express();
-var multer = require('multer');
+var fs = require('fs');
+var path = require('path');
+var config = require('../../config/environment');
 
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null,'./assets/images/')
+var app = express();
+var dir;
+if(config.env == 'development'){
+  dir = path.join(config.root, 'client','assets');
+}
+if(config.env == 'production'){
+  dir = path.join(config.root, 'public','assets');
+}
+
+// config the uploader
+var options = {
+  tmpDir: path.join(dir,'tmp'),
+  uploadDir : path.join(dir,'images'),
+  uploadUrl: '/assets/images',
+  // useSSL: true,
+  maxPostSize: 11000000, // 11 MB
+  minFileSize:  1,
+  maxFileSize:  11000000, // 10 MB
+  acceptFileTypes:  /.+/i,
+  // Files not matched by this regular expression force a download dialog,
+  // to prevent executing any scripts in the context of the service domain:
+  inlineFileTypes:  /\.(gif|jpe?g|png)/i,
+  imageTypes:  /\.(gif|jpe?g|png)/i,
+  copyImgAsThumb : true, // required
+  imageVersions :{
+    maxWidth : 200,
+    maxHeight : 200
   },
-  filename: function (req, file, cb) {
-    var datetimestamp = Date.now();
-    cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1])
+  accessControl: {
+    allowOrigin: '*',
+    allowMethods: 'OPTIONS, HEAD, GET, POST, PUT, DELETE',
+    allowHeaders: 'Content-Type, Content-Range, Content-Disposition'
+  },
+  storage : {
+    type : 'local'
   }
-});
-
-exports.uploads = function(req, res) {
-  upload(req,res,function(err){
-    if(err) { return handleError(res, err); }
-    return res.status(200).json('Upload Successful');
-  })
 };
+var uploader = require('blueimp-file-upload-expressjs')(options);
+console.log(options);
+  exports.get = function(req, res) {
+    uploader.get(req, res, function (err,obj) {
+    if(!err){
+      res.send(JSON.stringify(obj));
+    }
+  });
+  };
 
-var upload = multer({ //multer settings
-  storage: storage
-}).single('file');
+
+  exports.post = function(req, res) {
+    uploader.post(req, res, function (error,obj, redirect) {
+      if(!error)
+      {
+        res.send(JSON.stringify(obj));
+      }
+    });
+  };
+
+
+  exports.delete = function(req, res) {
+    uploader.delete(req, res, function (err,obj) {
+      if (err) {res.Json({error:err});}
+      if (!err){res.send(JSON.stringify(obj));}
+    });
+  };
+
+
 
 
 function handleError(res, err) {
