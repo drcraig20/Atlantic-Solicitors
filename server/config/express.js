@@ -14,7 +14,6 @@ var cookieParser = require('cookie-parser');
 var errorHandler = require('errorhandler');
 var path = require('path');
 var config = require('./environment');
-var multer = require('multer');
 
 module.exports = function(app) {
   var env = app.get('env');

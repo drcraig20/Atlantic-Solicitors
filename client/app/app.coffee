@@ -6,6 +6,7 @@ angular.module 'atlanticSolicitorsApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
+  'ngFileUpload',
   'ngMap',
   'toastr',
   'ngFx',

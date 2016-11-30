@@ -7,11 +7,12 @@
     <!-- Responsive slider - START -->
     <div>
       <div uib-carousel active="active" interval="10000">
-        <div style="height: 700px" uib-slide ng-repeat="slide in content.Highlight track by $index" index="$index">
-          <img ng-src="{{slide.image}}" style='max-height: 100%;'>
-          <div class="carousel-caption">
-            <h4>{{slide.header}}</h4>
-            <p ng-bind-html="slide.content"></p>
+        <div class="carousel-height" uib-slide ng-repeat="slide in content.Highlight track by $index" index="$index">
+          <img ng-src="{{slide.image}}">
+          <div class="carousel-caption background-div animated zoomIn">
+            <h1 class="animated fadeInLeft" style="text-align: left; margin-top: 3px!important; padding-left: 20px; font-family: Arial!important">{{slide.header}}</h1>
+            <p class="col-md-10 col-md-offset-1 pull-left animated fadeInRightBig" style="text-align:left" ng-bind-html="slide.content"></p>
+            <a class="btn btn-sm btn-primary pull-right mr10" style="padding-right: 10px;" ui-sref="our_services({name:'{{slide._id}}'})">Find Out More</a>
           </div>
         </div>
       </div>

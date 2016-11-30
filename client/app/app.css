@@ -42,7 +42,17 @@ html *
   padding: 0.2em 0;
 }
 
+.carousel-height{
+  height:700px;
+}
 
+.background-div{
+  right: 70%;
+  width:30%;
+  left: 5%;
+  border-radius: 5px;
+  background: rgba(33, 125, 187, 0.5);
+}
 
 .responsive-slider-parallax {
   max-width: 100%;
@@ -143,6 +153,19 @@ html *
 }
 
 @media (max-width:480px) {
+
+  .carousel-height{
+    height:400px;
+  }
+
+  .background-div{
+    right: 70%;
+    width:90%;
+    left: 5%;
+    border-radius: 5px;
+    background: rgba(33, 125, 187, 0.5);
+  }
+
   .responsive-slider-parallax .slides-container ul li .slide-body .caption.header h2 {
     font-size: 20px
   }
@@ -168,6 +191,17 @@ html *
 }
 
 @media (min-width:768px) and (max-width:979px) {
+  .carousel-height{
+    height:500px;
+  }
+
+  .background-div{
+    right: 70%;
+    width:50%;
+    left: 5%;
+    border-radius: 5px;
+    background: rgba(33, 125, 187, 0.5);
+  }
   .responsive-slider-parallax .slides-container ul li .slide-body .caption .sub {
     font-size: 18px;
     line-height: 24px;
@@ -176,7 +210,41 @@ html *
   }
 }
 
+@media (min-width:979px) {
+  .carousel-height{
+    height:500px;
+  }
+
+  .background-div{
+    right: 70%;
+    width:50%;
+    left: 5%;
+    border-radius: 5px;
+    background: rgba(33, 125, 187, 0.5);
+  }
+  .responsive-slider-parallax .slides-container ul li .slide-body .caption .sub {
+    font-size: 18px;
+    line-height: 24px;
+    bottom: 0;
+    right: -10px
+  }
+}
+
+
 @media (min-width:481px) and (max-width:767px) {
+
+  .carousel-height{
+    height:500px;
+  }
+
+  .background-div{
+    right: 70%;
+    width:90%;
+    left: 5%;
+    border-radius: 5px;
+    background: rgba(33, 125, 187, 0.5);
+  }
+
   .responsive-slider-parallax .slides-container ul li .slide-body .caption .sub {
     font-size: 16px;
     line-height: 22px;
@@ -198,11 +266,35 @@ html *
   .responsive-slider-parallax .slides-container ul li .slide-body {
     height: 480px
   }
+
+  .carousel-height{
+    height:700px;
+  }
+
+  .background-div{
+    right: 70%;
+    width:40%;
+    left: 5%;
+    border-radius: 5px;
+    background: rgba(33, 125, 187, 0.5);
+  }
 }
 
 @media (min-width:768px) and (max-width:979px) {
   .responsive-slider-parallax .slides-container ul li .slide-body {
     height: 300px
+  }
+
+  .carousel-height{
+    height:500px;
+  }
+
+  .background-div{
+    right: 70%;
+    width:90%;
+    left: 5%;
+    border-radius: 5px;
+    background: rgba(33, 125, 187, 0.5);
   }
 }
 
@@ -1880,6 +1972,10 @@ footer hr {
 
 .color-asbestos {
   color: #7f8c8d
+}
+
+div .carousel-control {
+  width:3%;
 }
 
 @media (max-width:767px) {

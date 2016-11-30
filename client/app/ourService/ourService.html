@@ -15,12 +15,12 @@
 <!-- Component: services/services.html - START -->
 <section ng-if="CategoryView">
   <div class="container">
-    <h1><span>Our Services</span></h1>
+    <h1><span class="color-lead-darker">Our Services</span></h1>
     <div class="row">
-      <p class="col-md-12 col-xs-12 col-sm-12" ng-bind-html="intro.text"></p>
+      <p class="col-md-12 col-xs-12 col-sm-12 color-lead-dark" ng-bind-html="intro.text"></p>
     </div>
     <div class="row">
-      <p> Click on any of the category below to read more</p>
+      <p class="color-lead-dark"> Click on any of the category below to read more</p>
     </div>
     <div class="row">
       <div ng-if="!s.type" class="col-sm-4 col-md-3 col-xs-6 fx-zoom-up fx-speed-1000 fx-easing-quint" ng-repeat="s in services track by $index">
@@ -57,11 +57,11 @@
       </div>
       <div class="col-md-9">
         <div ng-if="service.serviceContent.type != 'links'" class="content">
-          <h1><span>{{inLine.header}}</span></h1>
-          <p ng-bind-html="inLine.details"></p>
+          <h1><span class="color-lead-darker">{{inLine.header}}</span></h1>
+          <p class="color-lead-dark" ng-bind-html="inLine.details"></p>
         </div>
         <div ng-if="service.serviceContent.type == 'links'" class="content">
-          <h1><span>{{service.name}}</span></h1>
+          <h1><span class="color-lead-darker">{{service.name}}</span></h1>
           <a ng-repeat="li in service.serviceContent.content" href="http://{{li}}" ><i class="fa fa-link"></i>  {{li}}<br><br></a>
         </div>
       </div>

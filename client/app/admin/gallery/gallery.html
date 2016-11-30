@@ -25,7 +25,15 @@
 
         <section class="">
           <div class="">
-            <h1><span>Gallery</span></h1>
+            <h1><span>Gallery</span>
+                <div ngf-select="upload($file)" ngf-pattern="'image/*'"
+                     ngf-accept="'image/*'" ngf-max-size="10MB" ngf-min-height="100"
+                     ngf-resize="{width: 1600, height: 900}" class="pull-right btn btn-success">
+                  <i class="fa fa-plus-square"></i>
+                  Add image
+                </div>
+            </h1>
+
             <div class="row col-md-9 col-md-offset-1">
               <div class="col-xs-6 col-sm-4 col-md-3" ng-repeat="image in images track by $index">
                 <a class="info-thumbnail-link" data-gallery>

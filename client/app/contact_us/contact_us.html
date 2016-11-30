@@ -16,7 +16,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1><span>Contact us</span></h1>
+          <h1><span class="color-lead-darker">Contact us</span></h1>
          <ng-map default-style="true" center="{{addresses[0].geoAddress}}" zoom="2">
             <marker id={{ads._id}}" position="{{ads.geoAddress}}" animation="animation.BOUNCE"
                     ng-repeat="ads in addresses"
@@ -27,7 +27,7 @@
              <div ng-non-bindable="">
                <div class="thumbnail info-thumbnail padding1 background-clouds color-black">
                  <div class="caption background-white">
-                   <h3 >{{::info.name}}</h3>
+                   <h3 class="color-lead-darker">{{::info.name}}</h3>
                    <em ng-if="info.description" class="color-lead-dark" style="font-size: small"><span class="fa fa-info "></span>{{::info.description}}</em>
                    <p><span class="fa fa-home color-lead"></span>{{::info.address}}</p>
                    <!--<p><span class="fa fa-envelope color-lead"></span> contact@company.com</p>-->
@@ -46,7 +46,7 @@
         <div class="col-sm-6 col-md-6" >
           <div class="thumbnail info-thumbnail padding1 background-clouds color-black">
             <div class="caption background-white blog-entry">
-              <h3 ng-class-even="{'blog-entry-content':true}" ng-class-odd="{'blog-entry-content-orange':true}">{{::add.name}}</h3>
+              <h3 ng-class-even="{'blog-entry-content':true}" ng-class-odd="{'blog-entry-content-orange':true}" class="color-lead-darker">{{::add.name}}</h3>
               <em ng-if="add.description" class="color-lead-dark" style="font-size: small"><span class="fa fa-info "></span>{{::add.description}}</em>
               <p><span class="fa fa-home color-lead"></span>{{::add.address}}</p>
               <!--<p><span class="fa fa-envelope color-lead"></span> contact@company.com</p>-->
@@ -59,7 +59,7 @@
         <div class="col-sm-6 col-md-6">
           <div class="thumbnail info-thumbnail padding1 background-clouds color-black">
             <div class="caption background-white">
-              <h3>Business hours</h3>
+              <h3 class="color-lead-darker">Business hours</h3>
               <p ng-repeat="hours in add.workHours"><strong class="color-lead">{{::hours.day}}:</strong> {{::hours.hour}}</p>
 
             </div>
@@ -68,22 +68,22 @@
       </div>
       <div class="row">
         <div class="col-md-offset-3 col-md-6">
-          <h2>Contact form</h2>
+          <h2 class=" color-lead-darker">Contact form</h2>
           <form class="form-horizontal" role="form" ng-submit="contactForm.$valid && contactEmail(contactForm)" name="contactForm">
             <div class="form-group">
-              <label for="inputName1" class="col-md-2 control-label">Name</label>
+              <label for="inputName1" class="col-md-2 control-label color-lead-dark">Name</label>
               <div class="col-md-10">
                 <input type="text" ng-model="contactForm.name" required  class="form-control input-lg" id="inputName1" placeholder="Name">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputEmail1" class="col-md-2 control-label">Email</label>
+              <label for="inputEmail1" class="col-md-2 control-label color-lead-dark">Email</label>
               <div class="col-md-10">
                 <input type="email" ng-model="contactForm.email" required  class="form-control input-lg" id="inputEmail1" placeholder="Email">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputContent1" class="col-md-2 control-label">Issue</label>
+              <label for="inputContent1" class="col-md-2 control-label color-lead-dark">Issue</label>
               <div class="col-md-10">
                 <textarea id="inputContent1" ng-model="contactForm.content" required  class="form-control" rows="9"></textarea>
               </div>

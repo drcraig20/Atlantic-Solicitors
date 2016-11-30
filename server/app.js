@@ -9,6 +9,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express');
 var mongoose = require('mongoose');
+var busboy = require('connect-busboy');
 var config = require('./config/environment');
 var throng = require('throng');
 var WORKERS = process.env.WEB_CONCURRENCY || 2;
@@ -26,6 +27,7 @@ function start(){
 
 // Setup server
   var app = express();
+  app.use(busboy());
   var server = require('http').createServer(app);
   require('./config/express')(app);
   require('./routes')(app);

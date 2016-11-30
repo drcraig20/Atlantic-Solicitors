@@ -1,77 +1,86 @@
 'use strict';
-var express = require('express');
-var fs = require('fs');
-var path = require('path');
+var path = require('path');             //used for file path
+var fs = require('fs');           //File System - for file manipulation
+var util = require('util');
+var busboy = require('connect-busboy');
 var config = require('../../config/environment');
 
-var app = express();
-var dir;
-if(config.env == 'development'){
-  dir = path.join(config.root, 'client','assets');
-}
-if(config.env == 'production'){
-  dir = path.join(config.root, 'public','assets');
-}
+exports.upload = function (req, res) {
+  var arr;
+  var fstream;
+  var fileSize = 0;
+  var dir;
+  req.pipe(req.busboy);
 
-// config the uploader
-var options = {
-  tmpDir: path.join(dir,'tmp'),
-  uploadDir : path.join(dir,'images'),
-  uploadUrl: '/assets/images',
-  // useSSL: true,
-  maxPostSize: 11000000, // 11 MB
-  minFileSize:  1,
-  maxFileSize:  11000000, // 10 MB
-  acceptFileTypes:  /.+/i,
-  // Files not matched by this regular expression force a download dialog,
-  // to prevent executing any scripts in the context of the service domain:
-  inlineFileTypes:  /\.(gif|jpe?g|png)/i,
-  imageTypes:  /\.(gif|jpe?g|png)/i,
-  copyImgAsThumb : true, // required
-  imageVersions :{
-    maxWidth : 200,
-    maxHeight : 200
-  },
-  accessControl: {
-    allowOrigin: '*',
-    allowMethods: 'OPTIONS, HEAD, GET, POST, PUT, DELETE',
-    allowHeaders: 'Content-Type, Content-Range, Content-Disposition'
-  },
-  storage : {
-    type : 'local'
+  if(config.env == 'development'){
+    dir = path.join(config.root, 'client','assets','images')
   }
+  else if(config.env == 'production') {
+    dir = path.join(config.root, 'public','assets','images')
+  }
+
+  req.busboy.on('file', function (fieldname, file, filename, encoding, mimetype) {
+    //uploaded file name, encoding, MIME type
+    console.log('File [' + fieldname +']: filename:' + filename + ', encoding:' +
+      encoding + ', MIME type:'+ mimetype);
+
+    //uploaded file size
+    file.on('data', function(data) {
+      console.log('File [' + fieldname + '] got ' + data.length + ' bytes');
+      fileSize = data.length;
+      console.log("fileSize= " + fileSize);
+    });
+
+    file.on('end', function() {
+      console.log('File [' + fieldname + '] ENDed');
+      console.log("-------------------------");
+    });
+
+    /*
+     populate array
+     I am collecting file info in data read about the file. It may be more correct to
+     read file data after the file has been saved to img folder i.e. after
+     file.pipe(stream) completes the file size can be got using stats.size as shown
+     below
+     */
+    arr= [{fieldname: fieldname, filename: filename, encoding: encoding, MIMEtype:
+    mimetype}];
+
+    //Path where image will be uploaded
+    fstream = fs.createWriteStream(dir + '/' + filename);
+    //create a writable stream
+
+    file.pipe(fstream); //pipe the post data to the file
+
+    //stream Ended - (data written) send the post response
+    req.on('end', function () {
+      res.writeHead(200, {"content-type":"text/html"});  //http response header
+      // console.log(JSON.stringify(arr));
+      res.end(JSON.stringify(arr)); //http response body - send json data
+    });
+
+    //Finished writing to stream
+    fstream.on('finish', function () {
+      console.log('Finished writing!');
+
+      //Get file stats (including size) for file saved to server
+      fs.stat(dir + '/' + filename, function(err, stats) {
+        if(err)
+          throw err;
+        //if a file
+        if (stats.isFile()) {
+          console.log("It\'s a file & stats.size= " + JSON.stringify(stats));
+          console.log("File size saved to server: " + stats.size);
+          console.log("-----------------------");
+        }
+      });
+    });
+
+    // error
+    fstream.on('error', function (err) {
+      console.log(err);
+    });
+  });   // @END/ .req.busboy
+
 };
-var uploader = require('blueimp-file-upload-expressjs')(options);
-console.log(options);
-  exports.get = function(req, res) {
-    uploader.get(req, res, function (err,obj) {
-    if(!err){
-      res.send(JSON.stringify(obj));
-    }
-  });
-  };
 
-
-  exports.post = function(req, res) {
-    uploader.post(req, res, function (error,obj, redirect) {
-      if(!error)
-      {
-        res.send(JSON.stringify(obj));
-      }
-    });
-  };
-
-
-  exports.delete = function(req, res) {
-    uploader.delete(req, res, function (err,obj) {
-      if (err) {res.Json({error:err});}
-      if (!err){res.send(JSON.stringify(obj));}
-    });
-  };
-
-
-
-
-function handleError(res, err) {
-  return res.status(500).send(err);
-}
