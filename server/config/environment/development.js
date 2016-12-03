@@ -5,7 +5,8 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/atlanticsolicitors-dev'
+    uri: 'mongodb://atlanticsolicitors:atlantic@ds061246.mlab.com:61246/atlanticsolicitors'
+    // uri: 'mongodb://localhost/atlanticsolicitors-dev'
   },
 
   seedDB: true

@@ -7,7 +7,8 @@ var OurFirmSchema = new Schema({
   link: String,
   content: String,
   dt_modified: Date,
-  desc: String
+  desc: String,
+  image: String
 });
 
 module.exports = mongoose.model('OurFirm', OurFirmSchema, 'ourFirm');

@@ -10,11 +10,12 @@ angular.module 'atlanticSolicitorsApp', [
   'ngMap',
   'toastr',
   'ngFx',
+  'blockUI',
   'ngAnimate',
   'satellizer',
   'textAngular'
 ]
-.config ($stateProvider, $authProvider,$urlRouterProvider, $locationProvider) ->
+.config ($stateProvider, $authProvider,$urlRouterProvider, $locationProvider,blockUIConfig) ->
   $authProvider.logoutRedirect = '/signin'
   $authProvider.loginOnSignup = false
   $authProvider.signupRedirect = false
@@ -26,7 +27,7 @@ angular.module 'atlanticSolicitorsApp', [
   $authProvider.platform = 'browser'
   $authProvider.storage = 'sessionStorage'
 
-
+#  blockUIConfig.templateUrl = 'app/blockUItemp/blockUI.html'
   $urlRouterProvider
   .otherwise '/'
 

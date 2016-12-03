@@ -17,8 +17,8 @@
         <div class="col-md-9 col-md-offset-2">
           <div class="content blog-entry fx-fade-down-big fx-easing-expo fx-speed-800" ng-repeat="c in content">
             <h1><span class="color-lead-darker">{{c.link}}</span></h1>
-            <p><img src="assets/images/chicago-law.png" alt="..."></p>
-            <p  ng-bind-html="c.content" class=' fx-fade-down fx-easing-expo fx-speed-800 color-lead-dark' ng-class-even="{'blog-entry-content':true}" ng-class-odd="{'blog-entry-content-orange':true}"></p>
+            <p><img src="{{c.image}}" alt="..."></p>
+            <p  ng-bind-html="c.content" class=' fx-fade-down fx-easing-expo fx-speed-800 color-lead-dark'></p>
             <!--<blockquote>-->
               <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
               <!--<small>Someone famous in <cite title="Source Title">Source Title</cite></small>-->

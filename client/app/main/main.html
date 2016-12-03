@@ -1,14 +1,14 @@
 <div>
 
 
-  <div id="nav-wrapper" class="background-white color-black">
+  <div class="background-white color-black">
     <div ng-include="'components/navbar/navbar.html'"></div>
 
     <!-- Responsive slider - START -->
-    <div>
+    <div class="mt20">
       <div uib-carousel active="active" interval="10000">
         <div class="carousel-height" uib-slide ng-repeat="slide in content.Highlight track by $index" index="$index">
-          <img ng-src="{{slide.image}}">
+          <img style="margin-top:50px; width: 100%" ng-src="{{slide.image}}">
           <div class="carousel-caption background-div animated zoomIn">
             <h1 class="animated fadeInLeft" style="text-align: left; margin-top: 3px!important; padding-left: 20px; font-family: Arial!important">{{slide.header}}</h1>
             <p class="col-md-10 col-md-offset-1 pull-left animated fadeInRightBig" style="text-align:left" ng-bind-html="slide.content"></p>
@@ -48,7 +48,7 @@
           <div class="col-sm-4 col-md-4">
             <h3 class="row center-block"><span class=" pull-left fa fa-newspaper-o color-lead-darker"></span><div class=" fancy background-lead-darker bold color-white pull-left">News & Publications</div></h3>
             <div ng-repeat="news in InfoTab.Highlight track by $index" >
-              <ul>
+              <ul style="list-style-type: none">
                 <li  class="cursor" ui-sref="article({id:'{{news.article}}'})">
                     <h5 class="color-lead-dark"><span class="color-lead "></span>{{news.header}}</h5>
                 </li>
@@ -59,9 +59,9 @@
           <div class="col-sm-4 col-md-4">
             <h3 class="row center-block"><span class=" pull-left fa fa-list color-lead-darker"></span><div class=" fancy background-lead-darker bold color-white pull-left">Our Services</div></h3>
             <div ng-repeat="service in services track by $index" >
-              <ul>
+              <ul style="list-style-type: none">
                 <li ng-hide="service.type" class="cursor" >
-                  <a ui-sref="our_services({name:'{{service._id}}'})" style=" border-bottom: 2px solid blue"><span class="color-lead"></span>{{service.name}}</a>
+                  <a ui-sref="our_services({name:'{{service._id}}'})"><span class="color-lead"></span>{{service.name}}</a>
                 </li>
               </ul>
 
@@ -109,8 +109,8 @@
           <div ng-if="!s.type && s.name != 'Useful Links'" class="col-sm-2 col-md-2" ng-repeat="s in services">
 
             <div class="info-thumbnail-link">
-              <div class="color-lead bold">{{s.name}}</div>
-              <div style="margin-top: 0px!important;" class="thumbnail info-thumbnail with-icon background-clouds color-text">
+              <div class="color-lead" style="font-weight: 300">{{s.name}}</div>
+              <div style="margin-top: 0px!important;" class="thumbnail info-thumbnail background-clouds color-text">
                 <img src="{{s.imageUrl}}" alt="...">
                 <div class="caption bordered background-white nopadding">
                   <p class="buttons"><a ui-sref="our_services({name:'{{s._id}}'})" class="btn btn-lead">Find Out More</a></p>
