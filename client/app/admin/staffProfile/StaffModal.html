@@ -15,10 +15,19 @@
             <label for="name">Profile Name</label>
             <input type="text" class="form-control" ng-model="modalContent.fullname" id="name"/>
           </div>
+          <div class="col-md-6 col-sm-6 form-group" >
+            <label for="file">Profile Picture</label>
+            <input type="file"
+                   ngf-before-model-change="deleteCancel()"
+                   ngf-select="upload($file)" ng-model="file" name="file" ngf-pattern="'image/*'"
+                   ngf-accept="'image/*'" ngf-max-size="2MB" ngf-min-height="100"
+                   class="form-control"
+                   ngf-resize="{width: 250, height: 250}" id="file"/>
+          </div>
         </div>
         <div class="form-group" >
           <label for="aboutme">About Me</label>
-          <textarea rows="4" class="form-control" ng-model="modalContent.about_me" id="aboutme"></textarea>
+          <div text-angular="text-angular" ng-model="modalContent.about_me" required id="aboutme"></div>
         </div>
         <hr>
         <p class="color-lead bold"> Contact Block</p>
@@ -34,98 +43,104 @@
           <div class="col-md-4 col-sm-6 form-group mt20"><a class="btn btn-info pull-right" ng-click="newNestedContent('Contact')"><i class="fa fa-plus"></i> Add Contact</a></div>
         </div>
         <hr>
-        <p class="color-lead bold"> Experience Block</p>
         <div class="row">
-          <div class="col-md-6 col-sm-6 form-group" ng-repeat="experience in modalContent.experiences track by $index">
-            <p class="color-alizarin">Experience {{$index + 1}} <a class="pull-right fa fa-times btn btn-danger btn-xs" ng-click="deleteNested($index,'Experience')"></a></p>
-            <div class="row">
-              <div class="col-md-8">
-                <label for="position{{$index + 1}}">Position</label>
-                <input type="text" class="form-control" ng-model="modalContent.experiences[$index].header" id="position{{$index + 1}}"/>
-              </div>
-              <div class="col-md-4">
-                <label for="date{{$index + 1}}">Date</label>
-                <input type="text" class="form-control" ng-model="modalContent.experiences[$index].date" id="date{{$index + 1}}"/>
-              </div>
-
-            </div>
-
-            <br>
-            <label for="jobdescription{{$index + 1}}">Description</label>
-            <textarea rows="4" class="form-control" ng-model="modalContent.experiences[$index].description" id="jobdescription{{$index + 1}}"></textarea>
-            <br>
-            <label for="place{{$index + 1}}">Place</label>
-            <input type="text" class="form-control" ng-model="modalContent.experiences[$index].place" id="place{{$index + 1}}"/>
-            <br>
-          </div>
-          <div class="col-md-4 col-sm-6 form-group mt20"><a class="btn btn-info pull-right" ng-click="newNestedContent('Experience')"><i class="fa fa-plus"></i> Add Experience</a></div>
-        </div>
-        <hr>
-
-        <p class="color-lead bold"> Qualification Block</p>
-        <div class="row">
-          <div class="col-md-6 col-sm-6 form-group" ng-repeat="experience in modalContent.qualification track by $index">
-            <p class="color-alizarin">Qualification {{$index + 1}} <a class="pull-right fa fa-times btn btn-danger btn-xs" ng-click="deleteNested($index,'Qualification')"></a></p>
-            <div class="row">
-              <div class="col-md-8">
-                <label for="title{{$index + 1}}">Title</label>
-                <input type="text" class="form-control" ng-model="modalContent.qualification[$index].header" id="title{{$index + 1}}"/>
-              </div>
-              <div class="col-md-4">
-                <label for="year{{$index + 1}}">Year</label>
-                <input type="text" class="form-control" ng-model="modalContent.qualification[$index].year" id="year{{$index + 1}}"/>
-              </div>
-
-            </div>
-
-            <br>
-            <label for="qdescription{{$index + 1}}">Description</label>
-            <textarea rows="4" class="form-control" ng-model="modalContent.qualification[$index].description" id="qdescription{{$index + 1}}"></textarea>
-            <br>
-          </div>
-          <div class="col-md-4 col-sm-6 form-group mt20 pull-left"><a class="btn btn-info pull-right" ng-click="newNestedContent('Qualification')"><i class="fa fa-plus"></i> Add Qualification</a></div>
-        </div>
-        <hr>
-        <p class="color-lead bold"> Skill Block</p>
-        <div class="row">
-          <div class="col-md-6 col-sm-6 form-group" ng-repeat="experience in modalContent.skills track by $index">
-            <p class="color-alizarin">Skill {{$index + 1}} <a class="pull-right fa fa-times btn btn-danger btn-xs" ng-click="deleteNested($index,'Skill')"></a></p>
-            <div class="row">
-              <div class="col-md-8">
-                <label for="skillname{{$index + 1}}">Skill Name</label>
-                <input type="text" class="form-control" ng-model="modalContent.skills[$index].skill" id="skillname{{$index + 1}}"/>
-              </div>
-              <div class="col-md-4">
-                <label for="percentage{{$index + 1}}">% in 100</label>
-                <input type="text" class="form-control" ng-model="modalContent.skills[$index].percentage" id="percentage{{$index + 1}}"/>
-              </div>
-
-            </div>
-            <br>
-          </div>
-          <div class="col-md-4 col-sm-6 form-group mt20 pull-left"><a class="btn btn-info pull-right" ng-click="newNestedContent('Skill')"><i class="fa fa-plus"></i> Add Skill</a></div>
-        </div>
-        <hr>
-
-        <p class="color-lead bold"> Languages & Hobbies Block</p>
-        <div class="row">
-          <div class="col-md-6 col-sm-6 form-group">
-            <p class="color-alizarin">Hobbies</p>
-            <div class="row col-md-8 mt10 input-group" ng-repeat="hobby in modalContent.hobbies track by $index">
-                <input type="text" class="form-control" ng-model="modalContent.hobbies[$index]" />
-              <span class="input-group-addon"><a class="fa fa-times btn btn-danger btn-xs" ng-click="deleteNested($index,'Hobby')"></a></span>
-            </div>
-           <div class="pull-left row col-md-8 col-sm-8 form-group mt20"><a class="btn btn-xs btn-info pull-right" ng-click="newNestedContent('Hobby')"><i class="fa fa-plus"></i> Add Hobby</a></div>
-          </div>
-          <div class="col-md-6 col-sm-6 form-group">
-            <p class="color-alizarin">Languages</p>
-            <div class="row col-md-8 mt10 input-group" ng-repeat="language in modalContent.languages track by $index">
-              <input type="text" class="form-control" ng-model="modalContent.languages[$index]" />
-              <span class="input-group-addon"><a class="fa fa-times btn btn-danger btn-xs" ng-click="deleteNested($index,'Language')"></a></span>
-            </div>
-            <div class="pull-left row col-md-8 col-sm-8 form-group mt20"><a class="btn btn-xs btn-info pull-right" ng-click="newNestedContent('Language')"><i class="fa fa-plus"></i> Add Language</a></div>
+          <div class="col-md-6 col-sm-6 form-group" >
+            <label for="name">Position</label>
+            <input type="text" class="form-control" ng-model="modalContent.position" id="position"/>
           </div>
         </div>
+        <!--<p class="color-lead bold"> Experience Block</p>-->
+        <!--<div class="row">-->
+          <!--<div class="col-md-6 col-sm-6 form-group" ng-repeat="experience in modalContent.experiences track by $index">-->
+            <!--<p class="color-alizarin">Experience {{$index + 1}} <a class="pull-right fa fa-times btn btn-danger btn-xs" ng-click="deleteNested($index,'Experience')"></a></p>-->
+            <!--<div class="row">-->
+              <!--<div class="col-md-8">-->
+                <!--<label for="position{{$index + 1}}">Position</label>-->
+                <!--<input type="text" class="form-control" ng-model="modalContent.experiences[$index].header" id="position{{$index + 1}}"/>-->
+              <!--</div>-->
+              <!--<div class="col-md-4">-->
+                <!--<label for="date{{$index + 1}}">Date</label>-->
+                <!--<input type="text" class="form-control" ng-model="modalContent.experiences[$index].date" id="date{{$index + 1}}"/>-->
+              <!--</div>-->
+
+            <!--</div>-->
+
+            <!--<br>-->
+            <!--<label for="jobdescription{{$index + 1}}">Description</label>-->
+            <!--<textarea rows="4" class="form-control" ng-model="modalContent.experiences[$index].description" id="jobdescription{{$index + 1}}"></textarea>-->
+            <!--<br>-->
+            <!--<label for="place{{$index + 1}}">Place</label>-->
+            <!--<input type="text" class="form-control" ng-model="modalContent.experiences[$index].place" id="place{{$index + 1}}"/>-->
+            <!--<br>-->
+          <!--</div>-->
+          <!--<div class="col-md-4 col-sm-6 form-group mt20"><a class="btn btn-info pull-right" ng-click="newNestedContent('Experience')"><i class="fa fa-plus"></i> Add Experience</a></div>-->
+        <!--</div>-->
+        <!--<hr>-->
+
+        <!--<p class="color-lead bold"> Qualification Block</p>-->
+        <!--<div class="row">-->
+          <!--<div class="col-md-6 col-sm-6 form-group" ng-repeat="experience in modalContent.qualification track by $index">-->
+            <!--<p class="color-alizarin">Qualification {{$index + 1}} <a class="pull-right fa fa-times btn btn-danger btn-xs" ng-click="deleteNested($index,'Qualification')"></a></p>-->
+            <!--<div class="row">-->
+              <!--<div class="col-md-8">-->
+                <!--<label for="title{{$index + 1}}">Title</label>-->
+                <!--<input type="text" class="form-control" ng-model="modalContent.qualification[$index].header" id="title{{$index + 1}}"/>-->
+              <!--</div>-->
+              <!--<div class="col-md-4">-->
+                <!--<label for="year{{$index + 1}}">Year</label>-->
+                <!--<input type="text" class="form-control" ng-model="modalContent.qualification[$index].year" id="year{{$index + 1}}"/>-->
+              <!--</div>-->
+
+            <!--</div>-->
+
+            <!--<br>-->
+            <!--<label for="qdescription{{$index + 1}}">Description</label>-->
+            <!--<textarea rows="4" class="form-control" ng-model="modalContent.qualification[$index].description" id="qdescription{{$index + 1}}"></textarea>-->
+            <!--<br>-->
+          <!--</div>-->
+          <!--<div class="col-md-4 col-sm-6 form-group mt20 pull-left"><a class="btn btn-info pull-right" ng-click="newNestedContent('Qualification')"><i class="fa fa-plus"></i> Add Qualification</a></div>-->
+        <!--</div>-->
+        <!--<hr>-->
+        <!--<p class="color-lead bold"> Skill Block</p>-->
+        <!--<div class="row">-->
+          <!--<div class="col-md-6 col-sm-6 form-group" ng-repeat="experience in modalContent.skills track by $index">-->
+            <!--<p class="color-alizarin">Skill {{$index + 1}} <a class="pull-right fa fa-times btn btn-danger btn-xs" ng-click="deleteNested($index,'Skill')"></a></p>-->
+            <!--<div class="row">-->
+              <!--<div class="col-md-8">-->
+                <!--<label for="skillname{{$index + 1}}">Skill Name</label>-->
+                <!--<input type="text" class="form-control" ng-model="modalContent.skills[$index].skill" id="skillname{{$index + 1}}"/>-->
+              <!--</div>-->
+              <!--<div class="col-md-4">-->
+                <!--<label for="percentage{{$index + 1}}">% in 100</label>-->
+                <!--<input type="text" class="form-control" ng-model="modalContent.skills[$index].percentage" id="percentage{{$index + 1}}"/>-->
+              <!--</div>-->
+
+            <!--</div>-->
+            <!--<br>-->
+          <!--</div>-->
+          <!--<div class="col-md-4 col-sm-6 form-group mt20 pull-left"><a class="btn btn-info pull-right" ng-click="newNestedContent('Skill')"><i class="fa fa-plus"></i> Add Skill</a></div>-->
+        <!--</div>-->
+        <!--<hr>-->
+
+        <!--<p class="color-lead bold"> Languages & Hobbies Block</p>-->
+        <!--<div class="row">-->
+          <!--<div class="col-md-6 col-sm-6 form-group">-->
+            <!--<p class="color-alizarin">Hobbies</p>-->
+            <!--<div class="row col-md-8 mt10 input-group" ng-repeat="hobby in modalContent.hobbies track by $index">-->
+                <!--<input type="text" class="form-control" ng-model="modalContent.hobbies[$index]" />-->
+              <!--<span class="input-group-addon"><a class="fa fa-times btn btn-danger btn-xs" ng-click="deleteNested($index,'Hobby')"></a></span>-->
+            <!--</div>-->
+           <!--<div class="pull-left row col-md-8 col-sm-8 form-group mt20"><a class="btn btn-xs btn-info pull-right" ng-click="newNestedContent('Hobby')"><i class="fa fa-plus"></i> Add Hobby</a></div>-->
+          <!--</div>-->
+          <!--<div class="col-md-6 col-sm-6 form-group">-->
+            <!--<p class="color-alizarin">Languages</p>-->
+            <!--<div class="row col-md-8 mt10 input-group" ng-repeat="language in modalContent.languages track by $index">-->
+              <!--<input type="text" class="form-control" ng-model="modalContent.languages[$index]" />-->
+              <!--<span class="input-group-addon"><a class="fa fa-times btn btn-danger btn-xs" ng-click="deleteNested($index,'Language')"></a></span>-->
+            <!--</div>-->
+            <!--<div class="pull-left row col-md-8 col-sm-8 form-group mt20"><a class="btn btn-xs btn-info pull-right" ng-click="newNestedContent('Language')"><i class="fa fa-plus"></i> Add Language</a></div>-->
+          <!--</div>-->
+        <!--</div>-->
 
       </form>
     </div>
@@ -133,6 +148,6 @@
 </div>
 
 <div class="modal-footer">
-  <button ng-click="saveEditedProfile()" ng-disabled="contactform.$invalid || submitting" class="btn btn-sm btn-primary"><i class="fa fa-folder-open"></i> Save</button>
+  <button ng-click="saveEditedProfile()" ng-disabled="EditProfileForm.$invalid || submitting" class="btn btn-sm btn-primary"><i class="fa fa-folder-open"></i> Save</button>
   <button class="btn btn-sm btn-danger" ng-click="cancel()"><i class="fa fa-times"></i> Cancel</button>
 </div>

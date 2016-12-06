@@ -5,19 +5,22 @@ var util = require('util');
 var busboy = require('connect-busboy');
 var config = require('../../config/environment');
 
+var dir;
+
+
+if(config.env == 'development'){
+  dir = path.join(config.root, 'client','assets','images')
+}
+else if(config.env == 'production') {
+  dir = path.join(config.root, 'public','assets','images')
+}
+
 exports.upload = function (req, res) {
   var arr;
   var fstream;
   var fileSize = 0;
-  var dir;
   req.pipe(req.busboy);
 
-  if(config.env == 'development'){
-    dir = path.join(config.root, 'client','assets','images')
-  }
-  else if(config.env == 'production') {
-    dir = path.join(config.root, 'public','assets','images')
-  }
 
   req.busboy.on('file', function (fieldname, file, filename, encoding, mimetype) {
     //uploaded file name, encoding, MIME type
@@ -82,5 +85,11 @@ exports.upload = function (req, res) {
     });
   });   // @END/ .req.busboy
 
+};
+
+exports.delete = function (req,res) {
+  fs.unlink(dir+'\\'+req.query.name, function() {
+    return res.status(200).json ({message:'file successfully deleted',status:'ok'});
+  });
 };
 

@@ -7,7 +7,7 @@ var Muted = require('immutable');
 // Get list of profiles
 exports.index = function(req, res) {
   if (req.query.id){
-    Profile.find({}).select('fullname about_me').limit(6).exec(function (err, profiles) {
+    Profile.find({}).select('fullname image position').exec(function (err, profiles) {
       if(err) { return handleError(res, err); }
       return res.status(200).json(Muted.List(profiles));
     });
@@ -47,11 +47,11 @@ exports.update = function(req, res) {
     var updated = _.merge(profile, req.body);
     updated.dt_modified = Date.now();
     updated.markModified('contact');
-    updated.markModified('experiences');
-    updated.markModified('hobbies');
-    updated.markModified('languages');
-    updated.markModified('qualification');
-    updated.markModified('skills');
+    // updated.markModified('experiences');
+    // updated.markModified('hobbies');
+    // updated.markModified('languages');
+    // updated.markModified('qualification');
+    // updated.markModified('skills');
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.status(200).json(profile);

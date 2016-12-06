@@ -46,7 +46,7 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-4 col-md-4">
-            <h3 class="row center-block"><span class=" pull-left fa fa-newspaper-o color-lead-darker"></span><div class=" fancy background-lead-darker bold color-white pull-left">News & Publications</div></h3>
+            <h3 class="row center-block"><div class="fancy bold color-lead-darker">News & Publications</div></h3>
             <div ng-repeat="news in InfoTab.Highlight track by $index" >
               <ul style="list-style-type: none">
                 <li  class="cursor" ui-sref="article({id:'{{news.article}}'})">
@@ -57,25 +57,21 @@
             </div>
           </div>
           <div class="col-sm-4 col-md-4">
-            <h3 class="row center-block"><span class=" pull-left fa fa-list color-lead-darker"></span><div class=" fancy background-lead-darker bold color-white pull-left">Our Services</div></h3>
+            <h3 class="row center-block"><div class=" bold color-lead-darker">Our Services</div></h3>
             <div ng-repeat="service in services track by $index" >
               <ul style="list-style-type: none">
                 <li ng-hide="service.type" class="cursor" >
-                  <a ui-sref="our_services({name:'{{service._id}}'})"><span class="color-lead"></span>{{service.name}}</a>
+                  <h5 class="cursor color-lead" ui-sref="our_services({name:'{{service._id}}'})"><span class="color-lead"></span>{{service.name}}</h5>
                 </li>
               </ul>
 
             </div>
           </div>
           <div  class="col-sm-4 col-md-4">
-            <a class="info-thumbnail-link" ui-sref="our_firm">
-              <div class="thumbnail info-thumbnail">
-                <div class="caption">
-                  <h3 class="row center-block"><span class=" pull-left fa fa-users color-lead-darker"></span><div class=" fancy background-lead-darker bold color-white pull-left">{{ourfirm.link}}</div></h3>
-                  <p class="description color-lead" ng-bind-html="ourfirm.desc"></p> <small class="btn btn-xs btn-info pull-right">Find Out More...</small>
-                </div>
+              <div>
+                <h3 class="row center-block"><div class="fancy bold color-lead-darker ">{{ourfirm.link}}</div></h3>
+                <p class="description color-lead" ng-bind-html="ourfirm.desc"></p> <small class="btn btn-xs btn-info pull-right" ui-sref="our_firm" >Find Out More...</small>
               </div>
-            </a>
           </div>
         </div>
       </div>

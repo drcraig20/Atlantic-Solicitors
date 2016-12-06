@@ -1025,7 +1025,7 @@ h4.text-right {
 
 .navbar .navbar-brand img {
   display: inline-block;
-  /*height: 85px;*/
+  height: 100px;
   margin: -20px 10px -10px 0;
   border: 0;
   padding: 0;
@@ -1446,8 +1446,8 @@ h4.text-right {
 }
 
 .info-thumbnail-link:hover .info-thumbnail {
-  animation: info-humbnail .4s forwards;
-  -webkit-animation: info-humbnail .4s forwards
+  /*animation: info-humbnail .4s forwards;*/
+  /*-webkit-animation: info-humbnail .4s forwards*/
 }
 
 .info-thumbnail-link:hover .info-thumbnail .service {
@@ -1504,8 +1504,8 @@ h4.text-right {
 }
 
 .gallery-thumbnail img {
-  -webkit-box-shadow: 0 0 0 3px #3498db;
-  box-shadow: 0 0 0 3px #3498db;
+  /*-webkit-box-shadow: 0 0 0 3px #3498db;*/
+  /*box-shadow: 0 0 0 3px #3498db;*/
   -webkit-transition: -webkit-transform 1s, box-shadow .5s;
   -moz-transition: -moz-transform 1s, box-shadow .5s;
   -o-transition: -o-transform 1s, box-shadow .5s;
@@ -1513,10 +1513,10 @@ h4.text-right {
 }
 
 .gallery-thumbnail:hover img {
-  animation: gallery-humbnail .6s forwards;
-  -webkit-animation: gallery-humbnail .6s forwards;
-  -webkit-box-shadow: 0 0 0 10px #3498db;
-  box-shadow: 0 0 0 10px #3498db;
+  /*animation: gallery-humbnail .6s forwards;*/
+  /*-webkit-animation: gallery-humbnail .6s forwards;*/
+  /*-webkit-box-shadow: 0 0 0 10px #3498db;*/
+  /*box-shadow: 0 0 0 10px #3498db;*/
   -webkit-transform: scale(1.07);
   -ms-transform: scale(1.07);
   transform: scale(1.07)
@@ -1996,7 +1996,7 @@ div .carousel-control {
     padding-bottom: 15px
   }
   .navbar .navbar-brand img {
-    height: 70px;
+    height: 40px;
     margin: -10px 10px -10px 0;
     border: 0;
     padding: 0;
@@ -2113,9 +2113,7 @@ div .carousel-control {
 
 
 .fancy{
-  border-radius: 3px;
-  margin-left: 5px;
-  margin-right: 5px;
+  text-align: center;
   padding: 5px;
 }
 

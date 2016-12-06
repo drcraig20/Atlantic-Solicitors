@@ -8,7 +8,7 @@
         <span class="icon-bar background-lead"></span>
         <span class="icon-bar background-lead"></span>
       </button>
-      <a class="navbar-brand" target="_top" ui-sref="main"><img  src="assets/images/logo.png" alt="logo"></a>
+      <a class="navbar-brand color-lead-dark" ui-sref="main"><img  src="assets/images/logo.png" alt="logo"><span class="color-lead-dark" style="font-weight: 700!important;">ATLANTIC SOLICITORS</span></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -23,8 +23,7 @@
           <!--</ul>-->
 
           <!--if navigation item does not have a dropdown menu-->
-          <a style="line-height: 40px!important;" ng-if="nv.url == 'main'"  ui-sref="{{nv.url}}"  target="_top"><i style="line-height: inherit" class=" pull-left "></i>{{nv.name}}</a>
-          <a style="line-height: 40px!important;" ng-if="nv.url != 'main'" ui-sref="{{nv.url}}" ><i style="line-height: inherit" class=" pull-left "></i>{{nv.name}}</a>
+          <a style="line-height: 40px!important;" ui-sref="{{nv.url}}" ><i style="line-height: inherit" class=" pull-left "></i>{{nv.name}}</a>
 
         </li>
       </ul>
