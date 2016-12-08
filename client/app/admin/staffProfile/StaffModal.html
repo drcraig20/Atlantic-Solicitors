@@ -25,6 +25,16 @@
                    ngf-resize="{width: 250, height: 250}" id="file"/>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-6 form-group" >
+            <label for="name">Suffix</label>
+            <input type="text" class="form-control" ng-model="modalContent.suffix" id="suffix"/>
+          </div>
+          <div class="col-md-6 col-sm-6 form-group" >
+            <label for="name">Rank</label>
+            <input type="number" class="form-control" ng-model="modalContent.rank" id="rank"/>
+          </div>
+        </div>
         <div class="form-group" >
           <label for="aboutme">About Me</label>
           <div text-angular="text-angular" ng-model="modalContent.about_me" required id="aboutme"></div>

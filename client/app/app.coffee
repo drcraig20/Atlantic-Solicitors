@@ -11,6 +11,7 @@ angular.module 'atlanticSolicitorsApp', [
   'toastr',
   'ngFx',
   'blockUI',
+  'oitozero.ngSweetAlert',
   'ngAnimate',
   'satellizer',
   'textAngular'

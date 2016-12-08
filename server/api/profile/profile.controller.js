@@ -7,7 +7,7 @@ var Muted = require('immutable');
 // Get list of profiles
 exports.index = function(req, res) {
   if (req.query.id){
-    Profile.find({}).select('fullname image position').exec(function (err, profiles) {
+    Profile.find({}).select('fullname image position').sort('rank').exec(function (err, profiles) {
       if(err) { return handleError(res, err); }
       return res.status(200).json(Muted.List(profiles));
     });

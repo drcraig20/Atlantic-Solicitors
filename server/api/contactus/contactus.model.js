@@ -13,6 +13,7 @@ var ContactusSchema = new Schema({
   fax: Array,
   workHours: Array,
   description : String,
+  emergency : String,
   dt_modified: {type:Date, default:Date.now()}
 });
 

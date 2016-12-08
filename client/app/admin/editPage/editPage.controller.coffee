@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module 'atlanticSolicitorsApp'
-.controller 'EditPageCtrl', ($scope, $stateParams,$injector,$timeout,toastr,$uibModal,ServiceContent) ->
+.controller 'EditPageCtrl', ($scope, $stateParams,$injector,$timeout,toastr,$uibModal,ServiceContent,SweetAlert) ->
   $scope.obj = $stateParams
   $scope.modalContent = null
   modal = null
@@ -171,14 +171,25 @@ angular.module 'atlanticSolicitorsApp'
 #    delete a one page content
   $scope.delete = ->
     if $scope.ids.length
-      Service.deleteMultiple $scope.ids, (response)->
-        if response
-          toastr.success response.message
-          _.remove($scope.Content,(c)->
-            c._id in $scope.ids
-          )
-      ,(e) ->
-        toastr.error 'Data Could Not be deleted.'
+      SweetAlert.swal {
+        title: 'Are you sure?'
+        text: if $scope.ids.length > 1 then 'These items will be permanently deleted' else 'This item will be permanently deleted'
+        type: 'warning'
+        showCancelButton: true
+        confirmButtonColor: '#DD6B55'
+        confirmButtonText: 'Yes, delete it!'
+        closeOnConfirm: false
+      },(isConfirm) ->
+        if isConfirm
+          Service.deleteMultiple $scope.ids, (response)->
+            if response
+              toastr.success response.message
+              SweetAlert.swal("Deleted!", response.message, "success")
+              _.remove($scope.Content,(c)->
+                c._id in $scope.ids
+              )
+          ,(e) ->
+            toastr.error 'Data Could Not be deleted.'
 
 #  delete nested object for pages content with nested content
   $scope.deleteNested =(index,type)->
@@ -226,13 +237,23 @@ angular.module 'atlanticSolicitorsApp'
       _.remove $scope.ServiceContent.serviceContent.content, (a)->
         a == obj
     )
-    console.log $scope.ServiceContent
-    ServiceContent.update {id:$scope.ServiceContent.serviceContent._id}, $scope.ServiceContent.serviceContent,(response)->
-      if response
-        toastr.success 'Data Successfully Deleted'
-        $scope.cancel()
-    ,(e)->
-      toastr.error 'Something went wrong, data could not be deleted'
+    SweetAlert.swal {
+      title: 'Are you sure?'
+      text: if $scope.ids.length > 1 then 'These items will be permanently deleted' else 'This item will be permanently deleted'
+      type: 'warning'
+      showCancelButton: true
+      confirmButtonColor: '#DD6B55'
+      confirmButtonText: 'Yes, delete it!'
+      closeOnConfirm: false
+    },(isConfirm) ->
+      if isConfirm
+        ServiceContent.update {id:$scope.ServiceContent.serviceContent._id}, $scope.ServiceContent.serviceContent,(response)->
+          if response
+            SweetAlert.swal("Deleted!", 'Data Successfully Deleted', "success");
+            toastr.success 'Data Successfully Deleted'
+            $scope.cancel()
+        ,(e)->
+          toastr.error 'Something went wrong, data could not be deleted'
 
   $scope.cancel = ()->
     $scope.submitting = false

@@ -12,8 +12,10 @@ var ProfileSchema = new Schema({
   // skills: Array,
   // languages: Array,
   // hobbies: Array,
+  rank: Number,
   position: String,
   image: String,
+  suffix: String,
   dt_modified: {type:Date, default: Date.now()}
 });
 

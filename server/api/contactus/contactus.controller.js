@@ -42,7 +42,6 @@ exports.update = function(req, res) {
     updated.markModified('telephone');
     updated.markModified('fax');
     updated.markModified('workHours');
-    console.log(updated);
     //end persist modified arrays
     updated.save(function (err) {
       if (err) { return handleError(res, err); }

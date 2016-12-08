@@ -40,16 +40,17 @@
   <section ng-if="profileView">
     <div class="container">
       <div class="row">
-        <h1><span class="color-lead-darker">{{user.fullname}}</span><button class="btn btn-info pull-right" ng-click="back()"><i class="fa fa-backward"></i> Back To Key Contacts</button></h1>
+        <h1><span class="color-lead-darker">{{user.fullname}}  <small class="color-lead" style="font-size: 12px;">{{user.suffix}}</small></span><button class="btn btn-info pull-right" ng-click="back()"><i class="fa fa-backward"></i> Back To Key Contacts</button></h1>
         <div class="col-md-4">
           <div class=" row">
             <p class="thumbnail gallery-thumbnail">
-              <img style="border-radius:7%" src="{{user.image.toLowerCase()}}" alt="...">
+              <img src="{{user.image.toLowerCase()}}" alt="...">
             </p>
             <p class="color-lead-dark bold col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-lg-offset-2">{{user.position}}</p>
 
             <p class=" col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-lg-offset-2" ng-repeat=" c in user.contact track by $index">
-              <i class="fa color-lead-dark " ng-class="{'fa-phone':c.type.toLowerCase() == 'phone','fa-envelope':c.type.toLowerCase() == 'email'}"></i> <span class="color-lead-dark">{{c.content}}</span>
+              <i class="fa color-lead-dark " ng-class="{'fa-phone':c.type.toLowerCase() == 'phone','fa-envelope':c.type.toLowerCase() == 'email','fa-linkedin':c.type.toLowerCase() == 'linkedin',
+              'fa-twitter':c.type.toLowerCase() == 'twitter','fa-skype':c.type.toLowerCase() == 'skype','fa-facebook':c.type.toLowerCase() == 'facebook'}"></i> <span class="color-lead-dark">{{c.content}}</span>
             </p>
           </div>
         </div>
@@ -72,8 +73,8 @@
       <div class="row" >
 
         <div class="col-xs-6 col-sm-4 col-md-2" ng-repeat="profile in profiles">
-          <a ng-click="getProfile(profile._id)" class="thumbnail gallery-thumbnail">
-            <img style="border-radius: 7%; width: 100%" src="{{profile.image.toLowerCase()}}" alt="...">
+          <a ng-click="getProfile(profile._id)" class="cursor thumbnail gallery-thumbnail">
+            <img style=" width: 100%" src="{{profile.image.toLowerCase()}}" alt="...">
           </a>
           <br>
           <p style="font-size: 85%; margin-bottom: 0px; " class="cursor bold text-center color-lead-dark" ng-click="getProfile(profile._id)">{{profile.fullname}}</p>

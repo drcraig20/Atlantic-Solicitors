@@ -31,7 +31,7 @@
             <div class="row mt20">
               <div class="col-xs-6 col-sm-4 col-md-2" ng-repeat="profile in profiles">
                 <a ng-click="StaffModal(profile)" class="thumbnail gallery-thumbnail cursor">
-                  <img class="img-circle" src="{{profile.image}}" alt="...">
+                  <img class="img-circle" src="{{profile.image.toLowerCase()}}" alt="...">
                 </a>
                 <br>
                 <p style="font-size: 85%; " class="text-center">{{profile.fullname}}</p>

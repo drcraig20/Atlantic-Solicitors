@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module 'atlanticSolicitorsApp'
-.controller 'EditArticleCtrl', ($scope,$timeout,Article,$uibModal,toastr,Solicitor,Utils) ->
+.controller 'EditArticleCtrl', ($scope,$timeout,Article,$uibModal,toastr,Solicitor,Utils,SweetAlert) ->
   $scope.modalContent = {}
   $scope.checkModel = {};
   $scope.ids = [];
@@ -108,14 +108,21 @@ angular.module 'atlanticSolicitorsApp'
 
   $scope.delete = ->
     if $scope.ids.length
-      Article.dispose $scope.ids, (response)->
-        if response
-          Solicitor.updatePushOrPop {mode:'InfoTab',type:'pop'}, $scope.ids, ()->
-            toastr.success response.message
-            $scope.getArticles()
-      ,(e) ->
-        toastr.error 'Data Could Not be deleted.'
-
-
-
-
+      SweetAlert.swal {
+        title: 'Are you sure?'
+        text: if $scope.ids.length > 1 then 'These articles will be permanently deleted' else 'This article will be permanently deleted'
+        type: 'warning'
+        showCancelButton: true
+        confirmButtonColor: '#DD6B55'
+        confirmButtonText: 'Yes, delete it!'
+        closeOnConfirm: false
+      },(isConfirm) ->
+        if isConfirm
+          Article.dispose $scope.ids, (response)->
+            if response
+              Solicitor.updatePushOrPop {mode:'InfoTab',type:'pop'}, $scope.ids, ()->
+                SweetAlert.swal("Deleted!", response.message, "success");
+                toastr.success response.message
+                $scope.getArticles()
+          ,(e) ->
+            toastr.error 'Data Could Not be deleted.'

@@ -59,7 +59,7 @@ exports.upload = function (req, res) {
     req.on('end', function () {
       res.writeHead(200, {"content-type":"text/html"});  //http response header
       // console.log(JSON.stringify(arr));
-      res.end(JSON.stringify(arr)); //http response body - send json data
+       res.end(JSON.stringify(arr)); //http response body - send json data
     });
 
     //Finished writing to stream
@@ -75,6 +75,7 @@ exports.upload = function (req, res) {
           console.log("It\'s a file & stats.size= " + JSON.stringify(stats));
           console.log("File size saved to server: " + stats.size);
           console.log("-----------------------");
+          return res.status(200).json(JSON.stringify(arr));
         }
       });
     });

@@ -160,7 +160,7 @@ angular.module 'atlanticSolicitorsApp'
     ).then ((resp) ->
       if resp.status is 200 and resp.statusText is 'OK'
         $scope.oldImage = $scope.modalContent.image
-        $scope.modalContent.image = 'assets/images/'+ file.name
+        $scope.modalContent.image = 'assets/images/'+ file.name.toLowerCase()
         toastr.info 'Image uploaded successfully to server Please click save to attach to this profile'
     ), ((resp) ->
       toastr.error 'Error status image could not be saved'
