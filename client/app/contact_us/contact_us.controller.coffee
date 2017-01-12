@@ -10,6 +10,6 @@ angular.module 'atlanticSolicitorsApp'
 #      rs.time = 800 * _.random(4)
     $scope.addresses = result
 
-  $scope.showInfo = (e, addr) ->
+  $scope.showInfo = (e, addr,index) ->
     $scope.info = addr;
     $scope.googleMap.showInfoWindow('info-window')

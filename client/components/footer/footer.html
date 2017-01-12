@@ -30,6 +30,12 @@
             </div>
           </div>
           <div class="form-group">
+            <label for="inputSubject1" class="col-lg-3 control-label">Subject</label>
+            <div class="col-lg-9">
+              <input type="text" ng-model="contactForm.subject" required  class="form-control input-lg" id="inputSubject1" placeholder="Subject">
+            </div>
+          </div>
+          <div class="form-group">
             <label for="inputContent1" class="col-lg-3 control-label">Issue</label>
             <div class="col-lg-9">
               <textarea id="inputContent1" ng-model="contactForm.content" required  class="form-control" rows="4"></textarea>
@@ -47,18 +53,17 @@
       <div class="col-md-12">
         <hr>
         <div class="row">
-          <div class="col-md-6">
-            All rights reserved &copy; 2016 <a href="http://atlanticsolicitors.com">Atlantic Solicitors</a>
+          <div class="col-md-8">
+            All rights reserved &copy; {{year}} <a href="http://atlanticsolicitors.com">Atlantic Solicitors</a>
             <br>
             <small>This firm is Authorised and Regulated by the Solicitors' Regulation Authority: SRA No. 491744 VAT REG. No: 944 4461 14. Partners: Dele Odusanya and Kola Idowu. </small>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
             <p class="social">
-              <a><span class="fa fa-facebook"></span></a>
-              <a ><span class="fa fa-twitter"></span></a>
+              <a href="https://www.facebook.com/Atlantic-Solicitors-156716258142132/?pnref=story" target="_blank"><span class="fa fa-facebook"></span></a>
+              <a href="https://twitter.com/ATLANTICSOLICT" target="_blank"><span class="fa fa-twitter"></span></a>
               <a ><span class="fa fa-youtube"></span></a>
               <a ><span class="fa fa-linkedin"></span></a>
-              <a ><span class="fa fa-pinterest"></span></a>
             </p>
           </div>
         </div>

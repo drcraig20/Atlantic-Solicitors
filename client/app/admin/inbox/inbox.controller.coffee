@@ -14,4 +14,11 @@ angular.module 'atlanticSolicitorsApp'
       return msg
 
 
+  $scope.openMessage =(message) ->
+    $scope.singleMessage = message
+    console.log(message)
+    $scope.readMessage = true
+
+
+
 

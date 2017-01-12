@@ -14,7 +14,6 @@
             <ul class="breadcrumb">
               <li><a href=""><i class="glyphicon glyphicon-home"></i></a></li>
               <li><a href="">Messages</a></li>
-              <li>Blank Page</li>
             </ul>
             <h4>Blank Page</h4>
           </div>
@@ -30,7 +29,7 @@
             <br />
             <ul class="nav nav-pills nav-stacked nav-msg">
               <li class="active">
-                <a ui-sref="inbox">
+                <a ui-sref="inbox" ng-click="readMessage=false">
                   <span class="badge pull-right">{{count.unread}}</span>
                   <i class="glyphicon glyphicon-inbox"></i> Inbox
                 </a>
@@ -46,18 +45,7 @@
               <li><a href="#"><i class="glyphicon glyphicon-trash"></i> Trash</a></li>
             </ul>
 
-            <br />
-            <h5 class="sm-title">Tags</h5>
-            <ul class="nav nav-pills nav-stacked nav-msg">
-              <li>
-                <a href="email.html">
-                  <span class="badge pull-right">2</span>
-                  <i class="fa fa-tag"></i> Promotions
-                </a>
-              </li>
-              <li><a href="#"><i class="fa fa-tag"></i> Updates</a></li>
-              <li><a href="#"><i class="fa fa-tag"></i> Social</a></li>
-            </ul>
+
           </div>
 
           <div class="col-sm-9 col-md-9 col-lg-10">
@@ -100,7 +88,46 @@
               </div><!-- pull-right -->
             </div><!-- msg-header -->
 
-            <ul class="media-list msg-list">
+            <div ng-show="readMessage">
+              <h4 class="bold text-primary">{{singleMessage.subject}}</h4>
+
+              <div class="panel-group panel-group-msg" id="accordion">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <span class="time text-muted pull-right" ng-bind="DateNow(singleMessage.dt_created)"></span>
+                      <a>
+                        <img src="assets/images/message2.png" class="img img-online img-circle mr5" alt="" >{{singleMessage.name}}
+                        <small>&lt;{{singleMessage.email}}&gt;</small>
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body" ng-bind-html="singleMessage.content">
+                    <h5 class="sm-title text-muted mt20">Attachments</h5>
+                      <ul class="list-unstyled">
+                        <li><i class="fa fa-file-text-o mr5"></i> <a href="">MyDocuments.docx</a> <small class="text-muted">124kb</small></li>
+                        <li><i class="fa fa-file-photo-o mr5"></i> <a href="">MyPhotos.jpg</a>  <small class="text-muted">304kb</small></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              </div><!-- panel-group -->
+
+              <div class="media msg-reply">
+                <a class="pull-left" href="#">
+                  <img class="media-object img-circle img-online" src="assets/images/message2.png" alt="">
+                </a>
+                <div class="media-body">
+                  <textarea class="form-control" placeholder="Click here to Reply"></textarea>
+                  <button class="btn btn-primary btn-sm mt10"><i class="fa fa-send mr5"></i> Send</button>
+                </div>
+
+              </div>
+
+            </div>
+            <ul ng-hide="readMessage" class="media-list msg-list">
               <li class="media" ng-repeat="message in messages track by $index">
                 <div class="ckbox ckbox-primary pull-left">
                   <input type="checkbox" id="{{message._id}}">
@@ -112,28 +139,27 @@
                 <div class="media-body">
                   <div class="pull-right media-option">
                     <small ng-bind="DateNow(message.dt_created)"></small>
-                    <a href=""><i class="fa fa-star"></i></a>
-                    <div class="btn-group">
-                      <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-cog"></i>
-                      </a>
-                      <ul class="dropdown-menu pull-right" role="menu">
-                        <li><a href="#">Mark as Unread</a></li>
-                        <li><a href="#">Reply</a></li>
-                        <li><a href="#">Forward</a></li>
-                        <li><a href="#">Archive</a></li>
-                        <li><a href="#">Move to Folder</a></li>
-                        <li><a href="#">Delete</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Report as Spam</a></li>
-                      </ul>
-                    </div>
+                    <!--<a href=""><i class="fa fa-star"></i></a>-->
+                    <!--<div class="btn-group">-->
+                      <!--<a class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
+                        <!--<i class="fa fa-cog"></i>-->
+                      <!--</a>-->
+                      <!--<ul class="dropdown-menu pull-right" role="menu">-->
+                        <!--<li><a href="#">Mark as Unread</a></li>-->
+                        <!--<li><a href="#">Reply</a></li>-->
+                        <!--<li><a href="#">Forward</a></li>-->
+                        <!--<li><a href="#">Archive</a></li>-->
+                        <!--<li><a href="#">Move to Folder</a></li>-->
+                        <!--<li><a href="#">Delete</a></li>-->
+                        <!--<li class="divider"></li>-->
+                        <!--<li><a href="#">Report as Spam</a></li>-->
+                      <!--</ul>-->
+                    <!--</div>-->
                   </div>
-                  <h4 class="sender">{{message.name}}</h4>
-                  <p><strong class="subject">Hi Hello!</strong>          <a ui-sref="openMessage()" ng-bind="getHeading(message.content)"></a></p>
+                  <h4 class="sender">{{message.name}} </h4>
+                  <p ng-click="openMessage(message)" ><strong class="subject" ng-bind-html="message.subject"></strong> <a class="cursor" ng-bind="getHeading(message.content)"></a></p>
                 </div>
               </li>
-
             </ul>
           </div>
         </div>

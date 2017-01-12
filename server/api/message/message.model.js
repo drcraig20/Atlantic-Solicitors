@@ -8,7 +8,8 @@ var MessageSchema = new Schema({
   email: {type:String, isLowercase:true},
   content: String,
   dt_created:{type:Date, default:Date.now()},
-  read:{type:Boolean, default:false}
+  read:{type:Boolean, default:false},
+  subject: String
 });
 
 module.exports = mongoose.model('Message', MessageSchema);

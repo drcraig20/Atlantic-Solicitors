@@ -8,6 +8,8 @@ angular.module 'atlanticSolicitorsApp'
 
   NavBar.getTestimony (response) ->
     $scope.testimonials = response
+    
+  $scope.year = moment().year()
 
 
   $rootScope.contactEmail = (contactForm)->
