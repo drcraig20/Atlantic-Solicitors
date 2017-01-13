@@ -11,3 +11,6 @@ angular.module 'atlanticSolicitorsApp'
       method: 'PUT'
       params: id: '@id'
       url: 'api/messages/:id'
+    send:
+      method: 'POST'
+      url: 'api/messages/send'

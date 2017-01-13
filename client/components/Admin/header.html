@@ -14,11 +14,6 @@
     <div class="header-right">
 
       <div class="pull-right">
-
-        <form class="form form-search" action="">
-          <input type="search" class="form-control" placeholder="Search" />
-        </form>
-
         <div class="btn-group btn-group-list btn-group-messages" uib-dropdown is-open="messageCollapsed">
           <button id="single-button2" type="button" class="btn btn-default" uib-dropdown-toggle>
             <i class="fa fa-envelope-o"></i>
@@ -39,7 +34,7 @@
               </li>
             </ul>
             <div class="dropdown-footer text-center">
-              <a href="" class="link">See All Messages</a>
+              <a ui-sref="inbox" class="link">See All Messages</a>
             </div>
           </div><!-- dropdown-menu -->
         </div><!-- btn-group -->
@@ -49,10 +44,8 @@
             <i class="fa fa-caret-down"></i>
           </button>
           <ul class="dropdown-menu pull-right" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-            <li role="menuitem"><a href="#"><i class="glyphicon glyphicon-user"></i> My Profile</a></li>
-            <li role="menuitem"><a href="#"><i class="glyphicon glyphicon-star"></i> Activity Log</a></li>
-            <li role="menuitem"><a href="#"><i class="glyphicon glyphicon-cog"></i> Account Settings</a></li>
-            <li role="menuitem"><a href="#"><i class="glyphicon glyphicon-question-sign"></i> Help</a></li>
+            <!--<li role="menuitem"><a href="#"><i class="glyphicon glyphicon-user"></i> My Profile</a></li>-->
+            <li role="menuitem"><a ui-sref="accounts"><i class="glyphicon glyphicon-cog"></i> Account Settings</a></li>
             <li class="divider"></li>
             <li role="menuitem"><a class="cursor" ng-click="signOut()"><i class="glyphicon glyphicon-log-out"></i>Sign Out</a></li>
           </ul>

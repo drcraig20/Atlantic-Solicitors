@@ -3,7 +3,7 @@
 var _ = require('lodash');
 var Mute = require('immutable');
 var Navbar = require('./navbar.model');
-var Testimony = require('./testimonial.model');
+var Testimony = require('../testimonial/testimonial.model');
 
 // Get list of navbars
 exports.index = function(req, res) {

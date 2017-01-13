@@ -1,13 +1,11 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./message.controller');
+var controller = require('./testimonial.controller');
 
 var router = express.Router();
 
 router.get('/', controller.index);
-router.get('/stat', controller.stats);
-router.post('/send', controller.send);
 router.get('/:id', controller.show);
 router.post('/', controller.create);
 router.put('/:id', controller.update);

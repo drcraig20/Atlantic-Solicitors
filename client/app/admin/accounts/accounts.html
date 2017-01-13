@@ -1,0 +1,110 @@
+<div ng-include="'components/Admin/header.html'"></div>
+
+<section>
+  <div class="mainwrapper">
+
+    <div ng-include="'components/Admin/leftpanel.html'"></div>
+    <div class="mainpanel">
+      <div class="pageheader">
+        <div class="media">
+          <div class="pageicon pull-left">
+            <i class="fa fa-home"></i>
+          </div>
+          <div class="media-body">
+            <ul class="breadcrumb">
+              <li><a href=""><i class="glyphicon glyphicon-home"></i></a></li>
+              <li><a href="">Acounts</a></li>
+            </ul>
+            <h4>User Account Settings</h4>
+          </div>
+        </div><!-- media -->
+      </div><!-- pageheader -->
+
+      <div class="contentpanel">
+        <uib-tabset active="activeJustified" justified="true">
+          <uib-tab index="0" heading="Edit Users">
+            <div class="row mt10">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <div class="panel-btns">
+                      <a href="" class="panel-minimize"><i class="fa fa-minus"></i></a>
+                      <a href="" class="panel-close" ><i class="fa fa-times"></i></a>
+                    </div><!-- panel-btns -->
+                    <h3 class="panel-title">List Of Users</h3>
+                  </div>
+                  <div class="panel-body">
+                        <table width="100%" >
+                          <thead>
+                          <tr>
+                            <th> Name</th>
+                            <th> Email</th>
+                            <th> Role</th>
+                            <th> Username</th>
+                            <th> Action</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr ng-repeat="user in allUsers track by $index">
+                            <td>{{user.name}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.role}}</td>
+                            <td>{{user.username}}</td>
+                            <td> <button ng-if="user._id==$user.sub || $user.role == 'superAdmin'" class="btn btn-xs btn-info" ng-click="userEdit(user)"><i class=" fa fa-pencil-square-o"></i> Edit</button></td>
+                          </tr>
+                          </tbody>
+                        </table>
+
+                      <!--<div class="pull-right"><button ng-click="editor(article)" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Click To Edit</button></div>-->
+
+
+                  </div><!-- panel-body -->
+                </div><!-- panel -->
+              </div>
+
+            </div>
+          </uib-tab>
+          <uib-tab index="1" heading="Delete & Add New Users">
+            <div class="row mt10">
+              <div class="col-md-6 col-md-offset-4" ng-if="$user.role == 'superAdmin'">
+                <button class="btn btn-success" ng-click="userAdd()"><i class="fa fa-plus-square"> Add New User</i></button>
+                <button class="btn btn-danger" ng-disabled="!ids.length" ng-click="delete()"><i class="fa fa-trash-o"> Delete User{{ids.length > 1 ? 's':''}}</i></button>
+              </div>
+
+            </div>
+            <div class="row mt10">
+              <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <div class="panel-btns">
+                      <a href="" class="panel-minimize"><i class="fa fa-minus"></i></a>
+                      <a href="" class="panel-close" ><i class="fa fa-times"></i></a>
+                    </div><!-- panel-btns -->
+                    <h3 class="panel-title">List Of Users</h3>
+                  </div>
+                  <div class="panel-body">
+                    <ul style="list-style-type:none!important;" class="media-list">
+                      <li  class="media" ng-repeat="user in allUsers track by $index">
+                        <div class="ckbox ckbox-primary pull-left">
+                          <input type="checkbox" id="{{user._id}}" ng-model="checkModel[user._id]" ng-change="pushAndPop(user._id)">
+                          <label for="{{user._id}}"></label>
+                        </div>
+                        <div class="media-body" ng-bind-html="user.name"></div>
+                      </li>
+
+                      <!--<div class="pull-right"><button ng-click="editor(article)" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Click To Edit</button></div>-->
+                    </ul>
+
+                  </div><!-- panel-body -->
+                </div><!-- panel -->
+              </div>
+
+            </div>
+          </uib-tab>
+        </uib-tabset>
+
+      </div><!-- contentpanel -->
+
+    </div>
+  </div><!-- mainwrapper -->
+</section>

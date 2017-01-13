@@ -6,8 +6,6 @@ angular.module 'atlanticSolicitorsApp'
     $scope.googleMap = map
 
   ContactUs.query (result) ->
-#    _.each result, (rs)->
-#      rs.time = 800 * _.random(4)
     $scope.addresses = result
 
   $scope.showInfo = (e, addr,index) ->

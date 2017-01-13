@@ -11,6 +11,7 @@ router.post('/signin', controller.signIn);
 router.get('/', controller.index);
 router.get('/me', sessionSec, controller.show);
 router.get('/:id',sessionSec, controller.show);
+router.post('/dispose', controller.dispose);
 router.post('/', controller.create);
 router.put('/:id',sessionSec, controller.update);
 router.patch('/:id',sessionSec, controller.update);

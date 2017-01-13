@@ -44,7 +44,7 @@
                     <ul class="aboutus">
                       <li>
                         <p ng-bind-html="data.content"></p>
-                        <div class="pull-right"><button ng-click="editor(data)" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Click To Edit</button></div>
+                        <div class="pull-right" ng-if="$user.role == 'superAdmin'"><button ng-click="editor(data)" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Click To Edit</button></div>
                       </li>
                     </ul>
 
@@ -64,12 +64,12 @@
                       <li ng-if="data.serviceContent.type != 'links'" ng-repeat="d in data.serviceContent.content track by $index">
                         <h5 class="text-success" ng-bind-html="d.header"></h5>
                         <p ng-bind-html="d.details"></p>
-                        <div class="pull-right"><button ng-click="editor(data.serviceContent,$index)" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Click To Edit</button></div>
+                        <div class="pull-right" ng-if="$user.role == 'superAdmin'"><button ng-click="editor(data.serviceContent,$index)" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Click To Edit</button></div>
                         <hr>
                       </li>
                       <li ng-if="data.serviceContent.type == 'links'" ng-repeat="d in data.serviceContent.content">
                         <p ng-bind-html="d"></p>
-                        <div class="pull-right"><button ng-click="editor(d)" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Click To Edit</button></div>
+                        <div class="pull-right" ng-if="$user.role == 'superAdmin'"><button ng-click="editor(d)" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Click To Edit</button></div>
                       </li>
                     </ul>
 
@@ -102,7 +102,7 @@
                       </div>
                     </div>
 
-                    <div class="pull-right"><button ng-click="editorContact(data,$index)" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Click To Edit</button></div>
+                    <div class="pull-right" ng-if="$user.role == 'superAdmin'"><button ng-click="editorContact(data,$index)" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Click To Edit</button></div>
                   </div><!-- panel-body -->
                 </div>
               </div><!-- col-sm-6 -->
@@ -110,7 +110,7 @@
           </uib-tab>
           <uib-tab index="1" heading="Add & Delete {{obj.name}}">
             <div class="row mt10">
-              <div class="col-md-6 col-md-offset-4">
+              <div class="col-md-6 col-md-offset-4" ng-if="$user.role == 'superAdmin'">
                 <button class="btn btn-success" ng-click="editorAdd()"><i class="fa fa-plus-square"> Add New Content</i></button>
                 <button class="btn btn-danger" ng-disabled="!ids.length" ng-click="delete()"><i class="fa fa-trash-o"> Delete Selected Content{{ids.length > 1 ? 's':''}}</i></button>
               </div>

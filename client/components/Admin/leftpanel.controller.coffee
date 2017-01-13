@@ -26,6 +26,7 @@ angular.module 'atlanticSolicitorsApp'
 
   Message.stat (count) ->
     $rootScope.count = count
+
   Message.query limit: 5, (response)->
     $scope.headerMessage = response
 

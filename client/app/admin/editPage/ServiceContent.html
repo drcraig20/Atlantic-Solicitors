@@ -25,7 +25,7 @@
   </div>
 </div>
 
-<div class="modal-footer">
+<div class="modal-footer" ng-if="$user.role == 'superAdmin'">
   <button class="btn btn-sm btn-primary" ng-click="delete()" ng-disabled="submitting"><i class="fa fa-folder-open"></i>Delete {{ServiceContent.name}} Content</button>
   <button class="btn btn-sm btn-danger" ng-click="cancel()"><i class="fa fa-times"></i> Cancel</button>
 </div>

@@ -8,7 +8,7 @@ angular.module 'atlanticSolicitorsApp'
 
   NavBar.getTestimony (response) ->
     $scope.testimonials = response
-    
+
   $scope.year = moment().year()
 
 
@@ -16,9 +16,9 @@ angular.module 'atlanticSolicitorsApp'
     content={
       content: contactForm.content,
       name:contactForm.name,
-      email:contactForm.email
+      email:contactForm.email,
+      subject:contactForm.subject
     }
-    console.log content
     Message.save content, (response)->
       if response._id
         $scope.submitting = true

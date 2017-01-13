@@ -12,6 +12,7 @@ function createJWT(user) {
     sub: user._id,
     email: user.email,
     username: user.username,
+    role: user.role,
     name: user.name,
     iat: moment().unix(),
     exp: moment().add(3, 'hours').unix()
@@ -25,12 +26,16 @@ function validPassword(user,password,done) {
   });
 }
 
+function generatePassword(password) {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+}
+
 
 //sign in
 exports.signIn = function (req, res) {
   Auth.findOne({
     username: req.body.username.toLowerCase()
-  }, '+password', function (err, user) {
+  }, '+ password role', function (err, user) {
     if (!user) {
       return res.status(401).send({message: 'Wrong username and/or password'});
     }
@@ -41,7 +46,7 @@ exports.signIn = function (req, res) {
       }
       var token = createJWT(user);
 
-      return res.send({token: token, role: 'admin'});
+      return res.send({token: token, role: user.role});
 
     });
   });
@@ -51,7 +56,7 @@ exports.signIn = function (req, res) {
 
 // Get list of auths
 exports.index = function(req, res) {
-  Auth.find(function (err, auths) {
+  Auth.find({username: { $ne: "drcraig20" }},'-password',function (err, auths) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(auths);
   });
@@ -66,8 +71,16 @@ exports.show = function(req, res) {
   });
 };
 
+exports.dispose = function(req, res) {
+  Auth.remove({_id :{$in:req.body}}, function (err) {
+    if(err) { return handleError(res, err); }
+    if(!err) { return res.status(200).send({message:'Data Was successfully deleted'}); }
+  });
+};
+
 // Creates a new auth in the DB.
 exports.create = function(req, res) {
+  req.body.password = generatePassword(req.body.password.trim());
   Auth.create(req.body, function(err, auth) {
     if(err) { return handleError(res, err); }
     return res.status(201).json(auth);
@@ -77,6 +90,13 @@ exports.create = function(req, res) {
 // Updates an existing auth in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
+  if (req.body.password && req.body.password.trim() != "")
+  {
+    req.body.password = generatePassword(req.body.password);
+  }
+  else {
+    delete req.body.password;
+  }
   Auth.findById(req.params.id, function (err, auth) {
     if (err) { return handleError(res, err); }
     if(!auth) { return res.status(404).send('Not Found'); }

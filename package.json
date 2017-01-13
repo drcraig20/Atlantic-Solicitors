@@ -25,6 +25,7 @@
     "mongoose": "^4.6.5",
     "morgan": "~1.0.0",
     "ng-fx": "^2.0.4",
+    "nodemailer": "^2.7.0",
     "serve-favicon": "~2.0.1",
     "throng": "^4.0.0"
   },

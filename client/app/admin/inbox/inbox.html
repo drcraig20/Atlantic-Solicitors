@@ -15,7 +15,7 @@
               <li><a href=""><i class="glyphicon glyphicon-home"></i></a></li>
               <li><a href="">Messages</a></li>
             </ul>
-            <h4>Blank Page</h4>
+            <h4>Inbox</h4>
           </div>
         </div><!-- media -->
       </div><!-- pageheader -->
@@ -25,7 +25,7 @@
         <!-- CONTENT GOES HERE -->
         <div class="row">
           <div class="col-sm-3 col-md-3 col-lg-2">
-            <a href="" class="btn btn-success btn-block btn-create-msg">Create Message</a>
+            <a ng-if="$user.role == 'superAdmin'" href="" class="btn btn-success btn-block btn-create-msg" ng-click="createMessage()">Create Message</a>
             <br />
             <ul class="nav nav-pills nav-stacked nav-msg">
               <li class="active">
@@ -52,14 +52,14 @@
 
             <div class="msg-header">
               <div class="pull-right">
-                Showing 1 - 10 of 100 messages
-                <button class="btn btn-white btn-navi btn-navi-left ml5" type="button"><i class="fa fa-chevron-left"></i></button>
-                <button class="btn btn-white btn-navi btn-navi-right" type="button"><i class="fa fa-chevron-right"></i></button>
+                Showing {{nextPage+ 1}} - {{nextPage + 10}} of {{count.total}} messages
+                <button class="btn btn-white btn-navi btn-navi-left ml5" type="button" ng-click="prevMails()"><i class="fa fa-chevron-left"></i></button>
+                <button class="btn btn-white btn-navi btn-navi-right" type="button" ng-click="nextMails()"><i class="fa fa-chevron-right"></i></button>
 
               </div>
               <div class="pull-left">
                 <button class="btn btn-white" type="button" tooltip-placement="top" uib-tooltip="Archive"><i class="fa fa-hdd-o"></i></button>
-                <button class="btn btn-white" type="button" tooltip-placement="top" uib-tooltip="Report Spa,"><i class="fa fa-exclamation-circle"></i></button>
+                <button class="btn btn-white" type="button" tooltip-placement="top" uib-tooltip="Report Spam"><i class="fa fa-exclamation-circle"></i></button>
                 <button class="btn btn-white " type="button" tooltip-placement="top" uib-tooltip="Delete"><i class="fa fa-trash-o"></i></button>
 
                 <div class="btn-group">
@@ -104,11 +104,7 @@
                   </div>
                   <div id="collapseOne" class="panel-collapse collapse in">
                     <div class="panel-body" ng-bind-html="singleMessage.content">
-                    <h5 class="sm-title text-muted mt20">Attachments</h5>
-                      <ul class="list-unstyled">
-                        <li><i class="fa fa-file-text-o mr5"></i> <a href="">MyDocuments.docx</a> <small class="text-muted">124kb</small></li>
-                        <li><i class="fa fa-file-photo-o mr5"></i> <a href="">MyPhotos.jpg</a>  <small class="text-muted">304kb</small></li>
-                      </ul>
+
                     </div>
                   </div>
                 </div>
@@ -120,8 +116,8 @@
                   <img class="media-object img-circle img-online" src="assets/images/message2.png" alt="">
                 </a>
                 <div class="media-body">
-                  <textarea class="form-control" placeholder="Click here to Reply"></textarea>
-                  <button class="btn btn-primary btn-sm mt10"><i class="fa fa-send mr5"></i> Send</button>
+                  <textarea class="form-control" placeholder="Click here to Reply" ng-model="toSend.reply"></textarea>
+                  <button ng-if="$user.role == 'superAdmin'" class="btn btn-primary btn-sm mt10" ng-click="sendMessage()"><i class="fa fa-send mr5"></i> Send</button>
                 </div>
 
               </div>
@@ -138,26 +134,16 @@
                 </a>
                 <div class="media-body">
                   <div class="pull-right media-option">
+                    <i ng-show="message.read" class="fa fa-check"></i>
                     <small ng-bind="DateNow(message.dt_created)"></small>
-                    <!--<a href=""><i class="fa fa-star"></i></a>-->
-                    <!--<div class="btn-group">-->
-                      <!--<a class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
-                        <!--<i class="fa fa-cog"></i>-->
-                      <!--</a>-->
-                      <!--<ul class="dropdown-menu pull-right" role="menu">-->
-                        <!--<li><a href="#">Mark as Unread</a></li>-->
-                        <!--<li><a href="#">Reply</a></li>-->
-                        <!--<li><a href="#">Forward</a></li>-->
-                        <!--<li><a href="#">Archive</a></li>-->
-                        <!--<li><a href="#">Move to Folder</a></li>-->
-                        <!--<li><a href="#">Delete</a></li>-->
-                        <!--<li class="divider"></li>-->
-                        <!--<li><a href="#">Report as Spam</a></li>-->
-                      <!--</ul>-->
-                    <!--</div>-->
+
                   </div>
                   <h4 class="sender">{{message.name}} </h4>
-                  <p ng-click="openMessage(message)" ><strong class="subject" ng-bind-html="message.subject"></strong> <a class="cursor" ng-bind="getHeading(message.content)"></a></p>
+                  <p ng-click="openMessage(message)" >
+                    <em ng-show="message.read" class="subject" ng-bind-html="message.subject"></em>
+                    <strong ng-hide="message.read" class="subject" ng-bind-html="message.subject"></strong>
+                    <a class="cursor" ng-bind="getHeading(message.content)"></a>
+                  </p>
                 </div>
               </li>
             </ul>

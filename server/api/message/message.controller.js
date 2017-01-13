@@ -2,18 +2,19 @@
 
 var _ = require('lodash');
 var Message = require('./message.model');
+var Mailer = require('../../components/tools/Mailer');
 
 // Get list of messages
 exports.index = function(req, res) {
-  if (req.query.limit)
+  if (req.query.limit && !req.query.nextPage)
   {
-    Message.find().limit(parseInt(req.query.limit)).exec(function (err, messages) {
+    Message.find().sort("-dt_created").limit(parseInt(req.query.limit)).exec(function (err, messages) {
       if(err) { return handleError(res, err); }
       return res.status(200).json(messages);
     });
   }
   else {
-    Message.find(function (err, messages) {
+    Message.find().sort('-dt_created').skip(parseInt(req.query.nextPage)).limit(parseInt(req.query.limit)).exec(function (err, messages) {
       if(err) { return handleError(res, err); }
       return res.status(200).json(messages);
     });
@@ -71,8 +72,29 @@ exports.stats = function (req,res) {
   Message.count({read:false}).exec(function (err,count) {
     if(err) { return handleError(res, err); }
     stat.unread = count;
-    return res.status(200).send(stat);
+    Message.count().exec(function (err,total) {
+      stat.total = total;
+      return res.status(200).send(stat);
+    });
+
   })
+};
+
+
+exports.send = function (req,res) {
+  Mailer.send(req.body, function (info) {
+    var response ='';
+    var status = 0;
+    if(info.response){
+      response = 'Message sent successfully';
+      status = 1;
+    }
+    else {
+      response = 'Message sending failed.';
+    }
+    return res.status(200).send({message:response, status: status});
+  });
+
 };
 
 function handleError(res, err) {

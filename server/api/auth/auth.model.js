@@ -21,6 +21,7 @@ var AuthSchema = new Schema({
     type: String,
     select: false
   },
+  role:String,
   lastLogin: Date,
   dt_modified: {
     type: Date,

@@ -1,0 +1,54 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    <button class="btn btn-xs btn-danger pull-right" ng-click="cancel()"><i class="fa fa-times"></i> </button>
+  </h4>
+  <h4 class="modal-title">{{newUser ? 'Add':'Edit'}} Account</h4>
+</div>
+
+<div class="modal-body">
+  <div>
+    <div>
+      <form method="post" ng-submit="userform.$valid && save()" name="userform">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 form-group" >
+            <label for="name">Account Name</label>
+            <input type="text" class="form-control" ng-model="modalContent.name" id="name"/>
+          </div>
+          <div class="col-md-6 col-sm-6 form-group" >
+            <label for="email">Email Address</label>
+            <input type="email" class="form-control" ng-model="modalContent.email" id="email"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-6 form-group" >
+            <label for="username">Username</label>
+            <input type="text" class="form-control" ng-model="modalContent.username" id="username"/>
+          </div>
+          <div class="col-md-6 col-sm-6 form-group" >
+            <label for="password">Password</label>
+            <input type="password" class="form-control" ng-model="modalContent.password" id="password"/>
+          </div>
+        </div>
+        <br>
+        <div class="row ml5" ng-if="$user.role == 'superAdmin'">
+          <div class="btn-group " uib-dropdown is-open="false">
+            <button id="single-button" type="button" class="btn btn-primary form-control" uib-dropdown-toggle >{{dropdownvalue}}<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+              <li role="menuitem" class="cursor"><a ng-click="dropdownvalue='Super Admin'; modalContent.role='superAdmin'">Super Admin <i class="pull-right fa fa-users"></i></a></li>
+              <li role="menuitem" class="cursor"><a ng-click="dropdownvalue='Admin';modalContent.role='admin'">Admin <i class="pull-right fa fa-user"></i></a></li>
+
+            </ul>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button ng-if="newUser == false" ng-click="save()" ng-disabled="userform.$invalid || submitting" class="btn btn-sm btn-primary"><i class="fa fa-folder-open"></i> Save</button>
+  <button ng-if="newUser == true" ng-click="saveNew()" ng-disabled="userform.$invalid || submitting" class="btn btn-sm btn-primary"><i class="fa fa-folder-open"></i> Save</button>
+
+  <button class="btn btn-sm btn-danger" ng-click="cancel()"><i class="fa fa-times"></i> Cancel</button>
+</div>
