@@ -9,9 +9,14 @@
       </div>
       <div class="col-md-4">
         <h3>Testimonials</h3>
+        <button class="btn btn-xs btn-info mb10" ng-click="createFeedback()"><i class=" fa fa-plus-square"> Submit Feedback</i></button>
         <div ng-repeat="t in testimonials">
-          <p class="testimonial">{{t.testimony}}</p>
-          <p class="author">{{t.author}}</p>
+          <p class="testimonial" ng-bind-html="t.testimony"></p>
+          <div class="row ">
+            <p class="pull-left ml10" style="font-size: x-small; font-style: italic">{{DateNow(t.dt_created)}}</p>
+            <p class="author pull-right">{{t.author}}</p>
+          </div>
+          <hr>
       </div>
       </div>
       <div class="col-md-5">
@@ -62,7 +67,7 @@
             <p class="social">
               <a href="https://www.facebook.com/Atlantic-Solicitors-156716258142132/?pnref=story" target="_blank"><span class="fa fa-facebook"></span></a>
               <a href="https://twitter.com/ATLANTICSOLICT" target="_blank"><span class="fa fa-twitter"></span></a>
-              <a ><span class="fa fa-youtube"></span></a>
+              <a href="https://www.youtube.com/channel/UCpzI77yQLXQmpE3TuZL-9yA" target="_blank"><span class="fa fa-youtube"></span></a>
               <a ><span class="fa fa-linkedin"></span></a>
             </p>
           </div>

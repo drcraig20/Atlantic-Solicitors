@@ -5,7 +5,7 @@ var Testimonial = require('./testimonial.model');
 
 // Get list of testimonials
 exports.index = function(req, res) {
-  Testimonial.find(function (err, testimonials) {
+  Testimonial.find().sort('dt_created').exec(function (err, testimonials) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(testimonials);
   });
@@ -53,6 +53,15 @@ exports.destroy = function(req, res) {
     });
   });
 };
+
+
+exports.dispose = function(req, res) {
+  Testimonial.remove({_id: {$in:req.body}}, function (err) {
+    if(err) { return handleError(res, err); }
+    if(!err) {return res.status(200).send({message:'Data Successfully Deleted'}); }
+  });
+};
+
 
 function handleError(res, err) {
   return res.status(500).send(err);

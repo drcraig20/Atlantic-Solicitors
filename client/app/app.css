@@ -1660,7 +1660,8 @@ footer .nav-footer {
 }
 
 footer .testimonial {
-  font-style: italic
+  font-style: italic;
+  font-size: small;
 }
 
 footer .social {
@@ -1680,7 +1681,7 @@ footer .social a [class*=icon] {
 
 footer .author {
   text-align: right;
-  font-size: 12px;
+  font-size: x-small;
   color: #3498db;
   margin-top: -10px
 }

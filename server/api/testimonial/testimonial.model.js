@@ -9,7 +9,8 @@ var mongoose = require('mongoose'),
 var TestimonySchema = new Schema({
   testimony: String,
   author: String,
-  dt_created:Date,
+  approved: {type:Boolean, default:false},
+  dt_created:{type:Date,default:Date.now()},
   dt_modified: Date
 });
 

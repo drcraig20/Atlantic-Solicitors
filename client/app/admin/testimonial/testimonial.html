@@ -1,6 +1,6 @@
-<div ng-cloak ng-include="'components/Admin/header.html'"></div>
+<div ng-include="'components/Admin/header.html'"></div>
 
-<section ng-cloak>
+<section>
   <div class="mainwrapper">
 
     <div ng-include="'components/Admin/leftpanel.html'"></div>
@@ -13,37 +13,69 @@
           <div class="media-body">
             <ul class="breadcrumb">
               <li><a href=""><i class="glyphicon glyphicon-home"></i></a></li>
-              <li><a href="">Atlantic</a></li>
-              <li>Testimonials</li>
+              <li><a href="">Testimonials</a></li>
             </ul>
-            <h4>Testimonials</h4>
+            <h4>user Testimonials</h4>
           </div>
         </div><!-- media -->
       </div><!-- pageheader -->
+
       <div class="contentpanel">
-
-        <p><i class="fa fa-info-circle alert-danger"></i> Please note that anything modified in this <code class="bold">SECTION</code> Will lead to permanent changes, hence thread with caution.</p>
-
         <uib-tabset active="activeJustified" justified="true">
-          <uib-tab index="0" heading="Edit Testimonials">
-
-            <p class="text-center mt20"><i class="fa fa-info-circle text-info"> Click on thumbnails to edit profile</i></p>
+          <uib-tab index="0" heading="Pending Testimonials">
             <div class="row mt20">
-              <div class="col-xs-6 col-sm-4 col-md-2" ng-repeat="profile in profiles">
-                <a ng-click="StaffModal(profile)" class="thumbnail gallery-thumbnail cursor">
-                  <img class="img-circle" src="{{profile.image.toLowerCase()}}" alt="...">
-                </a>
-                <br>
-                <p style="font-size: 85%; " class="text-center">{{profile.fullname}}</p>
-                <!--<p class="text-center">{{profile.about_me}}</small></p>-->
+              <div class="col-md-5">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <div class="panel-btns">
+                      <a href="" class="panel-minimize"><i class="fa fa-minus"></i></a>
+                      <a href="" class="panel-close" ><i class="fa fa-times"></i></a>
+                    </div><!-- panel-btns -->
+                    <h3 class="panel-title">Pending Testimonials </h3>
+                  </div>
+                  <div class="panel-body">
+                    <div ng-repeat="t in notApproved">
+                      <p class="testimonial" ng-bind-html="t.testimony"></p>
+                      <div class="row ">
+                        <p class="pull-left ml10" style="font-size: x-small; font-style: italic">{{DateNow(t.dt_created)}}</p>
+                        <p class="author pull-right">{{t.author}}</p>
+                      </div>
+                      <hr>
+                      <a class=" btn btn-sm btn-success pull-right" ng-click="approveTestimonial(t)">Approve</a>
+                    </div>
+
+                  </div><!-- panel-body -->
+                </div><!-- panel -->
               </div>
+              <div class="col-md-5 col-md-offset-1">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <div class="panel-btns">
+                      <a href="" class="panel-minimize"><i class="fa fa-minus"></i></a>
+                      <a href="" class="panel-close" ><i class="fa fa-times"></i></a>
+                    </div><!-- panel-btns -->
+                    <h3 class="panel-title">Approved Testimonials </h3>
+                  </div>
+                  <div class="panel-body">
+                    <div ng-repeat="t in approved">
+                      <p class="testimonial" ng-bind-html="t.testimony"></p>
+                      <div class="row ">
+                        <p class="pull-left ml10" style="font-size: x-small; font-style: italic">{{DateNow(t.dt_created)}}</p>
+                        <p class="author pull-right">{{t.author}}</p>
+                      </div>
+                      <hr>
+                    </div>
+
+                  </div><!-- panel-body -->
+                </div><!-- panel -->
+              </div>
+
             </div>
           </uib-tab>
-          <uib-tab index="1" heading="Add & Delete Profiles">
-            <div class="row mt20">
-              <div class="col-md-6 col-md-offset-4">
-                <button class="btn btn-success" ng-click="StaffModal()"><i class="fa fa-user-plus"> Add New Profile</i></button>
-                <button class="btn btn-danger" ng-disabled="!ids.length" ng-click="delete()"><i class="fa fa-trash-o"> Delete Profile{{ids.length > 1 ? 's':''}}</i></button>
+          <uib-tab index="1" heading="Delete Testimonials">
+            <div class="row mt10">
+              <div class="col-md-6 col-md-offset-4" ng-if="$user.role == 'superAdmin'">
+                <button class="btn btn-danger" ng-disabled="!ids.length" ng-click="delete()"><i class="fa fa-trash-o"> Delete Testimonial{{ids.length > 1 ? 's':''}}</i></button>
               </div>
 
             </div>
@@ -55,16 +87,16 @@
                       <a href="" class="panel-minimize"><i class="fa fa-minus"></i></a>
                       <a href="" class="panel-close" ><i class="fa fa-times"></i></a>
                     </div><!-- panel-btns -->
-                    <h3 class="panel-title">Mark Profile For Deleting</h3>
+                    <h3 class="panel-title">List Of Testimonials</h3>
                   </div>
                   <div class="panel-body">
                     <ul style="list-style-type:none!important;" class="media-list">
-                      <li  class="media" ng-repeat="profile in profiles track by $index">
+                      <li  class="media" ng-repeat="testimonial in testimonials track by $index">
                         <div class="ckbox ckbox-primary pull-left">
-                          <input type="checkbox" id="{{profile._id}}" ng-model="checkModel[profile._id]" ng-change="pushAndPop(profile._id)">
-                          <label for="{{profile._id}}"></label>
+                          <input type="checkbox" id="{{testimonial._id}}" ng-model="checkModel[testimonial._id]" ng-change="pushAndPop(testimonial._id)">
+                          <label for="{{testimonial._id}}"></label>
                         </div>
-                        <div class="media-body" ng-bind-html="profile.fullname"></div>
+                        <div class="media-body" ng-bind-html="testimonial.testimony"></div>
                       </li>
 
                       <!--<div class="pull-right"><button ng-click="editor(article)" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Click To Edit</button></div>-->
@@ -78,10 +110,8 @@
           </uib-tab>
         </uib-tabset>
 
-      </div>
-      <!-- contentpanel -->
+      </div><!-- contentpanel -->
 
     </div>
   </div><!-- mainwrapper -->
 </section>
-

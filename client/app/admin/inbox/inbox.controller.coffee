@@ -63,6 +63,7 @@ angular.module 'atlanticSolicitorsApp'
 #        confirmButtonText: 'Yes, delete it!'
 #        closeOnConfirm: false
       }
+      $scope.toSend.reply = ''
 
 
   $scope.createMessage = ()->
@@ -91,6 +92,7 @@ angular.module 'atlanticSolicitorsApp'
         text: result.message
         type: type
       }
+      $scope.toSend.reply = ''
 
 
   $scope.cancel = ()->

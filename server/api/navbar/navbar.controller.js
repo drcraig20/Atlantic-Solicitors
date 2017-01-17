@@ -59,7 +59,7 @@ exports.destroy = function(req, res) {
 
 //get list of latest testimonials
 exports.testimonials = function(req, res) {
-  Testimony.find().sort('dt_created').limit(5).exec(function (err, result) {
+  Testimony.find({approved:true}).sort('dt_created').limit(5).exec(function (err, result) {
     var testimonial = Mute.List(result);
     if(err) { return handleError(res, err); }
     return res.status(200).json(testimonial);
