@@ -9,7 +9,8 @@ var MessageSchema = new Schema({
   content: String,
   dt_created:{type:Date, default:Date.now()},
   read:{type:Boolean, default:false},
-  subject: String
+  subject: String,
+  status :{type:String, default:'receive'}
 });
 
 module.exports = mongoose.model('Message', MessageSchema);

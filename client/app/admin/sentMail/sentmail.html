@@ -15,7 +15,7 @@
               <li><a href=""><i class="glyphicon glyphicon-home"></i></a></li>
               <li><a href="">Messages</a></li>
             </ul>
-            <h4>Inbox</h4>
+            <h4>Sent Mails</h4>
           </div>
         </div><!-- media -->
       </div><!-- pageheader -->
@@ -25,17 +25,17 @@
         <!-- CONTENT GOES HERE -->
         <div class="row">
           <div class="col-sm-3 col-md-3 col-lg-2">
-            <a ng-if="$user.role == 'superAdmin'" href="" class="btn btn-success btn-block btn-create-msg" ng-click="createMessage()">Create Message</a>
             <br />
             <ul class="nav nav-pills nav-stacked nav-msg">
-              <li ng-class="{active:$State.name == 'inbox'}">
-                <a ui-sref="inbox" ng-click="readMessage=false">
+              <li>
+                <a ui-sref="inbox">
                   <span class="badge pull-right">{{count.unread}}</span>
                   <i class="glyphicon glyphicon-inbox"></i> Inbox
                 </a>
               </li>
-              <li><a ui-sref="sent"><i class="glyphicon glyphicon-send"></i> Sent Mail</a></li>
+              <li ng-class="{active:$State.name == 'sent'}"><a ui-sref="sent" ng-click="readMessage=false"><i class="glyphicon glyphicon-send"></i> Sent Mail</a></li>
 
+              <li><a href="#"><i class="glyphicon glyphicon-trash"></i> Trash</a></li>
             </ul>
 
 
@@ -45,7 +45,7 @@
 
             <div class="msg-header">
               <div class="pull-right">
-                Showing {{nextPage+ 1}} - {{nextPage + 10}} of {{count.totalReceive}} messages
+                Showing {{nextPage+ 1}} - {{nextPage + 10}} of {{count.totalSent}} messages
                 <button class="btn btn-white btn-navi btn-navi-left ml5" type="button" ng-click="prevMails()"><i class="fa fa-chevron-left"></i></button>
                 <button class="btn btn-white btn-navi btn-navi-right" type="button" ng-click="nextMails()"><i class="fa fa-chevron-right"></i></button>
 
@@ -81,16 +81,16 @@
 
               </div><!-- panel-group -->
 
-              <div class="media msg-reply">
-                <a class="pull-left" href="#">
-                  <img class="media-object img-circle img-online" src="assets/images/message2.png" alt="">
-                </a>
-                <div class="media-body">
-                  <textarea class="form-control" placeholder="Click here to Reply" ng-model="toSend.reply"></textarea>
-                  <button ng-if="$user.role == 'superAdmin'" class="btn btn-primary btn-sm mt10" ng-click="sendMessage()"><i class="fa fa-send mr5"></i> Send</button>
-                </div>
+              <!--<div class="media msg-reply">-->
+                <!--<a class="pull-left" href="#">-->
+                  <!--<img class="media-object img-circle img-online" src="assets/images/message2.png" alt="">-->
+                <!--</a>-->
+                <!--&lt;!&ndash;<div class="media-body">&ndash;&gt;-->
+                  <!--&lt;!&ndash;<textarea class="form-control" placeholder="Click here to Reply" ng-model="toSend.reply"></textarea>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<button ng-if="$user.role == 'superAdmin'" class="btn btn-primary btn-sm mt10" ng-click="sendMessage()"><i class="fa fa-send mr5"></i> Send</button>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
-              </div>
+              <!--</div>-->
 
             </div>
             <ul ng-hide="readMessage" class="media-list msg-list">
@@ -108,7 +108,7 @@
                     <small ng-bind="DateNow(message.dt_created)"></small>
 
                   </div>
-                  <h4 class="sender">{{message.name}} </h4>
+                  <h4 class="sender"> Sent To {{message.email}} </h4>
                   <p ng-click="openMessage(message)" >
                     <em ng-show="message.read" class="subject" ng-bind-html="message.subject"></em>
                     <strong ng-hide="message.read" class="subject" ng-bind-html="message.subject"></strong>

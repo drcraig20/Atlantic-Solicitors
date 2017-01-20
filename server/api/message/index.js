@@ -10,6 +10,7 @@ router.get('/stat', controller.stats);
 router.post('/send', controller.send);
 router.get('/:id', controller.show);
 router.post('/', controller.create);
+router.post('/dispose', controller.dispose);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);

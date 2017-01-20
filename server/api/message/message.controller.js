@@ -8,13 +8,13 @@ var Mailer = require('../../components/tools/Mailer');
 exports.index = function(req, res) {
   if (req.query.limit && !req.query.nextPage)
   {
-    Message.find().sort("-dt_created").limit(parseInt(req.query.limit)).exec(function (err, messages) {
+    Message.find({status: 'sent'}).sort("-dt_created").limit(parseInt(req.query.limit)).exec(function (err, messages) {
       if(err) { return handleError(res, err); }
       return res.status(200).json(messages);
     });
   }
   else {
-    Message.find().sort('-dt_created').skip(parseInt(req.query.nextPage)).limit(parseInt(req.query.limit)).exec(function (err, messages) {
+    Message.find({status: req.query.status}).sort('-dt_created').skip(parseInt(req.query.nextPage)).limit(parseInt(req.query.limit)).exec(function (err, messages) {
       if(err) { return handleError(res, err); }
       return res.status(200).json(messages);
     });
@@ -33,7 +33,6 @@ exports.show = function(req, res) {
 
 // Creates a new message in the DB.
 exports.create = function(req, res) {
-  console.log(req.body);
   Message.create(req.body, function(err, message) {
     if(err) { return handleError(res, err); }
     return res.status(201).json(message);
@@ -69,12 +68,15 @@ exports.destroy = function(req, res) {
 
 exports.stats = function (req,res) {
   var stat = {};
-  Message.count({read:false}).exec(function (err,count) {
+  Message.count({read:false,status:'receive'}).exec(function (err,count) {
     if(err) { return handleError(res, err); }
     stat.unread = count;
-    Message.count().exec(function (err,total) {
-      stat.total = total;
-      return res.status(200).send(stat);
+    Message.count({status:'receive'}).exec(function (err,receive) {
+      stat.totalReceive = receive;
+      Message.count({status:'sent'}).exec(function (err,sent) {
+        stat.totalSent = sent;
+        return res.status(200).send(stat);
+      });
     });
 
   })
@@ -86,6 +88,8 @@ exports.send = function (req,res) {
     var response ='';
     var status = 0;
     if(info.response){
+
+
       response = 'Message sent successfully';
       status = 1;
     }
@@ -95,6 +99,15 @@ exports.send = function (req,res) {
     return res.status(200).send({message:response, status: status});
   });
 
+};
+
+
+exports.dispose = function(req, res) {
+  console.log(req.body);
+  Message.remove({_id :{$in:req.body}}, function (err) {
+    if(err) { return handleError(res, err); }
+    if(!err) { return res.status(200).send({message:'Message Was successfully deleted'}); }
+  });
 };
 
 function handleError(res, err) {

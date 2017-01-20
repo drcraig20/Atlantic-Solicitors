@@ -14,3 +14,6 @@ angular.module 'atlanticSolicitorsApp'
     send:
       method: 'POST'
       url: 'api/messages/send'
+    dispose:
+      method: 'POST'
+      url: 'api/messages/dispose'

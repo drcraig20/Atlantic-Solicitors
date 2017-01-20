@@ -12,9 +12,10 @@
   <h5 class="leftpanel-title">Navigation</h5>
   <ul class="nav nav-pills nav-stacked">
     <li ng-class="{active:$State.name == 'dashboard'}"><a ui-sref="dashboard" ng-class="{active:$State.name == 'dashboard'}"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
-    <li ng-class="{active:$State.name == 'inbox'}"><a ui-sref="inbox"><span class="pull-right badge">{{count.unread}}</span><i class="fa fa-envelope-o"></i> <span>Messages</span></a></li>
+    <li ng-class="{active:$State.name == 'inbox' || $State.name == 'sent'}"><a ui-sref="inbox"><span class="pull-right badge">{{count.unread}}</span><i class="fa fa-envelope-o"></i> <span>Messages</span></a></li>
     <li ng-class="{active:$State.name == 'editArticle'}"><a ui-sref="editArticle"><i class="fa fa-folder"></i> <span>Articles</span></a></li>
     <li ng-class="{active:$State.name == 'staffProfile'}"><a ui-sref="staffProfile"><i class="fa fa-users"></i> <span>Staff Profiles</span></a></li>
+    <li ng-class="{active:$State.name == 'testimonial'}"><a ui-sref="testimonial"><i class="fa fa-comments"></i> <span>Client Testimonial</span></a></li>
 
 
     <!--<li class="parent" ng-click="isUICollapsed = !isUICollapsed"><a ><i class="fa fa-suitcase"></i> <span>UI Elements</span></a>-->
@@ -50,7 +51,6 @@
       <div uib-collapse="isTableCollapsed">
         <ul class="children collapse navbar-collapse">
         <li><a ui-sref="gallery" ui-sref-active="active">Edit Images</a></li>
-        <li><a href="data-tables.html" ui-sref-active="active">Data Tables</a></li>
       </ul>
       </div>
     </li>

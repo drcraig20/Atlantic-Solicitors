@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module 'atlanticSolicitorsApp'
-.controller 'InboxCtrl', ($scope, Message,$rootScope, SweetAlert, $uibModal,toastr) ->
+.controller 'SentMailCtrl', ($scope, Message,$rootScope, SweetAlert, $uibModal, toastr) ->
   $scope.$State =  $rootScope.$state.current
   $scope.nextPage = 0
   $scope.limit = 10
@@ -10,50 +10,38 @@ angular.module 'atlanticSolicitorsApp'
   modal = null
   $scope.submitting = false
 
-  $scope.toSend = {}
-  $scope.lodMessage = ()->
-    Message.query {nextPage:$scope.nextPage, limit:$scope.limit, status:'receive'}, (response)->
-      $rootScope.messages = response
 
-  $scope.lodMessage()
+  $scope.loadSentMessage = ()->
+    Message.query {nextPage:$scope.nextPage, limit:$scope.limit, status:'sent'}, (response)->
+      $scope.messages = response
+
+  $scope.loadSentMessage()
 
 
   $scope.nextMails = ->
     if $rootScope.count.total > $scope.nextPage
       $scope.nextPage = $scope.nextPage + 10
-      $scope.lodMessage()
+      $scope.loadSentMessage()
 
   $scope.prevMails = ->
     if $scope.nextPage > 0
       $scope.nextPage = $scope.nextPage - 10
-      $scope.lodMessage()
-
-  $rootScope.getHeading = (msg)->
-    if msg? and msg is undefined
-      return ''
-    if msg.length > 50
-      msg = Utils.stripTags(msg)
-      return msg = msg.substring(0,50)+" ..."
-    else
-      return msg
+      $scope.loadSentMessage()
 
 
-  $scope.openMessage =(message) ->
-    if message.__v then delete message.__v
-    if message.read is false
-      message.read = true
-      Message.update  id:message._id , message,() ->
-    $scope.singleMessage = message
-    $scope.readMessage = true
-    Message.stat (count) ->
-      $rootScope.count = count
 
-  $scope.sendMessage = ()->
-    $scope.toSend.subject = "RE: "+$scope.singleMessage.subject
-    $scope.toSend.to = $scope.singleMessage.email
+  $scope.cancel = ()->
+    $scope.submitting = false
+    modal.close()
+
+
+  $scope.sendNewMessage = ()->
+    $scope.toSend.subject = $scope.modalContent.subject
+    $scope.toSend.to = $scope.modalContent.to
+    $scope.toSend.reply = $scope.modalContent.reply
     Message.send  $scope.toSend, (result)->
+      modal.close()
       if result.status is 1
-        $scope.sentMessage($scope.toSend)
         type = 'success'
         title = 'Success'
       else if result.status is 0
@@ -63,10 +51,6 @@ angular.module 'atlanticSolicitorsApp'
         title: title
         text: result.message
         type: type
-#        showCancelButton: true
-#        confirmButtonColor: '#DD6B55'
-#        confirmButtonText: 'Yes, delete it!'
-#        closeOnConfirm: false
       }
       $scope.toSend.reply = ''
 
@@ -79,6 +63,9 @@ angular.module 'atlanticSolicitorsApp'
       scope: $scope
       size: 'lg'
 
+  $scope.openMessage =(message) ->
+    $scope.singleMessage = message
+    $scope.readMessage = true
 
   $scope.sendNewMessage = ()->
     $scope.toSend.subject = $scope.modalContent.subject
@@ -117,6 +104,14 @@ angular.module 'atlanticSolicitorsApp'
     Message.save content, ()->
 
 
+  $scope.pushAndPop = (id)->
+    if id not in $scope.ids
+      $scope.ids.push id
+    else if id in $scope.ids
+      _.remove $scope.ids, (a)->
+        a == id
+
+
   $scope.delete = ->
     if $scope.ids.length
       SweetAlert.swal {
@@ -130,15 +125,8 @@ angular.module 'atlanticSolicitorsApp'
       },(isConfirm) ->
         if isConfirm
           Message.dispose $scope.ids, (response)->
-            SweetAlert.swal("Deleted!", response.message, "success");
-            toastr.success response.message
-            $scope.lodMessage()
+                SweetAlert.swal("Deleted!", response.message, "success");
+                toastr.success response.message
+                $scope.loadSentMessage()
           ,(e) ->
             toastr.error 'Data Could Not be deleted.'
-
-  $scope.pushAndPop = (id)->
-    if id not in $scope.ids
-      $scope.ids.push id
-    else if id in $scope.ids
-      _.remove $scope.ids, (a)->
-        a == id
