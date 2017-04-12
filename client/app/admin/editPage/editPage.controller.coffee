@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module 'atlanticSolicitorsApp'
-.controller 'EditPageCtrl', ($scope, $stateParams,$injector,$timeout,toastr,$uibModal,ServiceContent,SweetAlert) ->
+.controller 'EditPageCtrl', ($scope, $stateParams,$injector,$timeout,toastr,$uibModal,ServiceContent,OurServices,SweetAlert) ->
   $scope.obj = $stateParams
   $scope.modalContent = null
   modal = null
@@ -26,6 +26,8 @@ angular.module 'atlanticSolicitorsApp'
     Service = $injector.get $scope.serviceName
     Service.query (result)->
       $scope.Content = result
+      if $stateParams.name is 'Our Services'
+        $scope.intro = _.find result, 'type'
       $timeout ()->
         angular.element('.panel-heading').hover (->
             angular.element(this).find('.panel-btns').fadeIn 'fast'
@@ -75,7 +77,6 @@ angular.module 'atlanticSolicitorsApp'
     modal.close()
 
   $scope.save = ()->
-    console.log $scope.contactContent
     $scope.submitting = true
     if $scope.contactContent? and $scope.contactContent isnt undefined and $scope.obj.url is 'contact_us'  then $scope.modalContent = $scope.contactContent
     if $scope.obj.url is 'our_services'
@@ -218,6 +219,27 @@ angular.module 'atlanticSolicitorsApp'
       resolve:
         SContent: -> $scope.Content[name]
 
+  $scope.openHeader = ()->
+    contentModal = $uibModal.open
+      templateUrl: 'app/admin/editPage/EditorHeader.html'
+      backdrop: 'static'
+      scope: $scope
+      size: 'md'
+
+  $scope.saveHeader = ()->
+    if $scope.intro.__v then delete $scope.intro.__v
+    $scope.submitting = true
+    OurServices.update id:$scope.intro._id,$scope.intro, (result) ->
+      if result._id
+        contentModal.close()
+        $scope.submitting = false
+        toastr.success 'Data Successfully Saved'
+    ,(e) ->
+      $scope.submitting = false
+      toastr.error 'Opps!!! Something went wrong, and data could not be saved'
+
+
+
 
 .controller 'NestedServiceCtrl', ($scope, $stateParams,ServiceContent,$timeout,toastr,$uibModalInstance,SContent) ->
   $scope.ServiceContent = SContent
@@ -258,3 +280,4 @@ angular.module 'atlanticSolicitorsApp'
   $scope.cancel = ()->
     $scope.submitting = false
     $uibModalInstance.dismiss('cancel')
+

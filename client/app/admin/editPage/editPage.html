@@ -29,6 +29,10 @@
         <p><i class="fa fa-info-circle alert-danger"></i> Please note that anything modified in this <code class="bold">SECTION</code> Will lead to permanent changes, hence thread with caution.</p>
         <uib-tabset active="activeJustified" justified="true">
           <uib-tab index="0" heading="Edit {{obj.name}}">
+
+            <div class=" row col-sm-12 col-md-12 " ng-if="obj.url == 'our_services'" align="center">
+              <button class="btn btn-info btn-lg" ng-click="openHeader()"><i class="fa fa-pencil-square"></i> Edit Services Header</button>
+            </div>
             <div class="row mt10">
               <div class="col-sm-6 col-md-6" ng-repeat="data in Content track by data._id">
                 <!--if page is our Firm or About us-->

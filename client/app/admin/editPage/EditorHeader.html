@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    <button class="btn btn-xs btn-danger pull-right" ng-click="cancel(1)"><i class="fa fa-times"></i> </button>
+  </h4>
+  <h4 class="modal-title">Editing {{obj.name}}'s Header</h4>
+</div>
+
+<div class="modal-body">
+  <div>
+    <div>
+      <!--<div ng-if="obj.url != 'our_services' && obj.url != 'our_firm'" text-angular="text-angular" ng-model="modalContent"></div>-->
+      <div  text-angular="text-angular" ng-model="intro.text"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-sm btn-primary" ng-click="saveHeader()" ng-disabled="submitting"><i class="fa fa-folder-open"></i> Save</button>
+  <button class="btn btn-sm btn-danger" ng-click="cancel(1)"><i class="fa fa-times"></i> Cancel</button>
+</div>

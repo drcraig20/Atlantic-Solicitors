@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module 'atlanticSolicitorsApp'
-.controller 'InboxCtrl', ($scope, Message,$rootScope, SweetAlert, $uibModal,toastr) ->
+.controller 'InboxCtrl', ($scope, Message,$rootScope, SweetAlert, $uibModal,toastr,Utils) ->
   $scope.$State =  $rootScope.$state.current
   $scope.nextPage = 0
   $scope.limit = 10
