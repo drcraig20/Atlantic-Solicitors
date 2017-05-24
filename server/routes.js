@@ -22,7 +22,7 @@ module.exports = function(app) {
   app.use('/api/aboutUs', require('./api/aboutUs'));
   app.use('/api/navbars', require('./api/navbar'));
   app.use('/auth', require('./api/auth'));
-  app.use('/api/upload',require('./api/fileUpload'));
+  app.use('/api/upload',require('./api/fileupload'));
 
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
