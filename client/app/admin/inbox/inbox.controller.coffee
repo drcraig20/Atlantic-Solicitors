@@ -19,7 +19,8 @@ angular.module 'atlanticSolicitorsApp'
 
 
   $scope.nextMails = ->
-    if $rootScope.count.total > $scope.nextPage
+    console.log $rootScope.count.totalReceive
+    if $rootScope.count.totalReceive > $scope.nextPage
       $scope.nextPage = $scope.nextPage + 10
       $scope.lodMessage()
 
