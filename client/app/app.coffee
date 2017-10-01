@@ -6,6 +6,7 @@ angular.module 'atlanticSolicitorsApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
+  'cloudinary'
   'ngFileUpload',
   'ngMap',
   'toastr',
@@ -16,12 +17,16 @@ angular.module 'atlanticSolicitorsApp', [
   'satellizer',
   'textAngular'
 ]
-.config ($stateProvider, $authProvider,$urlRouterProvider, $locationProvider,blockUIConfig) ->
+.config ($httpProvider,$stateProvider, $authProvider,$urlRouterProvider, $locationProvider,cloudinaryProvider,blockUIConfig) ->
+  $httpProvider.interceptors.push("requestInterceptor")
   $authProvider.logoutRedirect = '/signin'
   $authProvider.loginOnSignup = false
   $authProvider.signupRedirect = false
   $authProvider.loginUrl = '/auth/signin'
   $authProvider.loginRoute = '/signin'
+
+  cloudinaryProvider.set "cloud_name", "atlanticsolicitors"
+  cloudinaryProvider.set "upload_preset", "nkygzmxw"
 
   $authProvider.tokenPrefix = '__natlanticSolicitors__'
 
@@ -34,6 +39,8 @@ angular.module 'atlanticSolicitorsApp', [
 
   $locationProvider.html5Mode true
 .run ($state,$auth,$rootScope,$window, NavBar) ->
+  $rootScope.cl = cloudinary.Cloudinary.new()
+  $rootScope.cl.fromEnvironment()
   $rootScope.previousState
   if $rootScope.navigation? or $rootScope.navigation isnt undefined
     console.log $rootScope.navigation

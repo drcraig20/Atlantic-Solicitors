@@ -1,4 +1,5 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -8,8 +9,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <base href="/">
     <title ng-bind-html="$state.current.title"></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Atlantic Solicitors">
+    <meta property="og:description" content="Atlantic Solicitors provides the best legal services you may require.">
+    <meta name="keywords"
+          content="Atlantic,Solicitors,Legal Services,atlantic solicitors UK">
+    <meta name="description" content="Atlantic Solicitors provide each client with advice that adds value to their business. Our approach is to apply the highest levels of knowledge, technical skill and service delivery method allowing us to provide accurate, reliable, timely and cost-effective advice across a range of industry groups and sectors. Our strong teamwork ethic and practical can do approach to solving problems ensures a seamless, effective service.">
+    <meta name="viewport" content="width=device-width" initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
@@ -64,7 +71,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-XXXXX-X');
+      ga('create', '1014235104291-im48h1f5vic2oslrs13isoqp1bo9q3ag.apps.googleusercontent.com');
       ga('send', 'pageview');
     </script>
 
@@ -80,6 +87,8 @@
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
       <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/cloudinary-core/cloudinary-core.js"></script>
+      <script src="bower_components/cloudinary_ng/js/angular.cloudinary.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/angular-animate/angular-animate.js"></script>
       <script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
@@ -98,7 +107,7 @@
     <script src='bower_components/textAngular/dist/textAngular-sanitize.min.js'></script>
     <script src='bower_components/textAngular/dist/textAngular.min.js'></script>
     <script src="bower_components/ngmap/build/scripts/ng-map.min.js"></script>
-    <script src="https://maps.google.com/maps/api/js?key=AIzaSyAWbKwJbr4JWHXoLasLdIfdaxjmG3oSut4"></script>
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyA0BRIMFKutmf8LurOhOLC496QpXJbylls"></script>
 
 
 
@@ -118,6 +127,7 @@
           <script src="app/AppServices/ourService/ourService.js"></script>
           <script src="app/AppServices/our_firm/our_firm.js"></script>
           <script src="app/AppServices/profile/profile.js"></script>
+          <script src="app/AppServices/requestInterceptor/requestInterceptor.js"></script>
           <script src="app/AppServices/serviceContent/serviceContent.js"></script>
           <script src="app/AppServices/solicitor/solicitor.js"></script>
           <script src="app/AppServices/testimonial/testimonial.js"></script>

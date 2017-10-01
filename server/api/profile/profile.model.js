@@ -14,6 +14,8 @@ var ProfileSchema = new Schema({
   // hobbies: Array,
   rank: Number,
   position: String,
+  public_id: String,
+  image_url: String,
   image: String,
   suffix: String,
   dt_modified: {type:Date, default: Date.now()}

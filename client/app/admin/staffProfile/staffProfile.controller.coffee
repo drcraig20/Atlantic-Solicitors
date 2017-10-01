@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module 'atlanticSolicitorsApp'
-.controller 'StaffProfileCtrl', ($scope, Profile,$uibModal,toastr,Upload,FileUpload) ->
+.controller 'StaffProfileCtrl', ($scope, Profile,$uibModal,toastr,cloudinary,Upload,FileUpload) ->
   $scope.checkModel = []
   $scope.submitting = false
   $scope.ids = [];
@@ -39,8 +39,8 @@ angular.module 'atlanticSolicitorsApp'
     if $scope.file
       if $scope.modalContent.image then delete $scope.modalContent.image
       $scope.modalContent.image = $scope.oldImage
-      FileUpload.delete {name: $scope.file.name}, (response)->
-        if response.status is 'ok' then console.log response.message
+#      FileUpload.delete {name: $scope.file.name}, (response)->
+#        if response.status is 'ok' then console.log response.message
 
   $scope.cancel = (int)->
     $scope.submitting = false
@@ -144,26 +144,41 @@ angular.module 'atlanticSolicitorsApp'
         toastr.error 'Data Could Not be deleted.'
 
 
-# file upload
-#  $scope.submitDetails = ->
-#    console.log $scope.file
-#    if $scope.file
-#      $scope.upload $scope.file
-#    else  $scope.saveEditedProfile()
-
   $scope.upload = (file) ->
     $scope.file = file
-    Upload.upload(
-      url: '/api/upload'
+    Upload.upload
+      url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload"
       data:
+        skipAuthorization: true
+        upload_preset: cloudinary.config().upload_preset
+        tags: 'staffPics'
+        context: 'photo=' + $scope.modalContent.fullname.replace(" ","")
         file: file
-    ).then ((resp) ->
-      if resp.status is 200 and resp.statusText is 'OK'
-        $scope.oldImage = $scope.modalContent.image
-        $scope.modalContent.image = 'assets/images/'+ file.name.toLowerCase()
-        toastr.info 'Image uploaded successfully to server Please click save to attach to this profile'
-    ), ((resp) ->
-      toastr.error 'Error status image could not be saved'
-    ), (evt) ->
-      progressPercentage = parseInt(100.0 * evt.loaded / evt.total)
-      console.log 'progress: ' + progressPercentage + '% ' + evt.config.data.file.name
+    .progress (evt) ->
+      progressPercentage = Math.round((100.0 * evt.loaded) / evt.total)
+    .success (data) ->
+      $scope.oldImage = $scope.modalContent.image
+      $scope.modalContent.image = data.secure_url
+      $scope.modalContent.image_url = data.url
+      $scope.modalContent.public_id = data.public_id
+      toastr.info 'Image uploaded successfully to server Please click save to attach to this profile'
+    .error (data) ->
+      toastr.error 'Image could not be uploaded please try again'
+
+
+#  $scope.upload = (file) ->
+#    $scope.file = file
+#    Upload.upload(
+#      url: '/api/upload'
+#      data:
+#        file: file
+#    ).then ((resp) ->
+#      if resp.status is 200 and resp.statusText is 'OK'
+#        $scope.oldImage = $scope.modalContent.image
+#        $scope.modalContent.image = 'assets/images/'+ file.name.toLowerCase()
+#        toastr.info 'Image uploaded successfully to server Please click save to attach to this profile'
+#    ), ((resp) ->
+#      toastr.error 'Error status image could not be saved'
+#    ), (evt) ->
+#      progressPercentage = parseInt(100.0 * evt.loaded / evt.total)
+#      console.log 'progress: ' + progressPercentage + '% ' + evt.config.data.file.name
